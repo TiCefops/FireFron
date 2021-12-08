@@ -15,18 +15,24 @@ class RequerimentTypeModel {
     required this.name,
     required this.grupo,
     required this.diasPentregar,
+    required this.valor,
+    required this.linkpagamento,
   });
 
   int id;
   String name;
   String grupo;
   int diasPentregar;
+  double valor;
+  String linkpagamento;
 
   factory RequerimentTypeModel.fromJson(Map<String, dynamic> json) => RequerimentTypeModel(
     id: json["id"],
     name: json["name"],
     grupo: json["grupo"],
     diasPentregar: json["diasPentregar"],
+    valor: json["valor"],
+    linkpagamento: json["linkpagamento"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -34,5 +40,7 @@ class RequerimentTypeModel {
     "name": name,
     "grupo": grupo,
     "diasPentregar": diasPentregar,
+    "valor": valor,
+    "linkpagamento": linkpagamento,
   };
 }

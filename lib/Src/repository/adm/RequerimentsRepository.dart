@@ -17,6 +17,9 @@ import 'package:intl/intl.dart';
 
 
 Future<List<RequerimentModel>> GetAllRequeriment()async{
+
+
+
   final response=await http.get(
     Uri.parse("${urls.app}/requerimetos"),
     headers: <String, String>{
@@ -57,6 +60,8 @@ Future CreateRequeriment(int requerimentID,String alunoID,String nomeAluno,
   isAluno();
   final  data = new DateTime.now() ;
   HomeEmployesController.c.updating.value=true;
+  var dataFormat = new DateFormat("yMMddhhmms");
+  var protocolo=dataFormat.format(data);
   final response = await http.post(
     Uri.parse('${urls.app}/requerimetos'),
     headers: <String, String>{
@@ -80,6 +85,7 @@ Future CreateRequeriment(int requerimentID,String alunoID,String nomeAluno,
       "responsavel": "ND",
       "entregue": "2021-12-01",
       "abertoem": "${data.toIso8601String()}",
+      "protocolo": "$protocolo",
       "concluido": false
     }
     ),
@@ -122,7 +128,6 @@ Future <void> updateReq(int id,String resp,String status,bool isUpdate) async {
        return url;
      }
    };
-   print(URL());
   final response = await http.patch(
     Uri.parse(URL()),
     headers: <String, String>{

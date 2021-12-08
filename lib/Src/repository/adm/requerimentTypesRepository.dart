@@ -19,6 +19,7 @@ Future<List<RequerimentTypeModel>> GetRequeRequerimentType()async{
     },
   );
   controler.loading.value=true;
+  var data1=controler.groupsFiltered.value=[];
 
   final data = utf8.decode(response.bodyBytes);
   var decodeData = jsonDecode(data);
@@ -35,10 +36,10 @@ Future<List<RequerimentTypeModel>> GetRequeRequerimentType()async{
     List<dynamic> groupeDatafiltered = [];
     Set<String> setGroupeData = Set();
 
-    for (dynamic anime in groupeData){
-      if (!setGroupeData.contains(anime)){
-        setGroupeData.add(anime);
-        groupeDatafiltered.add(anime);
+    for (dynamic data in groupeData){
+      if (!setGroupeData.contains(data)){
+        setGroupeData.add(data);
+        groupeDatafiltered.add(data);
       }
     }
 
