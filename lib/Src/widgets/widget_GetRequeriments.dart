@@ -24,8 +24,6 @@ class _GetRequerimentsState extends State<GetRequeriments> {
   @override
 
   Widget build(BuildContext context) {
-    print("Teste");
-
     return FutureBuilder(
         future: GetAllRequeriment(),
         builder: (BuildContext context,
@@ -154,6 +152,7 @@ GetRequerimentsAndando() {
               permissionFilter.where((u) => u.status == 'andando').toList();
 
           return ListView.builder(
+
               itemCount: filter.length,
               itemBuilder: (BuildContext context, int Index) {
                 var now = filter[Index].abertoem;
@@ -163,6 +162,7 @@ GetRequerimentsAndando() {
                         now.add(Duration(
                             days: snapshot.data![Index].tipo.diasPentregar)));
                 String formatted = formatter.format(now);
+
                 return Card(
                   child: Padding(
                     padding: EdgeInsets.all(10),

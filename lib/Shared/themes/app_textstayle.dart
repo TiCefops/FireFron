@@ -43,7 +43,7 @@ class TextStyles {
     color: AppColors.textOnPrimary,
   );
   static final TextStyle titleListTile3Black = GoogleFonts.lexendDeca(
-    fontSize: 14,
+    fontSize: 20,
     fontWeight: FontWeight.w400,
     color: Colors.black,
   );

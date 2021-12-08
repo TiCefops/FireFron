@@ -151,6 +151,9 @@ showAlertDialog(BuildContext context) {
             child: TextFormField(
               controller: TextEditingController()
                 ..text = '${RequerimentController.req.observertion}',
+              onChanged: (data){
+                RequerimentController.req.observertion.value=data.toString();
+              },
               style: const TextStyle(
                 color: Colors.black,
               ),

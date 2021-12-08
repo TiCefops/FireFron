@@ -12,12 +12,11 @@ class HomeEmployesController extends GetxController{
   RxInt totalForBar=0.obs;
   RxBool updateScreen=false.obs;
   RxBool updating=false.obs;
-
+  RxBool click=false.obs;
 
   void updateScreenFun(){
     Future.delayed(Duration(seconds: 2));
     updateScreen.value=false;
-    print("Atualizar");
     update();
   }
 

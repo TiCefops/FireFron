@@ -209,7 +209,6 @@ class _loginPageState extends State<loginPage>
 
                                         if (_formKey.currentState!.validate()) {
                                           statusApp.status.loading.value = true;
-                                          print(userController.value.text);
                                           await Login(userController.value.text,
                                               passwordController.value.text);
                                           if (ErroController.error.ok == true) {

@@ -11,7 +11,7 @@ import 'package:cefops/Src/views/adm/secretaria/page_sigin_studant.dart';
 import 'package:cefops/Src/views/adm/secretaria/page_update_news.dart';
 import 'package:cefops/Src/views/page_Home.dart';
 import 'package:cefops/Src/views/studants/page_Course.dart';
-import 'package:cefops/Src/views/studants/page_Requeriment.dart';
+import 'package:cefops/Src/views/studants/requeriment/page_requeriment.dart';
 import 'package:cefops/Src/views/studants/page_Socre.dart';
 
 getDrawerItem(int pos,{context}) {
