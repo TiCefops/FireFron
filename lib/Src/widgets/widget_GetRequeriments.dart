@@ -190,6 +190,11 @@ GetRequerimentsAndando() {
                               Text("Aberto Em:$formatted"),
                               IconButton(
                                   onPressed: () async{
+
+                                    HomeEmployesController.c.
+                                    concluidoEm.value=DateTime.now().toString();
+                                    print(HomeEmployesController.c.
+                                    concluidoEm);
                                     await updateReq(
                                         filter[Index].id,
                                         UserController.user.Fullname.value,

@@ -1,7 +1,6 @@
-import 'package:cefops/Src/controller/requerimentController.dart';
-import 'package:cefops/Src/controller/requerimentTypeController.dart';
+
+import 'package:cefops/Src/controller/studants/studant_anddress_controller.dart';
 import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
-import 'package:cefops/Src/repository/adm/RequerimentsRepository.dart';
 import 'package:cefops/Src/views/studantDetails/controller/documents_controller.dart';
 import 'package:cefops/Src/views/studantDetails/widget/widget_studant_infos_routes.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,11 +9,13 @@ import 'package:get/get.dart';
 import 'package:cefops/Src/controller/status.dart';
 
 
-AlunoDetails(BuildContext context) {
+AlunoDetails(BuildContext context,bool usuer) {
+  StudantAnddressController endereco=Get.put(StudantAnddressController());
 
   Widget cancelButton = TextButton(
     child: Text("Cancelar"),
     onPressed: () {
+      StudantInfoController.data.clearAll();
       DocumentsController.data.deleteAllData();
       Get.back();    },
   );
@@ -44,7 +45,7 @@ AlunoDetails(BuildContext context) {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             mainAxisSize: MainAxisSize.min,
-            children: [
+            children: <Widget> [
 
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -70,7 +71,10 @@ AlunoDetails(BuildContext context) {
                     primary:  Colors.orange
                 ),
                 onPressed: (){
-                statusApp.status.navegar.value=1;              },
+                statusApp.status.navegar.value=1;
+
+
+                },
                 child: Container(
                   width: 60,
                   height: 40,

@@ -2,6 +2,7 @@ import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/list_studant_controller.dart';
 import 'package:cefops/Src/controller/studants/studant_all_info_controller.dart';
+import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
 import 'package:cefops/Src/model/aluno/aluno_model.dart';
 import 'package:cefops/Src/repository/aluno/AlunosRepository.dart';
 import 'package:cefops/Src/views/studantDetails/controller/controller_studantDetails.dart';
@@ -20,9 +21,8 @@ class GetStudants extends GetView<ListStudantController> {
   Widget build(BuildContext context) {
     String fullName = "";
     var controllerViewer = ListStudantController.data;
-    var infos = StudantAllInfoController.data.studantsInfo;
-    var endereco = StudantAllInfoController.data.anddress;
-    var documentSet = DocumentsController.data;
+    var infos = StudantAllInfoController.data;
+    var setinfos = StudantInfoController.data;
     return Scaffold(
       body: Column(
         children: <Widget>[
@@ -262,7 +262,7 @@ class GetStudants extends GetView<ListStudantController> {
                               scrollDirection: Axis.horizontal,
                               itemCount: 5,
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -275,13 +275,16 @@ class GetStudants extends GetView<ListStudantController> {
                         width: Get.width * 0.13,
                         height: Get.height * 0.047,
                         color: AppColors.blue,
-                        child: Obx(() => Center(
-                                child: Text(
+                        child: Obx(
+                          () => Center(
+                            child: Text(
                               "Mostrando: "
                               "${controllerViewer.pageSize} de "
                               "${controllerViewer.totalElements}",
                               style: TextStyles.titleListTile2,
-                            ))),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                     Flexible(
@@ -290,13 +293,16 @@ class GetStudants extends GetView<ListStudantController> {
                         width: Get.width * 0.13,
                         height: Get.height * 0.047,
                         color: AppColors.menuColor,
-                        child: Obx(() => Center(
-                                child: Text(
+                        child: Obx(
+                          () => Center(
+                            child: Text(
                               "Pagina: "
                               "${controllerViewer.number} de "
                               "${controllerViewer.totalPages}",
                               style: TextStyles.titleListTile2,
-                            ))),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -353,7 +359,7 @@ class GetStudants extends GetView<ListStudantController> {
                                       ),
                                       Container(
                                         child: Row(
-                                          children: [
+                                          children: <Widget>[
                                             Container(
                                                 child: TextButton(
                                                     child: Text(
@@ -364,24 +370,30 @@ class GetStudants extends GetView<ListStudantController> {
                                                     ),
                                                     onPressed: () {
                                                       // infos.setInfos(data[Index],Index);
+
                                                       String genero;
-                                                      if (data[Index]
-                                                          .genero != "Masculino" ||data[Index]
-                                                          .genero != "Feminino" ) {
+
+                                                      if (data[Index].genero !=
+                                                              "Masculino" ||
+                                                          data[Index].genero !=
+                                                              "Feminino") {
                                                         genero = "Gênero";
                                                       } else {
-                                                        genero =
-                                                            data[Index].genero.toString();
+                                                        genero = data[Index]
+                                                            .genero
+                                                            .toString();
                                                       }
 
                                                       StudandDetailsController
                                                           .details
                                                           .setActive(data[Index]
                                                               .enabled);
+
                                                       StudandDetailsController
                                                           .details
                                                           .gender
                                                           .value = genero;
+
                                                       StudandDetailsController
                                                               .details
                                                               .civilState
@@ -391,9 +403,13 @@ class GetStudants extends GetView<ListStudantController> {
                                                       DocumentsController
                                                               .data.cpf.value =
                                                           data[Index].id;
-                                                      // documentSet.setDocuments(data[Index],Index);
-                                                      // endereco.SetEndereco(data[Index],Index);
-                                                      AlunoDetails(context);
+                                                      StudantAllInfoController.data.anddress.clarAndress();
+
+                                                      setinfos.SetAll(data[Index].toJson());
+                                                      StudantAllInfoController.data.anddress.getAndress();
+
+                                                      AlunoDetails(
+                                                          context, true);
                                                     })),
                                             TextButton(
                                                 child: Text("Suspender",
@@ -432,7 +448,11 @@ class GetStudants extends GetView<ListStudantController> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+
+          StudantInfoController.data.clearAll();
+          AlunoDetails(context, false);
+        },
       ),
     );
   }

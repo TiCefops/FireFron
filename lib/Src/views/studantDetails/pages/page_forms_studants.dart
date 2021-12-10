@@ -20,24 +20,23 @@ class FormsStudants extends StatelessWidget {
     final burnDataController = TextEditingController();
     final emailController = TextEditingController();
     final nationController = TextEditingController();
+    final cpfController = TextEditingController();
     var controller = StudandDetailsController.details;
-    var infos=StudantInfoController.data;
-
-
+    var infos = StudantInfoController.data;
 
     return Form(
-        key: _formKey,
-        child:Stack(
-          children: [
+      key: _formKey,
+      child: Stack(
+        children: <Widget>[
           Positioned(
-          left: Get.width/2,
-          child: Container(
+            left: Get.width / 2,
             child: Container(
+              child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Obx(
-                   () {
+                  () {
                     return Image.network(
                       StudantInfoController.data.photo.value,
                       fit: BoxFit.cover,
@@ -45,145 +44,149 @@ class FormsStudants extends StatelessWidget {
                       height: 120,
                       alignment: Alignment.center,
                     );
-                  }
-                )))),
-
-
-            Positioned(
-                left: Get.width/2.01,
-                top: Get.height*0.2,
-
-                child: ElevatedButton(
-                  onPressed: (){},
-                  child: Text("Enviar Nova foto"),
-                )
+                  },
+                ),
+              ),
             ),
-
-            Column(
-              children: [
-                Row(
-                  children: [
-                    FormStudntDetails(nameController..text = '${infos.name}',
-                        "Nome",
-                        "Nome do Aluno",
-                        "preencha o nome do aluno"),
-                    SizedBox(
-                      width: Get.width*0.01,
-                    ),
-                    FormStudntDetails(lastNameController..text = '${infos.lastName}',
-                        "Sobreome",
-                        "Sobreome do Aluno",
-                        "preencha o nome do Sobreome"),
-                  ],
-                ),
-
-                Row(
-                  children: [
-                    Container(
-                        width: Get.width*0.09,
-                        child: DropDownGender()
-                    ),
-                    SizedBox(
-                      width: Get.width*0.01,
-                    ),
-                    Container(
-                        width: Get.width*0.09,
-                        child: DropDownStatus()
-                    ),
-                    SizedBox(
-                      width: Get.width*0.01,
-                    ),
-                    Container(
-                        width: Get.width*0.09,
-                        child: DropDownCivilState()
-                    ),
-                    SizedBox(
-                      width: Get.width*0.01,
-                    ),
-                    Container(
-                      width: Get.width*0.1,
-                      child: FormStudntDetails(burnDataController..text = '${infos.birthDate}',
-                          "Data  nascimento",
-                          "Data de nascimento",
-                          "preencha A Data de nascimento"),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  width: Get.width*0.01,
-                ),
-                Row(
-                  children: [
-                    FormStudntDetails(emailController..text = '${infos.email}',
-                        "Email",
-                        "Email do Aluno",
-                        "preencha o Email do aluno"),
-                    SizedBox(
-                      width: Get.width*0.01,
-                    ),
-                    Container(
-                      width: Get.width*0.09,
-                      child: FormStudntDetails(telCellController..text = '${infos.phoneCell}',
-                          "Telefone Celular",
-                          "Telefone do Aluno",
-                          "preencha o Telefone do aluno"),
-                    ),
-
-                    SizedBox(
-                      width: Get.width*0.01,
-                    ),
-                    Container(
-                      width: Get.width*0.09,
-                      child: FormStudntDetails(telResController..text = '${infos.phoneHome}',
-                          "Tel Residencial",
-                          "Telefone rescidencial Aluno",
-                          "preencha  a Telefone Residencial"),
-                    ),
-
-                  ],
-                ),
-                Row(
-                  children: [
-                    Container(
-                      width: Get.width*0.09,
-                      child: FormStudntDetails(nationController..text = '${infos.nation}',
-                          "Nacionalidade",
-                          "Nacionalidade do Aluno",
-                          "preencha  a Nacionalidade"),
-                    ),
-                  ],
-                ),
-
-                SizedBox(
-                  height: Get.height*0.15,
-                ),
-                Obx(
-                 () {
-                    return  infos.loading.value?
-                    CircularProgressIndicator():
-                    ElevatedButton(
-                        onPressed: (){
-                          infos.name.value=nameController.text;
-                          infos.lastName.value=lastNameController.text;
-                          infos.birthDate.value=burnDataController.text;
-                          infos.email.value=emailController.text;
-                          infos.phoneCell.value=telCellController.text;
-                          infos.phoneHome.value=telResController.text;
-                          infos.nation.value=nationController.text;
-                          infos.loading.value=true;
-                          Future.delayed(Duration(seconds: 5),(){
-                            infos.loading.value=false;
-                            controller.navegar.value=1;
-                          });
+          ),
+          Positioned(
+            left: Get.width / 2.01,
+            top: Get.height * 0.2,
+            child: ElevatedButton(
+              onPressed: () {},
+              child: Text("Enviar Nova foto"),
+            ),
+          ),
+          Column(
+            children: [
+              Row(
+                children: [
+                  FormStudntDetails(nameController..text = '${infos.name}',
+                      "Nome", "Nome do Aluno", "preencha o nome do aluno"),
+                  SizedBox(
+                    width: Get.width * 0.01,
+                  ),
+                  FormStudntDetails(
+                      lastNameController..text = '${infos.lastName}',
+                      "Sobreome",
+                      "Sobreome do Aluno",
+                      "preencha o nome do Sobreome"),
+                ],
+              ),
+              Row(
+                children: [
+                  Container(width: Get.width * 0.09, child: DropDownGender()),
+                  SizedBox(
+                    width: Get.width * 0.01,
+                  ),
+                  Container(width: Get.width * 0.09, child: DropDownStatus()),
+                  SizedBox(
+                    width: Get.width * 0.01,
+                  ),
+                  Container(
+                      width: Get.width * 0.09, child: DropDownCivilState()),
+                  SizedBox(
+                    width: Get.width * 0.01,
+                  ),
+                  Container(
+                    width: Get.width * 0.1,
+                    child: FormStudntDetails(
+                        burnDataController..text = '${infos.birthDate}',
+                        "Data  nascimento",
+                        "Data de nascimento",
+                        "preencha A Data de nascimento"),
+                  ),
+                ],
+              ),
+              SizedBox(
+                width: Get.width * 0.01,
+              ),
+              Row(
+                children: [
+                  FormStudntDetails(
+                      emailController..text = '${infos.email.toString()}',
+                      "Email",
+                      "Email do Aluno",
+                      "preencha o Email do aluno"),
+                  SizedBox(
+                    width: Get.width * 0.01,
+                  ),
+                  Container(
+                    width: Get.width * 0.09,
+                    child: FormStudntDetails(
+                        telCellController..text = '${infos.phoneCell}',
+                        "Telefone Celular",
+                        "Telefone do Aluno",
+                        "preencha o Telefone do aluno"),
+                  ),
+                  SizedBox(
+                    width: Get.width * 0.01,
+                  ),
+                  Container(
+                    width: Get.width * 0.09,
+                    child: FormStudntDetails(
+                        telResController..text = '${infos.phoneHome}',
+                        "Tel Residencial",
+                        "Telefone rescidencial Aluno",
+                        "preencha  a Telefone Residencial"),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Container(
+                    width: Get.width * 0.09,
+                    child: FormStudntDetails(
+                        nationController..text = '${infos.nation}',
+                        "Nacionalidade",
+                        "Nacionalidade do Aluno",
+                        "preencha  a Nacionalidade"),
+                  ),
+                  SizedBox(
+                    width: Get.width * 0.01,
+                  ),
+                  Container(
+                    width: Get.width * 0.09,
+                    child: FormStudntDetails(
+                        cpfController..text = '${infos.cpf.toString()}',
+                        "Cpf",
+                        "Cpf do Aluno",
+                        "preencha  o Cpf"),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: Get.height * 0.10,
+              ),
+              Obx(
+                () {
+                  return infos.loading.value
+                      ? CircularProgressIndicator()
+                      : ElevatedButton(
+                          onPressed: () {
+                            infos.name.value = nameController.text;
+                            infos.lastName.value = lastNameController.text;
+                            infos.birthDate.value = burnDataController.text;
+                            infos.email.value = emailController.text;
+                            infos.phoneCell.value = telCellController.text;
+                            infos.phoneHome.value = telResController.text;
+                            infos.nation.value = nationController.text;
+                            infos.cpf.value = cpfController.text;
+                            infos.loading.value = true;
+                            infos.singInStudant();
                           },
-                        child: Text("Continuar"));
-                  }
-                ),
-              ],
-
-            )
-          ],
-        )
+                          child: Text("Continuar"));
+                },
+              ),
+              Obx(() {
+                return Center(
+                  child: Text("${infos.status}"),
+                );
+              }),
+            ],
+          )
+        ],
+      ),
     );
   }
 }

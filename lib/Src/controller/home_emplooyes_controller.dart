@@ -13,18 +13,13 @@ class HomeEmployesController extends GetxController{
   RxBool updateScreen=false.obs;
   RxBool updating=false.obs;
   RxBool click=false.obs;
+  RxString concluidoEm="2021-11-30".obs;
+
 
   void updateScreenFun(){
     Future.delayed(Duration(seconds: 2));
     updateScreen.value=false;
     update();
   }
-
-
-
-
-
-
-
 
 }

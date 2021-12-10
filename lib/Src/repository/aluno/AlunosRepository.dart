@@ -6,10 +6,15 @@ import 'package:cefops/Shared/Security/Services/Logar.dart';
 import 'package:cefops/Shared/urls.dart';
 import 'package:cefops/Src/controller/list_studant_controller.dart';
 import 'package:cefops/Src/controller/requerimentController.dart';
+import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
 import 'package:cefops/Src/model/aluno/aluno_model.dart';
 import 'package:cefops/Src/model/aluno/one_studant_model.dart';
+import 'package:cefops/Src/views/studantDetails/controller/controller_studantDetails.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/status/http_status.dart';
 import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
+
 import "dart:developer" as developer;
 
 
@@ -120,35 +125,94 @@ import "dart:developer" as developer;
     }
   }
 
-  Future<StudantModel> createAluno(int id, String name, String lastName, int Cpf,
-      String email, int grupe,) async {
-    final response = await http.post(
+  Future<String> CreateStudant(String name, String lastName,String Cpf,
+      String email, String dataNaciento,String telefone, String telefoneCelular,
+      String genero,String estadoCivil,String nacionalidade,bool ativo) async {
+      StudantInfoController.data.loading.value=true;
+
+      final response = await http.post(
       Uri.parse('${urls.app}/alunos'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': 'Bearer ${UserController.user.token}',
       },
       body: jsonEncode(<String, dynamic>{
-        'id': Cpf,
-        'cpf': Cpf,
-        'name': name,
-        'lastName': lastName,
-        'email': email,
-        "grupe": grupe,
+        "id": "$Cpf",
+        "cpf":"$Cpf",
+        "name": "$name",
+        "lastName": "$lastName",
+        "dataNanscimento": "$dataNaciento",
+        "email": "$email",
+        "teleFone": "$telefone",
+        "teleFoneCelular": "$telefoneCelular",
+        "photo": "https://robohash.org/delenitinullaquae.jpg?size=50x50&set=set1",
+        "enabled": ativo,
+        "genero": "$genero",
+        "estadoCivil": "$estadoCivil",
+        "nacionalidade": "$nacionalidade"
 
       }),
     );
+      final data;
+      var decodeData;
+      if(response.body.isNotEmpty){
+        data = utf8.decode(response.bodyBytes);
+        decodeData= jsonDecode(data);
+      }
 
-    if (response.statusCode == 201) {
-      // If the server did return a 201 CREATED response,
-      // then parse the JSON.
-      return StudantModel.fromJson(jsonDecode(response.body));
-    } else if (response.statusCode == 409) {
-      throw Exception('conflito de usuario');
-    }
-    else if (response.statusCode == 400) {
-      throw Exception('falha na requisição');
-    } else {
-      throw Exception("erro ao criar usuario");
+
+
+print(response.statusCode);
+    try{
+      if (response.statusCode == 201) {
+        StudantInfoController.data.loading.value=false;
+        StudantInfoController.data.status.value="Cadastrado Com Sucesso";
+        Future.delayed(Duration(seconds: 3),(){
+          StudandDetailsController.details.navegar.value=1;      });
+
+
+        return "Criado" ;
+      } else if (response.statusCode == 409) {
+        StudantInfoController.data.loading.value=false;
+        StudantInfoController.data.status.value="Usuário já Cadastrado";
+
+
+        throw Exception('conflito de usuario');
+      }
+      else if (response.statusCode == 400) {
+        StudantInfoController.data.loading.value=false;
+        StudantInfoController.data.status.value="Erro desconhecido";
+
+        throw Exception('falha na requisição');
+      } else if(response.statusCode==500){
+        var error=decodeData;
+        var erroMapper=ErrorModel.fromJson(error);
+        if(erroMapper.message=="Aluno já cadastrado"){
+          StudantInfoController.data.loading.value=false;
+          StudantInfoController.data.status.value="Usuário já Cadastrado";
+          return "Usuário já Cadastrado";
+        }else if(erroMapper.message.contains("SQL")){
+          StudantInfoController.data.loading.value=false;
+          StudantInfoController.data.status.value="Error verifique os dados";
+          return"Error verifique os dados";
+
+        }
+        StudantInfoController.data.loading.value=false;
+        StudantInfoController.data.status.value="Error Desconhecido";
+        return "Error";
+      }
+
+      else {
+
+        StudantInfoController.data.loading.value=false;
+        StudantInfoController.data.status.value="Erro desconhecido";
+
+        throw Exception("erro ao criar usuario");
+      }
+    }catch(e,s){
+      StudantInfoController.data.loading.value=false;
+      StudantInfoController.data.status.value="Erro desconhecido";
+
+      return "Error";
     }
   }

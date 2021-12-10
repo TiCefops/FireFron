@@ -3,6 +3,7 @@
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/controller_cep.dart';
 import 'package:cefops/Src/controller/studants/studant_all_info_controller.dart';
+import 'package:cefops/Src/controller/studants/studant_anddress_controller.dart';
 import 'package:cefops/Src/repository/cepAuto/cep_repository.dart';
 import 'package:cefops/Src/views/studantDetails/controller/controller_studantDetails.dart';
 import 'package:cefops/Src/views/studantDetails/widget/widget_form_studantDetails.dart';
@@ -14,6 +15,8 @@ class StudantAnddress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
     int page=1;
     final cepControllerText = TextEditingController();
     final ruaController = TextEditingController();
@@ -104,6 +107,7 @@ class StudantAnddress extends StatelessWidget {
                       "Endereço",
                       "Insira o Endereço",
                       "preencha o Endereço "),
+
                 );
               }
             ),
@@ -189,7 +193,6 @@ class StudantAnddress extends StatelessWidget {
             ),
               Obx(
                () {
-
                   return endereco.carregando.value ?  CircularProgressIndicator():
                   ElevatedButton(
                       onPressed: (){
@@ -201,14 +204,11 @@ class StudantAnddress extends StatelessWidget {
                         endereco.complemento.value=complementoController.text;
                         endereco.bairro.value=bairroController.text;
                         endereco.estado.value=estadoController.text;
-                        endereco.uf.value=estadoController.text;
-                        endereco.carregando.value=true;
-                        Future.delayed(Duration(seconds: 5),(){
-                          endereco.carregando.value=false;
-                          controller.navegar.value=2;
+                        endereco.uf.value=ufController.text;
+                        endereco.setDocuments();
 
 
-                        });
+                        ;
                         },
                       child: Text("Continuar")) ;
                 }

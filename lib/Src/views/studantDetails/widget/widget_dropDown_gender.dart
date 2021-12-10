@@ -1,5 +1,6 @@
 
 import 'package:cefops/Src/controller/status.dart';
+import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
 import 'package:cefops/Src/views/studantDetails/controller/controller_studantDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -28,6 +29,7 @@ class DropDownGender extends StatelessWidget {
           onChanged: (String? newValue) {
 
             controller.gender.value = newValue!;
+            StudantInfoController.data.gender.value=newValue;
 
           },
           items: <String>['Gênero','Feminino', 'Masculino', 'Outros',]

@@ -227,13 +227,7 @@ class _SiginStudantState extends State<SiginStudant> {
                       var idcontroller = int.parse(raController.text);
 
                       setState(() {
-                        criarAluno = createAluno(
-                            idcontroller,
-                            NameController.text,
-                            LastNameController.text,
-                            idcontroller,
-                            emailController.text,
-                            1);
+
                       });
                     },
                   ),

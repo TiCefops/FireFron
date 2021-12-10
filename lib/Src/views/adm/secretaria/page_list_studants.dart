@@ -1,4 +1,4 @@
-import 'package:cefops/Src/widgets/widget_GetStudants.dart';
+import 'package:cefops/Src/widgets/widget_get_studants.dart';
 import 'package:flutter/material.dart';
 
 class ListUSers extends StatefulWidget {

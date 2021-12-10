@@ -8,7 +8,7 @@ import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/repository/adm/requerimentTypesRepository.dart';
 import 'package:cefops/Src/widgets/widget_new_requeriment.dart';
 import 'package:cefops/Src/widgets/widget_GetRequeriments.dart';
-import 'package:cefops/Src/widgets/widget_GetStudants.dart';
+import 'package:cefops/Src/widgets/widget_get_studants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

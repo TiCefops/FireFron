@@ -1,5 +1,7 @@
 
-import 'package:cefops/Src/model/aluno/aluno_model.dart';
+import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
+import 'package:cefops/Src/model/aluno/documentos/andress_model.dart';
+import 'package:cefops/Src/repository/aluno/documentos/andress_repository.dart';
 import 'package:get/get.dart';
 
 class StudantAnddressController extends GetxController{
@@ -16,25 +18,44 @@ class StudantAnddressController extends GetxController{
   var erro="".obs;
   var carregando=false.obs;
   var click=false.obs;
- //
- // SetEndereco(StudantModel aluno,int Index){
- //   var _endereco=aluno.content[Index]
- //   id.value=_endereco.id;
- //   cep.value=_endereco.cep;
- //   numero.value=_endereco.numero;
- //   complemento.value=_endereco.complemento;
- //   bairro.value=_endereco.bairro;
- //   cidade.value=_endereco.cidade;
- //   estado.value=_endereco.estado;
- //   uf .value=_endereco.uf;
- //   rua.value=_endereco.rua;
- //
- //
- //
- //
- //
- //
- // }
+  var status="nd".obs;
+
+ setEndereco(AndressModel data){
+   var _endereco=data;
+   id.value=_endereco.id;
+   cep.value=_endereco.cep;
+   numero.value=_endereco.numero;
+   complemento.value=_endereco.complemento;
+   bairro.value=_endereco.bairro;
+   cidade.value=_endereco.cidade;
+   estado.value=_endereco.estado;
+   uf .value=_endereco.uf;
+   rua.value=_endereco.rua;
+
+ }
+ clarAndress(){
+   id.value=0;
+   cep.value="";
+   numero.value="";
+   complemento.value="";
+   bairro.value="";
+   cidade.value="";
+   estado.value="";
+   uf .value="";
+   rua.value="";
+
+
+ }
+
+setDocuments(){
+  CreateAndress(cep.value, rua.value, StudantInfoController.data.cpf.value,
+      cidade.value, estado.value, uf.value, numero.value, complemento.value, bairro.value);
+
+
+}
+ getAndress(){
+   GetStudantAndressById(StudantInfoController.data.cpf.value);
+ }
 
 
 }
