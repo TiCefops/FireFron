@@ -384,6 +384,7 @@ class GetStudants extends GetView<ListStudantController> {
                                                             .toString();
                                                       }
 
+
                                                       StudandDetailsController
                                                           .details
                                                           .setActive(data[Index]
@@ -449,8 +450,6 @@ class GetStudants extends GetView<ListStudantController> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-
-          StudantInfoController.data.clearAll();
           AlunoDetails(context, false);
         },
       ),

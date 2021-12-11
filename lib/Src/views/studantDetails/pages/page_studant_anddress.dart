@@ -10,12 +10,12 @@ import 'package:cefops/Src/views/studantDetails/widget/widget_form_studantDetail
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class StudantAnddress extends StatelessWidget {
+class StudantAnddress extends GetView<StudantAllInfoController> {
   const StudantAnddress({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
+    StudantAllInfoController.data.anddress.refresh();
 
     int page=1;
     final cepControllerText = TextEditingController();
@@ -26,7 +26,6 @@ class StudantAnddress extends StatelessWidget {
     final ufController = TextEditingController();
     final numeroController = TextEditingController();
     final bairroController = TextEditingController();
-    var controller = StudandDetailsController.details;
     var endereco=StudantAllInfoController.data.anddress;
     var cepOnline=cepControll.endereco;
 
@@ -103,7 +102,7 @@ class StudantAnddress extends StatelessWidget {
                 return Container(
                   child:  FormStudntDetails(
                       ruaController
-                        ..text = '${cepOnline.logradouro}',
+                        ..text = '${endereco.rua}',
                       "Endereço",
                       "Insira o Endereço",
                       "preencha o Endereço "),
@@ -120,7 +119,7 @@ class StudantAnddress extends StatelessWidget {
                     return Container(
                       child:  FormStudntDetails(
                           bairroController
-                            ..text = '${cepOnline.bairro}',
+                            ..text = '${endereco.bairro}',
                           "Bairro",
                           "Insira o bairro",
                           "preencha o bairro "),
@@ -133,7 +132,7 @@ class StudantAnddress extends StatelessWidget {
                     return Container(
                       child:  FormStudntDetails(
                           complementoController
-                            ..text = '${cepOnline.complemento}',
+                            ..text = '${endereco.complemento}',
                           "Complemento",
                           "Insira o complemento",
                           "preencha o complemento "),
@@ -147,17 +146,21 @@ class StudantAnddress extends StatelessWidget {
                 return Container(
                   child:  Row(
                     children: [
-                      FormStudntDetails(
-                          cidadeController
-                            ..text = '${cepOnline.localidade}',
-                          "Cidade",
-                          "Insira o Cidade",
-                          "preencha o Cidade "),
+                      Obx(
+                         () {
+                          return FormStudntDetails(
+                              cidadeController
+                                ..text = '${endereco.cidade}',
+                              "Cidade",
+                              "Insira o Cidade",
+                              "preencha o Cidade ");
+                        }
+                      ),
                       SizedBox(width: Get.width*0.02,),
                       Container(
                         child:  FormStudntDetails(
                            estadoController
-                              ..text = '${cepOnline.estado}',
+                              ..text = '${endereco.estado}',
                             "Estado",
                             "Estado",
                             "Estado ") ,
@@ -167,7 +170,7 @@ class StudantAnddress extends StatelessWidget {
                       Container(
                         child:  FormStudntDetails(
                             ufController
-                              ..text = '${cepOnline.uf}',
+                              ..text = '${endereco.uf}',
                             "UF",
                             "UF",
                             "UF ") ,
@@ -196,7 +199,6 @@ class StudantAnddress extends StatelessWidget {
                   return endereco.carregando.value ?  CircularProgressIndicator():
                   ElevatedButton(
                       onPressed: (){
-
                         endereco.cep.value=cepControllerText.text;
                         endereco.cidade.value=cidadeController.text;
                         endereco.numero.value=numeroController.text;
