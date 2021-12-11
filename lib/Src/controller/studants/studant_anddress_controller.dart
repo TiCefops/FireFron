@@ -43,6 +43,7 @@ class StudantAnddressController extends GetxController{
    estado.value="";
    uf .value="";
    rua.value="";
+   update();
 
 
  }

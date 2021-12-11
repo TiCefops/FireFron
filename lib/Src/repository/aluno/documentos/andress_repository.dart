@@ -15,8 +15,10 @@ Future<AndressModel> GetStudantAndressById(id) async {
 
   var controller=StudantAllInfoController.data.anddress;
 
+  StudantAnddressController.anddres.clarAndress();
 
   final response = await http.get(
+
     Uri.parse("${urls.app}/endereco/$id"),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
