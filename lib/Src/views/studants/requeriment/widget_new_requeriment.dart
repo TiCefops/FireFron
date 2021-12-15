@@ -4,6 +4,7 @@ import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/home_emplooyes_controller.dart';
 import 'package:cefops/Src/model/adm/requeriment_type_model.dart';
+import 'package:cefops/Src/module/pdf/ComprovanteMatriculaPDFModel.dart';
 import 'package:cefops/Src/repository/adm/RequerimentsRepository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +57,8 @@ class NewRequerimentFromStudant extends StatelessWidget {
             Obx(
                () {
                 return HomeEmployesController.c.updating.value
-                    ? CircularProgressIndicator() :ElevatedButton.icon(onPressed: HomeEmployesController.c.click.value?null:(){
+                    ? CircularProgressIndicator() :ElevatedButton.icon(
+                    onPressed: HomeEmployesController.c.click.value?null:(){
                  if(data.valor !=0.0)
                  {
 
@@ -66,6 +68,10 @@ class NewRequerimentFromStudant extends StatelessWidget {
                        controller.id.value,
                        controller.Fullname.value,
                        "aberto pelo app");
+                   if(data.name=="Comprovante De Matrícula"){
+                     ComprovMatricula();
+
+                   }
                  }
                  HomeEmployesController.c.click.value=true;
 

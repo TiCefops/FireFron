@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
           )),
           actions: <Widget>[
             Center(
-              child: Image.asset(Res.logo_branco_Laranja),
+              child: Image.asset(Res.logoV2,color: Colors.white,),
             ),
           ],
         ),
@@ -152,7 +152,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         Navigator.pop(context);
                       },
                     ),
-                  if (UserController.user.role.contains("Aluno")||UserController.user.role.contains("ADM"))
+                  if (UserController.user.role.contains("Aluno")||
+                      UserController.user.role.contains("ADM") ||
+                      UserController.user.role.contains("Financeiro"))
                     ListTile(
                       title: Text(
                         'Financeiro',
@@ -170,7 +172,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   //Fim da area aluno
 
                   //Inicio area secretaria
-                  if (UserController.user.role.contains("secretaria")||UserController.user.role.contains("ADM"))
+                  if (UserController.user.role.contains("Secretaria")||UserController.user.role.contains("ADM"))
                     ListTile(
                       title: Text(
                         'Cadastrar Aluno',
@@ -186,7 +188,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Navigator.pop(context);
                       },
                     ),
-                  if (UserController.user.role.contains("secretaria")||UserController.user.role.contains("ADM"))
+                  if (UserController.user.role.contains("Secretaria")||UserController.user.role.contains("ADM"))
 
                     ListTile(
                       title: Text(
@@ -204,7 +206,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       },
                     ),
 
-                  if (UserController.user.role.contains("secretaria")||UserController.user.role.contains("ADM"))
+                  if (UserController.user.role.contains("Secretaria")||UserController.user.role.contains("ADM"))
 
                     ListTile(
                       title: Text(

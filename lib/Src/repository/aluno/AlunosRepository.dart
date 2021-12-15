@@ -80,50 +80,50 @@ import "dart:developer" as developer;
   }
 
   Future<OneStudantModel> GetStudantById(id) async {
-    final response = await http.get(
-      Uri.parse("${urls.app}/alunos/$id"),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-        'Authorization': 'Bearer ${UserController.user.token}',
+  final response = await http.get(
+    Uri.parse("${urls.app}/alunos/$id"),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+      'Authorization': 'Bearer ${UserController.user.token}',
 
-      },
-    );
-    final data = utf8.decode(response.bodyBytes);
-    var decodeData = jsonDecode(data);
+    },
+  );
+  final data = utf8.decode(response.bodyBytes);
+  var decodeData = jsonDecode(data);
 
-    if (response.statusCode == 200) {
-      ErroController.error.ok.value = true;
+  if (response.statusCode == 200) {
+    ErroController.error.ok.value = true;
 
-      var jsonResponse = decodeData;
-      var data = OneStudantModel.fromJson(jsonResponse);
-      String Fullname=data.name! + " " + data.lastName!;
-      RequerimentController.req.StudantFullName.value =Fullname;
+    var jsonResponse = decodeData;
+    var data = OneStudantModel.fromJson(jsonResponse);
+    String Fullname=data.name! + " " + data.lastName!;
+    RequerimentController.req.StudantFullName.value =Fullname;
 
-      RequerimentController.req.linkPhoto.value = data.photo.toString();
+    RequerimentController.req.linkPhoto.value = data.photo.toString();
 
-      return data;
-    }
-
-
-    if (response.statusCode == 500) {
-      ErroController.error.ok.value = false;
-
-      return Logar();
-    }
-    else {
-      final data1 = utf8.decode(response.bodyBytes);
-
-     var error= errorModelFromJson(data1);
-     ErroController.error.tipoError.value=error.message;
-     print(ErroController.error.tipoError.value);
-
-     Get.showSnackbar(GetBar(message:ErroController.error.tipoError.value,
-       duration: Duration(seconds: 3),
-       ));
-      ErroController.error.ok.value = false;
-      throw Exception('error');
-    }
+    return data;
   }
+
+
+  if (response.statusCode == 500) {
+    ErroController.error.ok.value = false;
+
+    return Logar();
+  }
+  else {
+    final data1 = utf8.decode(response.bodyBytes);
+
+    var error= errorModelFromJson(data1);
+    ErroController.error.tipoError.value=error.message;
+    print(ErroController.error.tipoError.value);
+
+    Get.showSnackbar(GetBar(message:ErroController.error.tipoError.value,
+      duration: Duration(seconds: 3),
+    ));
+    ErroController.error.ok.value = false;
+    throw Exception('error');
+  }
+}
 
   Future<String> CreateStudant(String name, String lastName,String Cpf,
       String email, String dataNaciento,String telefone, String telefoneCelular,
@@ -139,8 +139,8 @@ import "dart:developer" as developer;
       body: jsonEncode(<String, dynamic>{
         "id": "$Cpf",
         "cpf":"$Cpf",
-        "name": "$name",
-        "lastName": "$lastName",
+        "name": "${name.toUpperCase()}",
+        "lastName": "${lastName.toUpperCase()}",
         "dataNanscimento": "$dataNaciento",
         "email": "$email",
         "teleFone": "$telefone",
@@ -148,8 +148,8 @@ import "dart:developer" as developer;
         "photo": "https://robohash.org/delenitinullaquae.jpg?size=50x50&set=set1",
         "enabled": ativo,
         "genero": "$genero",
-        "estadoCivil": "$estadoCivil",
-        "nacionalidade": "$nacionalidade"
+        "estadoCivil": "$estadoCivil}",
+        "nacionalidade": "${nacionalidade.toUpperCase()}"
 
       }),
     );

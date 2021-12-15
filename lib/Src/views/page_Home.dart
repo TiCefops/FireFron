@@ -5,7 +5,6 @@ import 'package:cefops/Src/controller/navigatorController.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/model/model_publication.dart';
 import 'package:cefops/Src/repository/PostRepository.dart';
-import 'package:cefops/Src/repository/adm/requerimentTypesRepository.dart';
 import 'package:cefops/Src/widgets/widget_new_requeriment.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/platform/platform.dart';
@@ -32,7 +31,6 @@ class _HomePageState extends State<HomePage> {
   void initState() {
 
     futurePost = FetchPosts(context);
-    print("Carregando a tomada de descisão");
     MenuDescicion(UserController.user.role.first);
 
 if (statusApp.status.closeDialog==1) {
@@ -53,15 +51,15 @@ if (statusApp.status.closeDialog==1) {
 
     return Container(
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-        begin: Alignment.topRight,
-        end: Alignment.bottomLeft,
-        colors: [
-          AppColors.primary,
-        AppColors.primaryDark,
-
-        ],
-    )
+    //     gradient: LinearGradient(
+    //     begin: Alignment.topRight,
+    //     end: Alignment.bottomLeft,
+    //     colors: <Color>[
+    //       AppColors.primary,
+    //     AppColors.primaryDark,
+    //
+    //     ],
+    // )
       ),
 
 

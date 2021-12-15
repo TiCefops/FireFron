@@ -40,8 +40,6 @@ class StudantAnddress extends GetView<StudantAllInfoController> {
     }
 
 
-
-
     return Container(
       height: Get.height,
       width: Get.width,

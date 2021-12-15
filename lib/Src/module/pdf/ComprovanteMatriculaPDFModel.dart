@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 import 'package:cefops/Shared/Security/Controller/userController.dart';
+import 'package:cefops/Src/controller/home_emplooyes_controller.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
@@ -10,6 +11,7 @@ import 'package:syncfusion_flutter_pdf/pdf.dart';
 import  'mobile.dart' if(dart.library.html)"web.dart";
 
 Future<void> ComprovMatricula() async{
+  HomeEmployesController.c.updating.value=true;
 
   final  data = new DateTime.now() ;
 
@@ -22,8 +24,8 @@ Future<void> ComprovMatricula() async{
 
 
 
-  page.graphics.drawImage(PdfBitmap(await _readImageData("rodape.png")),
-      Rect.fromLTWH(0, 0, 520, 60));
+  page.graphics.drawImage(PdfBitmap(await _readImageData("novohead.png")),
+      Rect.fromLTWH(0, -0, 520, 90));
 
   page.graphics.drawString("DECLARAÇÃO  DE MATRÍCULA",
     PdfStandardFont(PdfFontFamily.timesRoman, 12),
@@ -83,14 +85,16 @@ Future<void> ComprovMatricula() async{
   List<int> bytes= document.save();
   document.dispose();
   saveAndLaunche(bytes, "Output.pdf");
-  print("iniciou Com sucesso");
+
 
   statusApp.status.loading.value=false;
+  HomeEmployesController.c.updating.value=false;
+
 
 }
 
 
 Future<Uint8List> _readImageData(String name) async{
-  final data =await rootBundle.load("images/$name");
+  final data =await rootBundle.load("assets/images/$name");
   return data.buffer.asUint8List(data.offsetInBytes,data.lengthInBytes);
 }

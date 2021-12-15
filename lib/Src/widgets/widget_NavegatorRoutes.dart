@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/module/pdf/homeP.dart';
 import 'package:cefops/Src/views/adm/financeiro/interno/page_internal_finance.dart';
@@ -42,7 +43,7 @@ getDrawerItem(int pos,{context}) {
 }
 
 HomeChange(){
-  if(statusApp.status.aluno==true){
+  if(UserController.user.role.contains("Aluno")){
     return HomePage();
   }
    else{

@@ -106,6 +106,51 @@ AlunoDetails(BuildContext context,bool usuer) {
                   ),
                 ),
               ),
+              SizedBox(
+                width: Get.width*0.01,
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    primary:  Colors.orange
+                ),
+                onPressed: (){
+
+                },
+                child: Container(
+                  width: Get.width*0.05,
+                  height: 40,
+                  decoration: BoxDecoration(
+
+                  ),
+                  child: Center(
+                    child: Text("Financeiro",style: TextStyle(
+                      overflow: TextOverflow.fade
+                    ),),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: Get.width*0.01,
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    primary:  Colors.orange
+                ),
+                onPressed: (){
+
+                },
+                child: Container(
+                  width: Get.width*0.09,
+                  height: 40,
+                  decoration: BoxDecoration(
+
+                  ),
+                  child: Center(
+                    child: Text("Requerimentos"),
+                  ),
+                ),
+              ),
+
             ],
           ),
       SizedBox(
