@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/Security/Model/error_model.dart';
 import 'package:cefops/Shared/urls.dart';
@@ -33,7 +32,6 @@ Future<AndressModel> GetStudantAndressById(id) async {
   try{
     if (response.statusCode == 200) {
 
-      print(decodeData);
       var dados = AndressModel.fromJson(decodeData);
 
 
@@ -77,12 +75,12 @@ Future<String> CreateAndress(String cep, String rua,String aluno,
     },
     body: jsonEncode(<String, dynamic>{
       "cep": "$cep",
-      "rua": "$rua",
+      "rua": "${rua.toUpperCase()}",
       "numero": "$numero",
-      "complemento": "$complemento",
-      "bairro": "$bairro",
-      "cidade": "$cidade",
-      "estado": "$estado",
+      "complemento": "${complemento.toUpperCase()}",
+      "bairro": "${bairro.toUpperCase()}",
+      "cidade": "${cidade.toUpperCase()}",
+      "estado": "${estado.toUpperCase()}",
       "uf": "$uf",
       "aluno": {
         "id":"$aluno"
