@@ -1,18 +1,22 @@
 import 'package:cefops/Src/model/aluno/aluno_model.dart';
+import 'package:cefops/Src/model/aluno/documentos/document_model.dart';
 import 'package:get/get.dart';
 import "dart:developer" as developer;
 class DocumentsController extends GetxController{
   static DocumentsController data =DocumentsController();
 
-  var cpf="".obs;
-  var rg="".obs;
-  var estadoEmissorRg="".obs;
-  var dataEmissorRg="".obs;
-  var titulo="".obs;
-  var estadoEmissortitulo="".obs;
-  var zona="".obs;
-  var secao="".obs;
-  var dataEmissorTitulo="".obs;
+  RxString cpf="".obs;
+  RxString rg="".obs;
+  RxString estadoEmissorRg="".obs;
+  RxString dataEmissorRg="".obs;
+  RxString titulo="".obs;
+  RxString estadoEmissortitulo="".obs;
+  RxString zona="".obs;
+  RxString secao="".obs;
+  RxString dataEmissorTitulo="".obs;
+  RxBool loading=false.obs;
+  RxString nomeMae="".obs;
+  RxString nomePai="".obs;
 
   deleteAllData(){
      cpf.value="";
@@ -26,17 +30,17 @@ class DocumentsController extends GetxController{
      dataEmissorTitulo.value="";
   }
 
-// setDocuments(StudantModel data,int Index){
-//   cpf.value=data.content[Index].id;
-//   rg.value="";
-//   estadoEmissorRg.value=data.content[Index].endereco.cidade;
-//   dataEmissorRg.value=data.content[Index].dataNanscimento.toString();
-//   titulo.value=data.content[Index].id;
-//   estadoEmissortitulo.value=data.content[Index].endereco.uf;
-//   zona.value=data.content[Index].endereco.uf;
-//   secao.value=data.content[Index].endereco.uf;
-//   dataEmissorTitulo.value=data.content[Index].dataNanscimento.toString();
-// }
+setDocuments(DocumentModel data,){
+  cpf.value=data.cpf;
+  rg.value=data.rg;
+  estadoEmissorRg.value=data.estadoemissor;
+  dataEmissorRg.value=data.dataemissao.toString();
+  titulo.value=data.tituloeleitor;
+  estadoEmissortitulo.value=data.estemissortitulo;
+  zona.value=data.zona;
+  secao.value=data.secao;
+  dataEmissorTitulo.value=data.dataemissaotitulo.toIso8601String();
+}
 
 
 
