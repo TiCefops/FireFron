@@ -48,6 +48,8 @@ Future<LoginModel> Login(String username,String password) async {
       controller.photo.value=mod.foto;
       controller.role.value = mod.role;
       controller.id.value=mod.alunoId;
+      controller.alunoId.value=mod.alunoId;
+
       return mod;
     }
     else {
