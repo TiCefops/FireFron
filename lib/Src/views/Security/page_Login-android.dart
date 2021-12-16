@@ -6,12 +6,12 @@ import 'package:cefops/Src/views/Security/Page_Login.dart';
 import 'package:cefops/Src/widgets/widget_FormsForLoginPage.dart';
 import 'package:cefops/Src/widgets/widget_Navegation.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get.dart';
 import 'dart:io' show Platform;
 
 import '../../../res.dart';
+import 'Singup.dart';
 
-var _controler;
 final _formKey = GlobalKey<FormState>();
 final UserController = TextEditingController();
 final passwController = TextEditingController();
@@ -67,64 +67,78 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
                   key: _formKey,
                   child: Column(
                     children: [
-                      Container(
-                        height: MediaQuery.of(context).size.height *0.20,
-                        width: MediaQuery.of(context).size.width *0.50,
-                        child: Image.asset(
-                          Res.cefops1_orig,
-                        ),
-                        margin: EdgeInsets.only(bottom: 0.0),
+                      SizedBox(
+                        height:Get.height*0.02 ,
                       ),
-                     Container(
-                       width: MediaQuery.of(context).size.width * 0.90,
+                      Container(
+                        height: MediaQuery.of(context).size.height / 4,
+                        width: MediaQuery.of(context).size.width / 4,
+                        child: Image.asset(
+                          Res.logoV4,
+
+                        ),
+                      ),
+
+                      SizedBox(
+                        height: Get.height*0.02,
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 3,
                         child: LoginForms(
-                            UserController,
-                            "Insira Seu Usuário",
-                            "Usuário",
-                            "Por Favor informe seu  Usuário",
+                            userController,
+                            "Insira Seu E-mail",
+                            "E-mail",
+                            "Por Favor informe seu  E-mail",
                             Icons.person,
                             false,
                             false,
                             context),
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.04,
+                        height: MediaQuery.of(context).size.height * 0.02,
                       ),
                       Container(
-                          width: MediaQuery.of(context).size.width * 0.90,
+                          width: MediaQuery.of(context).size.width / 3,
                           child: Obx(
-                            () => LoginForms(
-                                passwController,
+                                () => LoginForms(
+                                passwordController,
                                 "Insira Sua Senha",
                                 "Senha",
                                 "Por Favor Informe sua Senha",
                                 Icons.lock,
                                 statusApp.status.verSenha.value,
-
                                 true,
                                 context),
                           )),
                       Row(
                         children: [
                           SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.63,
+                            width: MediaQuery.of(context).size.width * 0.25,
                           ),
-                          Container(
-
+                          Expanded(
                             child: TextButton(
                               style: TextButton.styleFrom(
                                 padding: const EdgeInsets.all(16.0),
                                 primary: Colors.white,
                                 textStyle: const TextStyle(fontSize: 20),
                               ),
-                              onPressed: () async {},
+                              onPressed: () async {
+
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Singup()),
+                                );
+
+                              },
                               child: Text(
                                 'Esqueci a Senha',
+                                overflow: TextOverflow.visible,
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: MediaQuery.of(context).size.height *
-                                      0.015,
+                                      0.019,
                                 ),
                               ),
                             ),
@@ -136,21 +150,24 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
                       ),
                       Center(
                           child: Obx(() => Text(
-                                "${statusApp.status.erros1.value}",
-                                style: TextStyle(
-                                  color: Colors.red,
-                                ),
-                              ))),
+                            "${statusApp.status.erros1.value}",
+                            style: TextStyle(
+                              color: Colors.red,
+                            ),
+                          ))),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.03,
                       ),
                       Container(
                           child: Obx(() => statusApp.status.loading.value
                               ? CircularProgressIndicator(
-                                  backgroundColor: AppColors.background,
-                                  valueColor: new AlwaysStoppedAnimation<Color>(
-                                      AppColors.blue),
-                                )
+                            backgroundColor: AppColors.blue,
+                            valueColor:AlwaysStoppedAnimation<Color>(
+                              AppColors.orange,
+
+
+                            ),
+                          )
                               : FlatButton(
                             height: size.height * 0.07,
                             child: Column(
@@ -158,40 +175,38 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
                                 Text(
                                   'Login',
                                   style: TextStyle(
-                                      fontSize: size.height * 0.03, fontWeight: FontWeight.w500),
+                                      fontSize: size.height * 0.03,
+                                      fontWeight: FontWeight.w500),
                                 ),
                               ],
                             ),
-                            color: AppColors.secondary,
-                            textColor: AppColors.textOnSecondary,
+                            color: AppColors.blue,
+                            textColor: AppColors.textOnPrimary,
                             shape: RoundedRectangleBorder(
                                 side: BorderSide(
-                                    color: AppColors.blue, width: 1, style: BorderStyle.solid),
+                                    color: AppColors.blue,
+                                    width: 1,
+                                    style: BorderStyle.solid),
                                 borderRadius: BorderRadius.circular(7)),
                             onPressed: () async {
 
-
-
                               if (_formKey.currentState!.validate()) {
                                 statusApp.status.loading.value = true;
-
-                                  await Login(userController.text.toString(), passwController.toString());
-
-
-
+                                await Login(userController.value.text,
+                                    passwordController.value.text);
                                 if (ErroController.error.ok == true) {
                                   statusApp.status.loading.value = false;
 
                                   Navigator.pushReplacement(
                                     context,
-                                    MaterialPageRoute(builder: (context) => MyApp()),
+                                    MaterialPageRoute(
+                                        builder:(BuildContext context)
+                                        => MyApp()),
                                   );
                                 }
                               } else {}
                             },
-                          )
-                          )
-                      )
+                          ))),
                     ],
                   ),
                 ),
