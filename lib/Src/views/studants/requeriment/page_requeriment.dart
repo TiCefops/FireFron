@@ -3,8 +3,9 @@ import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/views/studants/requeriment/widget_requeriment_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+///
 class RequeriViews extends StatelessWidget {
+  ///
   const RequeriViews({Key? key}) : super(key: key);
 
 
@@ -15,7 +16,6 @@ class RequeriViews extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-
           children: <Widget>[
             items("Meus Requerimentos"),
             Padding(
@@ -42,9 +42,6 @@ class RequeriViews extends StatelessWidget {
                 items("Documentação"),
               ],
             ),
-
-
-
 
           ],
         ),
