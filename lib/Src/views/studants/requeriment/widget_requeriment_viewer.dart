@@ -3,6 +3,7 @@ import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/model/adm/requeriment_type_model.dart';
 import 'package:cefops/Src/repository/adm/requerimentTypesRepository.dart';
+import 'package:cefops/Src/views/studants/requeriment/page_my_requeriment.dart';
 import 'package:cefops/Src/views/studants/requeriment/widget_new_requeriment.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -73,8 +74,7 @@ Widget GetRequerimentTypeByName(String filter){
           }
         });
   }else{
-    return Container(
-      color: Colors.red,
+    return MyRequeriments(
     );
   }
 }

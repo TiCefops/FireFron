@@ -59,7 +59,7 @@ Future CreateRequeriment(int requerimentID,String alunoID,String nomeAluno,
     ) async {
   isAluno();
   final  data = new DateTime.now() ;
-
+print(UserController.user.alunoId);
   HomeEmployesController.c.updating.value=true;
   var dataFormat = new DateFormat("yMMddhhmms");
   var protocolo=dataFormat.format(data);
@@ -76,7 +76,7 @@ Future CreateRequeriment(int requerimentID,String alunoID,String nomeAluno,
       },
 
       "aluno":{
-        "id":"testeMock"
+        "id":"${UserController.user.alunoId}"
       },
       "nomeAluno": "$nomeAluno",
       "idaluno": "${alunoID}",
@@ -150,6 +150,43 @@ Future <void> updateReq(int id,String resp,String status,bool isUpdate) async {
     // then throw an exception.
     throw Exception('Falha ao atualizar:');
   }
+
+
+}
+
+Future<List<RequerimentModel>> GetRequerimentById()async{
+  final response=await http.get(
+    Uri.parse("${urls.app}/requerimetos/aluno/${UserController.user.alunoId}"),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+      'Authorization': 'Bearer ${UserController.user.token}',
+    },
+  );
+  print(response.body);
+  final data = utf8.decode(response.bodyBytes);
+  var decodeData = jsonDecode(data);
+
+
+  if (response.statusCode == 200) {
+
+    ErroController.error.ok.value=true;
+    List jsonResponse = decodeData;
+
+    var requeriments=jsonResponse.map((req) =>
+        RequerimentModel.fromJson(req)).toList();
+
+
+
+    return requeriments;
+  }
+
+
+  else {
+
+    ErroController.error.ok.value=false;
+    throw Exception('error');
+  }
+
 }
 
 
