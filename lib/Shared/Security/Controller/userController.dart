@@ -10,5 +10,6 @@ class UserController extends GetxController{
   var role=[].obs;
   var id="".obs;
   var token="".obs;
+  RxString alunoId="".obs;
 
 }
