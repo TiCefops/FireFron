@@ -384,7 +384,6 @@ class GetStudants extends GetView<ListStudantController> {
                                                             .toString();
                                                       }
 
-
                                                       StudandDetailsController
                                                           .details
                                                           .setActive(data[Index]
@@ -404,10 +403,15 @@ class GetStudants extends GetView<ListStudantController> {
                                                       DocumentsController
                                                               .data.cpf.value =
                                                           data[Index].id;
-                                                      StudantAllInfoController.data.anddress.clarAndress();
+                                                      StudantAllInfoController
+                                                          .data.anddress
+                                                          .clarAndress();
 
-                                                      setinfos.SetAll(data[Index].toJson());
-                                                      StudantAllInfoController.data.anddress.getAndress();
+                                                      setinfos.SetAll(
+                                                          data[Index].toJson());
+                                                      StudantAllInfoController
+                                                          .data.anddress
+                                                          .getAndress();
 
                                                       AlunoDetails(
                                                           context, true);

@@ -1,3 +1,4 @@
+import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
@@ -10,65 +11,70 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class MyRequeriments extends StatelessWidget {
-  const MyRequeriments({Key? key}) : super(key: key);
+  final String id;
+  const MyRequeriments( {Key? key, required this.id,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Center(
-            child: Text(
-              "Meus Requerimentos",
-              style: TextStyles.titleListTile3Black,
+    return Scaffold(
+      body: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Center(
+              child: Text(
+                "Meus Requerimentos",
+                style: TextStyles.titleListTile3Black,
+              ),
             ),
-          ),
-          SizedBox(height: Get.height*0.03,),
-          Container(
-            height: Get.height*0.8,
-            width: Get.width*0.60,
-            child: FutureBuilder(
-                future: GetRequerimentById(),
-                builder: (BuildContext context,
-                    AsyncSnapshot<List<RequerimentModel>> snapshot) {
-                  if (snapshot.hasData) {
-                   List<RequerimentModel>? data =snapshot.data;
-                    return GridView.builder(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: snapshot.data!.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return  Container(
-                            child: myItems(data![index].tipo.name,
-                                data[index].tipo.grupo,
-                                data[index].abertoem.toLocal(),
-                                data[index].tipo.diasPentregar.toString(),
-                                data[index].status,
-                                data[index].responsavel,
-                                data[index].dataatualizacao.toLocal(),context),
-                          );
-                        },
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount
-                      (crossAxisCount: 2,
-                        childAspectRatio: Get.width / (Get.height *1.1),),
-                    );
+            SizedBox(height: Get.height*0.03,),
+            Container(
+              height: Get.height*0.8,
+              width: Get.width*0.60,
+              child: FutureBuilder(
 
-                  } else if (snapshot.hasError) {
-                    return Container(
-                      child: Text("Erro ao buscar dados" + snapshot.error.toString()),
-                    );
-                  } else {
-                    return Center(
-                      child: CircularProgressIndicator(
-                          color: AppColors.blue, backgroundColor: AppColors.orange),
-                    );
-                  }
-                }),
-          ),
+                  future: GetRequerimentById(id: id),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<List<RequerimentModel>> snapshot) {
+                    if (snapshot.hasData) {
+                     List<RequerimentModel>? data =snapshot.data;
+                      return GridView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: snapshot.data!.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return  Container(
+                              child: myItems(data![index].tipo.name,
+                                  data[index].tipo.grupo,
+                                  data[index].abertoem.toLocal(),
+                                  data[index].tipo.diasPentregar.toString(),
+                                  data[index].status,
+                                  data[index].responsavel,
+                                  data[index].dataatualizacao.toLocal(),context),
+                            );
+                          },
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount
+                        (crossAxisCount: 2,
+                          childAspectRatio: Get.width / (Get.height *1.1),),
+                      );
 
-        ],
+                    } else if (snapshot.hasError) {
+                      return Container(
+                        child: Text("Erro ao buscar dados" + snapshot.error.toString()),
+                      );
+                    } else {
+
+                      return Center(
+                        child: CircularProgressIndicator(
+                            color: AppColors.blue, backgroundColor: AppColors.orange),
+                      );
+                    }
+                  }),
+            ),
+
+          ],
+        ),
       ),
     );
   }
@@ -79,7 +85,14 @@ Widget myItems(String titulo,String setor,DateTime dataAbertura,
 
 
   int color=0xFF1DE9B6;
-
+  String statusFormatado="Em andamento";
+  if(status=="andando"){
+    statusFormatado="Em andamento";
+  }else if(status=="Aberto"){
+    statusFormatado="Enviado";
+  }else{
+    statusFormatado=status;
+  }
     setStatus(status){
      switch (status) {
        case "Aberto":
@@ -121,7 +134,7 @@ setStatus(status);
                 text: 'Status: ',
                 style: TextStyles.titleRegular,
                 children:  <TextSpan>[
-                  TextSpan(text: '$status',
+                  TextSpan(text: '$statusFormatado',
                       style: TextStyle(
                         color: Color(color),
                       )),

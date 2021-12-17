@@ -17,9 +17,6 @@ import 'package:intl/intl.dart';
 
 
 Future<List<RequerimentModel>> GetAllRequeriment()async{
-
-
-
   final response=await http.get(
     Uri.parse("${urls.app}/requerimetos"),
     headers: <String, String>{
@@ -32,7 +29,6 @@ Future<List<RequerimentModel>> GetAllRequeriment()async{
   var decodeData = jsonDecode(data);
 
   if (response.statusCode == 200) {
-
     ErroController.error.ok.value=true;
     List jsonResponse = decodeData;
 
@@ -154,9 +150,10 @@ Future <void> updateReq(int id,String resp,String status,bool isUpdate) async {
 
 }
 
-Future<List<RequerimentModel>> GetRequerimentById()async{
+Future<List<RequerimentModel>> GetRequerimentById( {required String id})async{
+  print(id);
   final response=await http.get(
-    Uri.parse("${urls.app}/requerimetos/aluno/${UserController.user.alunoId}"),
+    Uri.parse("${urls.app}/requerimetos/aluno/${id}"),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
       'Authorization': 'Bearer ${UserController.user.token}',
@@ -174,12 +171,8 @@ Future<List<RequerimentModel>> GetRequerimentById()async{
 
     var requeriments=jsonResponse.map((req) =>
         RequerimentModel.fromJson(req)).toList();
-
-
-
     return requeriments;
   }
-
 
   else {
 

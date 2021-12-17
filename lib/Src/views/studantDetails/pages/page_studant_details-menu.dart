@@ -137,6 +137,7 @@ AlunoDetails(BuildContext context,bool usuer) {
                     primary:  Colors.orange
                 ),
                 onPressed: (){
+                  statusApp.status.navegar.value = 5;
 
                 },
                 child: Container(

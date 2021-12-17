@@ -28,10 +28,11 @@ class _GetRequerimentsState extends State<GetRequeriments> {
         future: GetAllRequeriment(),
         builder: (BuildContext context,
             AsyncSnapshot<List<RequerimentModel>> snapshot) {
+
           if (snapshot.hasData) {
 
             controller.allData.value=snapshot.data!.toList();
-            List<RequerimentModel>? data = [];
+            List<RequerimentModel>? data = <RequerimentModel>[];
             data = controller.allData.value.cast<RequerimentModel>();
 
             List<RequerimentModel> permissionFilter;
@@ -49,12 +50,13 @@ class _GetRequerimentsState extends State<GetRequeriments> {
                 itemCount: filter.length,
 
                 itemBuilder: (BuildContext context, int Index) {
-                  DateTime now = filter[Index].abertoem;
-                  DateFormat formatter = new DateFormat(" dd'/'MM'/'y 'as' hh:mm");
+
+                  DateTime now = filter[Index].abertoem.toLocal();
+                  var createDate = DateFormat(" dd/MM/yyyy 'as' HH:mm").format(now);
                   String previsaoFormater =
                   DateFormat("'Previsão de Entrega:' dd/MM/yyyy").format(now
                       .add(Duration(days: filter[Index].tipo.diasPentregar)));
-                  String formatted = formatter.format(now);
+                  String formatted = createDate;
                   return Card(
                     child: Padding(
                       padding: EdgeInsets.all(10),
@@ -150,18 +152,20 @@ GetRequerimentsAndando() {
 
           var filter =
               permissionFilter.where((u) => u.status == 'andando').toList();
+          statusApp.status.requerimentosAndando.value=filter.length;
 
           return ListView.builder(
 
               itemCount: filter.length,
               itemBuilder: (BuildContext context, int Index) {
-                var now = filter[Index].abertoem;
-                var formatter = new DateFormat(" dd'/'MM'/'y 'as' hh:mm");
+                var now = filter[Index].abertoem.toLocal();
+                var createDate = DateFormat(" dd/MM/yyyy 'as' HH:mm").format(now);
+
                 var previsaoFormater =
                     DateFormat("'Previsão de Entrega:' dd/MM/yyyy").format(
                         now.add(Duration(
                             days: snapshot.data![Index].tipo.diasPentregar)));
-                String formatted = formatter.format(now);
+                String formatted =createDate;
 
                 return Card(
                   child: Padding(
@@ -193,8 +197,6 @@ GetRequerimentsAndando() {
 
                                     HomeEmployesController.c.
                                     concluidoEm.value=DateTime.now().toString();
-                                    print(HomeEmployesController.c.
-                                    concluidoEm);
                                     await updateReq(
                                         filter[Index].id,
                                         UserController.user.Fullname.value,
@@ -251,19 +253,20 @@ GetRequerimentsConcluido() {
 
           var filter =
               permissionFilter.where((u) => u.status == 'concluido').toList();
+          statusApp.status.requerimentosConcluido.value=filter.length;
 
           return ListView.builder(
               itemCount: filter.length,
               itemBuilder: (BuildContext context, int Index) {
-                var OpenDate = filter[Index].abertoem;
-                var CloseDate = filter[Index].entregue;
-                var formatterOpenDate =
-                    new DateFormat(" dd'/'MM'/'y 'as' hh:mm");
-                String formatted = formatterOpenDate.format(OpenDate);
 
-                var formatterCloseDate =
-                    new DateFormat(" dd'/'MM'/'y 'as' hh:mm");
-                String formattedClose = formatterCloseDate.format(CloseDate);
+                DateTime OpenDate = filter[Index].abertoem.toLocal();
+                DateTime CloseDate = filter[Index].entregue.toLocal();
+                DateFormat formatedDate = DateFormat(" dd/MM/yyyy 'as' HH:mm");
+                DateFormat formatedDateForDone = DateFormat(" dd/MM/yyyy");
+
+                String formatted = formatedDate.format(OpenDate);;
+                String formattedClose = formatedDateForDone.format(CloseDate);
+
                 return Card(
                   child: Padding(
                     padding: EdgeInsets.all(10),
@@ -286,7 +289,7 @@ GetRequerimentsConcluido() {
                           height: 16,
                           child: Text("Aberto Em:$formatted"),
                         ),
-                        Text("Concluído  Em: $formattedClose"),
+                        Text("Concluído  Em:$formattedClose"),
                         Center(
                           child: Container(
                             color: Colors.green,

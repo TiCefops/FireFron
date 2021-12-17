@@ -1,4 +1,5 @@
 
+import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/widgets/widget_GetRequeriments.dart';
 import 'package:get/get.dart';
 ///controlador da pagina inicial dos funcionarios
@@ -20,6 +21,12 @@ class HomeEmployesController extends GetxController{
     Future.delayed(Duration(seconds: 2));
     updateScreen.value=false;
     update();
+  }
+  double calcProgress(){
+    var total=statusApp.status.requerimentosAberto.toDouble()+
+        statusApp.status.requerimentosConcluido.toDouble();
+    var progress=total*statusApp.status.requerimentosConcluido.toDouble()/100;
+return progress;
   }
 
 }

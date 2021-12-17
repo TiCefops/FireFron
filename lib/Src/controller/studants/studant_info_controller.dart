@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 
 class StudantInfoController extends GetxController{
   static StudantInfoController data=StudantInfoController();
+  var id="".obs;
   var name="".obs;
   var lastName="".obs;
   var fullName="".obs;
@@ -40,6 +41,7 @@ class StudantInfoController extends GetxController{
   nation.value=data.nacionalidade;
   stsCivil.value=data.estadoCivil;
   cpf.value=data.id;
+  id.value=data.id;
 
   }
 
