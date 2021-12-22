@@ -1,5 +1,5 @@
 name: cefops
-description: A new Flutter project.
+description: Portal Do Aluno Escola Almeida Santos.
 publish_to: none
 version: 1.0.0+1
 environment: {sdk: '>=2.14.2 <3.0.0'}

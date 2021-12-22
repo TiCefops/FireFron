@@ -10,6 +10,7 @@ class RequerimentController extends GetxController{
   var linkPhoto="https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/64/000000/external-photo-appliances-flatart-icons-lineal-color-flatarticons.png".obs;
   var observertion="".obs;
   var statusCeate="".obs;
+  var protocolo="".obs;
 
 
 

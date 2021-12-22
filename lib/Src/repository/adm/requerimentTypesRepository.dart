@@ -65,7 +65,7 @@ Future<List<RequerimentTypeModel>> GetRequeRequerimentType()async{
     controler.loading.value=false;
 
     ErroController.error.ok.value=false;
-    print(response.body);
+
     developer.log(response.body,
         name: "Erro ao carregar tipos de requerimentos",
     );

@@ -12,7 +12,6 @@ Future<PostModel> FetchPosts(context)   async {
     },);
   final data = utf8.decode(response.bodyBytes);
   var decodeData = jsonDecode(data);
-  print(decodeData);
   if (response.statusCode == 200) {
     return PostModel.fromJson(decodeData);
   } else {

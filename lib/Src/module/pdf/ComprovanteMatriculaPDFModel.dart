@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Src/controller/home_emplooyes_controller.dart';
+import 'package:cefops/Src/controller/requeriment_controller.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
@@ -77,9 +78,9 @@ Future<void> ComprovMatricula() async{
   // grid.draw(page: document.pages.add(),bounds: const Rect.fromLTWH(0,0,0,0));
 
   page.graphics.drawString(
-    " ${timeformat}",
+    "Protocolo:${RequerimentController.req.protocolo}",
     PdfStandardFont(PdfFontFamily.helvetica, 22),
-    bounds: Rect.fromLTWH(323, 740, 400, 90),
+    bounds: Rect.fromLTWH(235, 740, 400, 90),
   );
 
   List<int> bytes= document.save();

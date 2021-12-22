@@ -26,7 +26,6 @@ class loginPage extends StatefulWidget {
 
 class _loginPageState extends State<loginPage>
     with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
 
 
 
@@ -78,20 +77,20 @@ class _loginPageState extends State<loginPage>
                             borderRadius: BorderRadius.circular(12)
                         ),
 
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    height: MediaQuery.of(context).size.height * 0.7,
+                    width: Get.width * 0.4,
+                    height: Get.height * 0.7,
                     child: Form(
                       key: _formKey,
                       child: Column(
-                        children: [
+                        children:<Widget> [
                           SizedBox(
-                            height: Get.height*0.02,
+                            height: Get.height*0.015,
                           ),
                           Container(
-                            height: MediaQuery.of(context).size.height / 4,
-                            width: MediaQuery.of(context).size.width / 4,
+                            height: Get.height / 4,
+                            width: Get.width / 5,
                             child: Image.asset(
-                              Res.logoV4,
+                              Res.logoV4,filterQuality: FilterQuality.high,
 
                             ),
                           ),
@@ -100,10 +99,10 @@ class _loginPageState extends State<loginPage>
                             height: Get.height*0.02,
                           ),
                           Container(
-                            width: MediaQuery.of(context).size.width / 3,
+                            width: Get.width / 3,
                             child: LoginForms(
                                 userController,
-                                "Insira Seu E-mail",
+                                "E-mail",
                                 "E-mail",
                                 "Por Favor informe seu  E-mail",
                                 Icons.person,
@@ -112,14 +111,14 @@ class _loginPageState extends State<loginPage>
                                 context),
                           ),
                           SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.02,
+                            height: Get.height * 0.02,
                           ),
                           Container(
-                              width: MediaQuery.of(context).size.width / 3,
+                              width: Get.width / 3,
                               child: Obx(
                                 () => LoginForms(
                                     passwordController,
-                                    "Insira Sua Senha",
+                                    "Senha",
                                     "Senha",
                                     "Por Favor Informe sua Senha",
                                     Icons.lock,
@@ -128,7 +127,7 @@ class _loginPageState extends State<loginPage>
                                     context),
                               )),
                           Row(
-                            children: [
+                            children: <Widget>[
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.25,
                               ),

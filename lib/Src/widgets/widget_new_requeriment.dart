@@ -1,6 +1,6 @@
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/home_emplooyes_controller.dart';
-import 'package:cefops/Src/controller/requerimentController.dart';
+import 'package:cefops/Src/controller/requeriment_controller.dart';
 import 'package:cefops/Src/controller/requerimentTypeController.dart';
 import 'package:cefops/Src/repository/adm/RequerimentsRepository.dart';
 import 'package:cefops/Src/repository/adm/requerimentTypesRepository.dart';

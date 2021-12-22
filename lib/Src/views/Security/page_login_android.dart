@@ -2,7 +2,7 @@ import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
 import 'package:cefops/Shared/Security/Repository/AuthRepository.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Src/controller/status.dart';
-import 'package:cefops/Src/views/Security/Page_Login.dart';
+import 'package:cefops/Src/views/Security/page_login.dart';
 import 'package:cefops/Src/widgets/widget_FormsForLoginPage.dart';
 import 'package:cefops/Src/widgets/widget_Navegation.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +54,7 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
 
       home: Scaffold(
         backgroundColor:  Colors.black,
-        body: Builder(builder: (context) {
+        body: Builder(builder: (BuildContext context) {
           return Container(
 
             width: MediaQuery.of(context).size.width,
@@ -66,24 +66,21 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
                 child: Form(
                   key: _formKey,
                   child: Column(
-                    children: [
-                      SizedBox(
-                        height:Get.height*0.02 ,
-                      ),
+                    children:<Widget> [
+
                       Container(
-                        height: MediaQuery.of(context).size.height / 4,
-                        width: MediaQuery.of(context).size.width / 4,
+                        height: Get.height*0.3,
+                        width:Get.width / 2,
                         child: Image.asset(
                           Res.logoV4,
 
                         ),
                       ),
 
-                      SizedBox(
-                        height: Get.height*0.02,
-                      ),
+
                       Container(
-                        width: MediaQuery.of(context).size.width / 3,
+                        width: MediaQuery.of(context).size.width *0.9,
+
                         child: LoginForms(
                             userController,
                             "Insira Seu E-mail",
@@ -98,7 +95,7 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
                         height: MediaQuery.of(context).size.height * 0.02,
                       ),
                       Container(
-                          width: MediaQuery.of(context).size.width / 3,
+                          width: MediaQuery.of(context).size.width *0.9,
                           child: Obx(
                                 () => LoginForms(
                                 passwordController,

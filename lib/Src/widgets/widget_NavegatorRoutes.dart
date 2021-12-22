@@ -11,9 +11,9 @@ import 'package:cefops/Src/views/adm/compartilhada/page_requeriment_status.dart'
 import 'package:cefops/Src/views/adm/secretaria/page_sigin_studant.dart';
 import 'package:cefops/Src/views/adm/secretaria/page_update_news.dart';
 import 'package:cefops/Src/views/page_Home.dart';
-import 'package:cefops/Src/views/studants/page_Course.dart';
-import 'package:cefops/Src/views/studants/requeriment/page_requeriment.dart';
-import 'package:cefops/Src/views/studants/page_Socre.dart';
+import 'package:cefops/Src/views/studants/page_course.dart';
+import 'package:cefops/Src/views/studants/requeriment/page_requeriment_menu_types.dart';
+import 'package:cefops/Src/views/studants/page_socre.dart';
 
 getDrawerItem(int pos,{context}) {
   switch (pos) {
@@ -28,7 +28,7 @@ getDrawerItem(int pos,{context}) {
     case 4:
       return ListUSers();
     case 5:
-      return RequeriViews();
+      return RequerimentMenuTypes();
     case 6:
       return pdfHome();
     case 7:

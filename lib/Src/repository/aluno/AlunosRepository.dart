@@ -5,7 +5,7 @@ import 'package:cefops/Shared/Security/Model/error_model.dart';
 import 'package:cefops/Shared/Security/Services/Logar.dart';
 import 'package:cefops/Shared/urls.dart';
 import 'package:cefops/Src/controller/list_studant_controller.dart';
-import 'package:cefops/Src/controller/requerimentController.dart';
+import 'package:cefops/Src/controller/requeriment_controller.dart';
 import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
 import 'package:cefops/Src/model/aluno/aluno_model.dart';
 import 'package:cefops/Src/model/aluno/one_studant_model.dart';

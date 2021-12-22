@@ -29,25 +29,7 @@ class InternalFinance extends StatelessWidget {
                 children: <Widget>[
                   Column(
                     children: <Widget>[
-                      Container(
-                        height: Get.height ,
-                        width: Get.width / 6,
-                        color: AppColors.background,
-                        child: Column(
-                          children: <Widget>[
-                            Center(
-                              child: Text(
-                                "Contas Com Vencimentos Próximo",
-                                style: TextStyles.titleListTile,
-                              ),
-                            ),
-                            Container(
-                              height: Get.height *0.94,
-                              child: GetNextFinance(),
-                            ),
-                          ],
-                        ),
-                      )
+
                     ],
                   ),
                   Column(
@@ -55,7 +37,6 @@ class InternalFinance extends StatelessWidget {
                       Container(
                         height: Get.height ,
                         width: Get.width * 0.58,
-
                         color: AppColors.blue,
                         child: Column(
                           children: <Widget>[

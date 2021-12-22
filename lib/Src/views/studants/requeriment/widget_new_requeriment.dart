@@ -10,7 +10,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 ///d
-class NewRequerimentFromStudant extends StatelessWidget {
+class NewRequerimentFromStudant extends GetView<HomeEmployesController> {
   final RequerimentTypeModel data;
 ///
   const NewRequerimentFromStudant(this.data,{Key? key}) : super(key: key);
@@ -18,8 +18,8 @@ class NewRequerimentFromStudant extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var controller =UserController.user;
-    var wipe=HomeEmployesController.c.click.value=false;
+    var controller1 =UserController.user;
+    Get.lazyPut(() => HomeEmployesController());
 
     return Scaffold(
       appBar: AppBar(backgroundColor: AppColors.blue,),
@@ -31,7 +31,7 @@ class NewRequerimentFromStudant extends StatelessWidget {
             ),
            Center(
              child: Container(
-               width: Get.width/3,
+               width: GetPlatform.isMobile?Get.width*0.9 :Get.width/3,
                height: Get.height*0.4,
                decoration: BoxDecoration(
                  border: Border.all(
@@ -46,7 +46,7 @@ class NewRequerimentFromStudant extends StatelessWidget {
                    Text("Entrega prevista em ${data.diasPentregar.toString()+
                        "  Dias"
                        " uteis"}",style: TextStyles.titleListTile3Black),
-                   Text("Valor: ${data.valor}",style: TextStyles.titleListTile3Black),
+                   Text("Valor R\$:${data.valor}",style: TextStyles.titleListTile3Black),
                  ],
                ),
              ),
@@ -56,30 +56,30 @@ class NewRequerimentFromStudant extends StatelessWidget {
             ),
             Obx(
                () {
-                return HomeEmployesController.c.updating.value
+                return  controller.updating.value
                     ? CircularProgressIndicator() :ElevatedButton.icon(
-                    onPressed: HomeEmployesController.c.click.value?null:(){
+                    onPressed:controller.click.value?null:()async{
                  if(data.valor !=0.0)
                  {
 
                  }else{
-                   CreateRequeriment(
+                   await  CreateRequeriment(
                        data.id,
-                       controller.id.value,
-                       controller.Fullname.value,
+                       controller1.id.value,
+                       controller1.Fullname.value,
                        "aberto pelo app");
                    if(data.name=="Comprovante De Matrícula"){
-                     ComprovMatricula();
+                     await ComprovMatricula();
 
                    }
                  }
-                 HomeEmployesController.c.click.value=true;
+                 controller.click.value=true;
 
                 },
                     style: ElevatedButton.styleFrom(
                       primary: AppColors.blue,
                         textStyle: TextStyles.titleListTile2,
-                        fixedSize: Size(Get.width*0.1, Get.height*0.05)),
+                        fixedSize: Size(GetPlatform.isMobile?Get.width*0.5: Get.width*0.1, Get.height*0.05)),
                     icon:Icon(Icons.shopping_cart),
                     label: Text("Continuar"));
               }

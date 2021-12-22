@@ -1,7 +1,7 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/home_emplooyes_controller.dart';
-import 'package:cefops/Src/controller/requerimentController.dart';
+import 'package:cefops/Src/controller/requeriment_controller.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/widgets/widget_new_requeriment.dart';
 import 'package:cefops/Src/widgets/widget_GetRequeriments.dart';
@@ -30,11 +30,10 @@ class EmployeesPage extends GetView<HomeEmployesController> {
                 height: size.height * 0.01,
                 margin: EdgeInsets.only(left: 60),
                 child: LinearProgressIndicator(
-                    value: HomeEmployesController.c.calcProgress(),
-                    backgroundColor: AppColors.secondary,
-                    color: AppColors.primary,
-
-  ),
+                  value: HomeEmployesController.c.calcProgress(),
+                  backgroundColor: AppColors.secondary,
+                  color: AppColors.primary,
+                ),
               ),
               SizedBox(
                 height: size.height * 0.02,
@@ -48,7 +47,7 @@ class EmployeesPage extends GetView<HomeEmployesController> {
                       color: Colors.white70,
                       height: size.height * 0.85,
                       child: Column(
-                        children: [
+                        children: <Widget>[
                           Center(
                             child: Text(
                               "Requerimentos Aberto"

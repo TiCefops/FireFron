@@ -5,7 +5,7 @@ import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
 import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/urls.dart';
 import 'package:cefops/Src/controller/home_emplooyes_controller.dart';
-import 'package:cefops/Src/controller/requerimentController.dart';
+import 'package:cefops/Src/controller/requeriment_controller.dart';
 import 'package:cefops/Src/controller/requerimentTypeController.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/model/adm/requeriment_model.dart';
@@ -50,15 +50,16 @@ Future<List<RequerimentModel>> GetAllRequeriment()async{
 }
 
 Future CreateRequeriment(int requerimentID,String alunoID,String nomeAluno,
-    String observacao
+    String observacao,
 
     ) async {
+  Get.find<HomeEmployesController>().updating.value=true;
   isAluno();
-  final  data = new DateTime.now() ;
-print(UserController.user.alunoId);
-  HomeEmployesController.c.updating.value=true;
+  final  data = new DateTime.now().toLocal() ;
+
   var dataFormat = new DateFormat("yMMddhhmms");
   var protocolo=dataFormat.format(data);
+  RequerimentController.req.protocolo.value=protocolo;
   final response = await http.post(
     Uri.parse('${urls.app}/requerimetos'),
     headers: <String, String>{
@@ -78,7 +79,7 @@ print(UserController.user.alunoId);
       "idaluno": "${alunoID}",
       "statusPagameto": "Aguardando",
       "observacao": "$observacao",
-      "status": "Aberto",
+      "status": "Solicitado",
       "responsavel": "ND",
       "entregue": "2021-12-01",
       "abertoem": "${data.toIso8601String()}",
@@ -91,7 +92,7 @@ print(UserController.user.alunoId);
   if (response.statusCode == 201) {
     // If the server did return a 201 CREATED response,
     // then parse the JSON.
-    HomeEmployesController.c.updating.value=false;
+    Get.find<HomeEmployesController>().updating.value=false;
     return RequerimentController.req.statusCeate.value="Criado";
   } else if(response.statusCode==409) {
 
@@ -104,7 +105,8 @@ print(UserController.user.alunoId);
 
   }
   else if(response.statusCode==400) {
-    HomeEmployesController.c.updating.value=false;
+    Get.find<HomeEmployesController>().updating.value=false;
+    ;
 
     throw Exception('falha na requisição');
 
@@ -159,7 +161,6 @@ Future<List<RequerimentModel>> GetRequerimentById( {required String id})async{
       'Authorization': 'Bearer ${UserController.user.token}',
     },
   );
-  print(response.body);
   final data = utf8.decode(response.bodyBytes);
   var decodeData = jsonDecode(data);
 
