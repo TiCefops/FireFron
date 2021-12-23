@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
 import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/Security/Model/error_model.dart';
+import 'package:cefops/Shared/Security/Repository/AuthRepository.dart';
 import 'package:cefops/Shared/Security/Services/Logar.dart';
 import 'package:cefops/Shared/urls.dart';
 import 'package:cefops/Src/controller/list_studant_controller.dart';
@@ -148,7 +149,7 @@ import "dart:developer" as developer;
         "photo": "https://robohash.org/delenitinullaquae.jpg?size=50x50&set=set1",
         "enabled": ativo,
         "genero": "$genero",
-        "estadoCivil": "$estadoCivil}",
+        "estadoCivil": "$estadoCivil",
         "nacionalidade": "${nacionalidade.toUpperCase()}"
 
       }),
@@ -162,10 +163,15 @@ import "dart:developer" as developer;
 
 
 
-print(response.statusCode);
+
     try{
       if (response.statusCode == 201) {
         StudantInfoController.data.loading.value=false;
+
+        await SingUpNewUser(email: email, password: "Cefops123",
+            fristName: name,
+            lastName: lastName, alunoId: Cpf,
+            cpf: Cpf);
         StudantInfoController.data.status.value="Cadastrado Com Sucesso";
         Future.delayed(Duration(seconds: 3),(){
           StudandDetailsController.details.navegar.value=1;      });

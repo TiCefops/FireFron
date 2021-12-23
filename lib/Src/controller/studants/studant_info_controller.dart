@@ -7,22 +7,25 @@ import 'package:intl/intl.dart';
 
 class StudantInfoController extends GetxController{
   static StudantInfoController data=StudantInfoController();
-  var id="".obs;
-  var name="".obs;
-  var lastName="".obs;
-  var fullName="".obs;
-  var email="".obs;
-  var cpf="".obs;
-  var photo="https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/64/000000/external-photo-appliances-flatart-icons-lineal-color-flatarticons.png".obs;
-  var birthDate="".obs;
-  var gender="".obs;
-  var activi=true;
-  var stsCivil="".obs;
-  var phoneCell="".obs;
-  var phoneHome="".obs;
-  var nation="".obs;
-  var loading=false.obs;
-  var status="".obs;
+  RxString id="".obs;
+  RxString name="".obs;
+  RxString lastName="".obs;
+  RxString fullName="".obs;
+  RxString email="".obs;
+  RxString cpf="".obs;
+  RxString photo="https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/64/000000/external-photo-appliances-flatart-icons-lineal-color-flatarticons.png".obs;
+  RxString birthDate="".obs;
+  RxString gender="".obs;
+  bool activi=true;
+  RxString stsCivil="".obs;
+  RxString phoneCell="".obs;
+  RxString phoneHome="".obs;
+  RxString nation="".obs;
+  RxBool loading=false.obs;
+  RxString status="".obs;
+
+
+
 
   SetAll( data1){
   var  data=Content.fromJson(data1);

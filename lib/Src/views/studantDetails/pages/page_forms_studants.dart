@@ -1,17 +1,24 @@
 import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
 import 'package:cefops/Src/views/studantDetails/controller/controller_studantDetails.dart';
-import 'package:cefops/Src/views/studantDetails/widget/widget_dropDown_civilState.dart';
-import 'package:cefops/Src/views/studantDetails/widget/widget_dropDown_gender.dart';
-import 'package:cefops/Src/views/studantDetails/widget/widget_dropDown_state.dart';
+import 'package:cefops/Src/views/studantDetails/widget/widget_dropdown_civilState.dart';
+import 'package:cefops/Src/views/studantDetails/widget/widget_dropdown_gender.dart';
+import 'package:cefops/Src/views/studantDetails/widget/widget_dropdown_state.dart';
 import 'package:cefops/Src/views/studantDetails/widget/widget_form_studantDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+///
 class FormsStudants extends StatelessWidget {
-  const FormsStudants({Key? key}) : super(key: key);
+  ///
+  const FormsStudants({Key? key, required bool formList,}) : super(key: key);
+
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
+
     final _formKey = GlobalKey<FormState>();
     final nameController = TextEditingController();
     final lastNameController = TextEditingController();
@@ -133,7 +140,7 @@ class FormsStudants extends StatelessWidget {
                 ],
               ),
               Row(
-                children: [
+                children:<Widget> [
                   Container(
                     width: Get.width * 0.09,
                     child: FormStudntDetails(
@@ -163,7 +170,7 @@ class FormsStudants extends StatelessWidget {
                   return infos.loading.value
                       ? CircularProgressIndicator()
                       : ElevatedButton(
-                          onPressed: () {
+                          onPressed: () async{
                             infos.name.value = nameController.text;
                             infos.lastName.value = lastNameController.text;
                             infos.birthDate.value = burnDataController.text;
@@ -172,8 +179,16 @@ class FormsStudants extends StatelessWidget {
                             infos.phoneHome.value = telResController.text;
                             infos.nation.value = nationController.text;
                             infos.cpf.value = cpfController.text;
-                            infos.loading.value = true;
-                            infos.singInStudant();
+                            // print(fromList);
+                            // if(fromList==true){
+                            //
+                            //   infos.loading.value = true;
+                            //
+                            // }else {
+                            //   print("oii");
+                            //   await  infos.singInStudant();
+                            // }
+                            // infos.loading.value = false;
                           },
                           child: Text("Continuar"));
                 },

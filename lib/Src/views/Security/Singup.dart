@@ -156,7 +156,7 @@ class _SingupState extends State<Singup> {
                 formKey.currentState!.save();
                 validatePassword();
                 print(password1);
-                await SingUpNewUser(fristName, lastName, cpf, email, password);
+
 
                 Navigator.push(
                   context,

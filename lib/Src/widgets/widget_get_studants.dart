@@ -453,6 +453,7 @@ class GetStudants extends GetView<ListStudantController> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
         onPressed: () {
           AlunoDetails(context, false);
         },

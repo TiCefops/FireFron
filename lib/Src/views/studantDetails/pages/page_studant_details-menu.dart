@@ -117,7 +117,7 @@ AlunoDetails(BuildContext context,bool usuer) {
 
                 },
                 child: Container(
-                  width: Get.width*0.05,
+                  width: Get.width*0.07,
                   height: 40,
                   decoration: BoxDecoration(
 
@@ -171,7 +171,7 @@ AlunoDetails(BuildContext context,bool usuer) {
       ),
     ),
 
-    actions: [
+    actions: <Widget>[
       cancelButton,
       continueButton,
     ],

@@ -1,6 +1,6 @@
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/views/studantDetails/controller/controller_studantDetails.dart';
-import 'package:cefops/Src/views/studantDetails/widget/widget_setStudant_details_routes.dart';
+import 'package:cefops/Src/views/studantDetails/widget/widget_setstudant_details_routes.dart';
 import 'package:cefops/Src/views/studantDetails/widget/widget_studant_infos_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,7 +14,7 @@ class ViewInfoFromStudant extends StatelessWidget {
 
     return Container(
       child: Column(
-        children: [
+        children:<Widget> [
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -105,6 +105,29 @@ class ViewInfoFromStudant extends StatelessWidget {
                   ),
                 ),
               ),
+              SizedBox(
+                width: Get.width * 0.01,
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    primary: const Color(0xff062761),
+                    textStyle:
+                    TextStyle(fontSize: 14, fontWeight: FontWeight.w400)),
+                onPressed: () {
+                  controller.navegar.value = 3;
+                },
+                child: Container(
+                  width: 80,
+                  height: 30,
+                  decoration: BoxDecoration(),
+                  child: Center(
+                    child: const Text(
+                      "Usúario",
+                      style: TextStyle(fontSize: 12),
+                    ),
+                  ),
+                ),
+              ),
               Expanded(
                 child: Container(
                   width: double.infinity,
@@ -120,8 +143,7 @@ class ViewInfoFromStudant extends StatelessWidget {
               width: Get.width,
               height: Get.height * 0.54,
               child: Obx(
-                () => SetStudantDetails(controller.navegar.value,
-                    context: context),
+                () => SetStudantDetails(controller.navegar.value,fromList1: true),
               ),
             ),
           ),
