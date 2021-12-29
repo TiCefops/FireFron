@@ -2,10 +2,8 @@ import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/home_emplooyes_controller.dart';
 import 'package:cefops/Src/controller/requeriment_controller.dart';
 import 'package:cefops/Src/controller/requerimentTypeController.dart';
-import 'package:cefops/Src/repository/adm/RequerimentsRepository.dart';
-import 'package:cefops/Src/repository/adm/requerimentTypesRepository.dart';
 import 'package:cefops/Src/repository/aluno/AlunosRepository.dart';
-import 'package:cefops/Src/views/adm/page_home_employes.dart';
+import 'package:cefops/Src/services/requeriment_service.dart';
 import 'package:cefops/Src/widgets/widget_dropmenu_grup.dart';
 import 'package:cefops/Src/widgets/widget_Navegation.dart';
 import 'package:cefops/Src/widgets/widget_dropmenu_items.dart';
@@ -13,13 +11,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
+///
 showAlertDialog(BuildContext context) {
   final cpfController = TextEditingController();
-  final nameController = TextEditingController();
-  final observaao = TextEditingController();
   var controller=RequerimentTypeController.reqType;
-
+  ///Instancia de servico
+  final RequerimentService _service=RequerimentService();
 
   final size = MediaQuery.of(context).size;
   Widget cancelButton = TextButton(
@@ -32,7 +29,7 @@ showAlertDialog(BuildContext context) {
     child: HomeEmployesController.c.updating.value ?CircularProgressIndicator():Text('Salvar'),
     onPressed: () {
       var requerimentoid=int.parse(controller.selectedType.value);
-      CreateRequeriment(requerimentoid, RequerimentController.req.idStudant.value,
+      _service.CreateRequerime(requerimentoid, RequerimentController.req.idStudant.value,
           RequerimentController.req.StudantFullName.value,
           RequerimentController.req.observertion.value);
       HomeEmployesController.c.updateScreen.value=true;

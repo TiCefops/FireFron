@@ -5,8 +5,8 @@ import 'package:cefops/Shared/urls.dart';
 import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
 import 'dart:convert';
 import 'package:cefops/Src/model/aluno/documentos/document_model.dart';
-import 'package:cefops/Src/views/studantDetails/controller/controller_studantDetails.dart';
-import 'package:cefops/Src/views/studantDetails/controller/documents_controller.dart';
+import 'package:cefops/Src/views/adm/studantDetails/controller/controller_studantDetails.dart';
+import 'package:cefops/Src/views/adm/studantDetails/controller/documents_controller.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
@@ -49,9 +49,7 @@ Future<DocumentModel> GetDocumentsById(id) async {
       throw Exception("Error");
     }
     else {
-      final data1 = utf8.decode(response.bodyBytes);
 
-      var error= errorModelFromJson(data1);
 
 
       throw Exception('error');

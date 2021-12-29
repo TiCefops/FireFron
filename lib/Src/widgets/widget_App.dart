@@ -4,6 +4,7 @@ import 'package:cefops/Src/views/adm/page_home_employes.dart';
 import 'package:cefops/Src/views/adm/secretaria/page_list_studants.dart';
 import 'package:cefops/Src/views/adm/secretaria/page_update_news.dart';
 import 'package:cefops/Src/views/Security/page_login_android.dart';
+import 'package:cefops/Src/views/adm/studantDetails/pages/page_studant_requeriment_detail.dart';
 import 'package:cefops/Src/views/studants/page_socre.dart';
 import 'package:cefops/Src/views/adm/secretaria/page_sigin_studant.dart';
 

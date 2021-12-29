@@ -6,7 +6,7 @@ import 'package:cefops/Src/controller/studants/studant_all_info_controller.dart'
 import 'package:cefops/Src/controller/studants/studant_anddress_controller.dart';
 import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
 import 'package:cefops/Src/model/aluno/documentos/andress_model.dart';
-import 'package:cefops/Src/views/studantDetails/controller/controller_studantDetails.dart';
+import 'package:cefops/Src/views/adm/studantDetails/controller/controller_studantDetails.dart';
 import 'package:http/http.dart' as http;
 
 

@@ -1,24 +1,21 @@
 import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
-import 'package:cefops/Src/views/studantDetails/controller/controller_studantDetails.dart';
-import 'package:cefops/Src/views/studantDetails/widget/widget_dropdown_civilState.dart';
-import 'package:cefops/Src/views/studantDetails/widget/widget_dropdown_gender.dart';
-import 'package:cefops/Src/views/studantDetails/widget/widget_dropdown_state.dart';
-import 'package:cefops/Src/views/studantDetails/widget/widget_form_studantDetails.dart';
+import 'package:cefops/Src/views/adm/studantDetails/widget/widget_dropdown_civilState.dart';
+import 'package:cefops/Src/views/adm/studantDetails/widget/widget_dropdown_gender.dart';
+import 'package:cefops/Src/views/adm/studantDetails/widget/widget_dropdown_state.dart';
+import 'package:cefops/Src/views/adm/studantDetails/widget/widget_form_studantdetails.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 ///
 class FormsStudants extends StatelessWidget {
   ///
-  const FormsStudants({Key? key, required bool formList,}) : super(key: key);
-
-
-
-
-
+  const FormsStudants({
+    Key? key,
+    required bool formList,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     final _formKey = GlobalKey<FormState>();
     final nameController = TextEditingController();
     final lastNameController = TextEditingController();
@@ -28,7 +25,6 @@ class FormsStudants extends StatelessWidget {
     final emailController = TextEditingController();
     final nationController = TextEditingController();
     final cpfController = TextEditingController();
-    var controller = StudandDetailsController.details;
     var infos = StudantInfoController.data;
 
     return Form(
@@ -140,7 +136,7 @@ class FormsStudants extends StatelessWidget {
                 ],
               ),
               Row(
-                children:<Widget> [
+                children: <Widget>[
                   Container(
                     width: Get.width * 0.09,
                     child: FormStudntDetails(
@@ -170,7 +166,7 @@ class FormsStudants extends StatelessWidget {
                   return infos.loading.value
                       ? CircularProgressIndicator()
                       : ElevatedButton(
-                          onPressed: () async{
+                          onPressed: () async {
                             infos.name.value = nameController.text;
                             infos.lastName.value = lastNameController.text;
                             infos.birthDate.value = burnDataController.text;

@@ -5,13 +5,11 @@ import 'package:cefops/Src/controller/studants/studant_all_info_controller.dart'
 import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
 import 'package:cefops/Src/model/aluno/aluno_model.dart';
 import 'package:cefops/Src/repository/aluno/AlunosRepository.dart';
-import 'package:cefops/Src/views/studantDetails/controller/controller_studantDetails.dart';
-import 'package:cefops/Src/views/studantDetails/controller/documents_controller.dart';
-import 'package:cefops/Src/views/studantDetails/pages/page_studant_details-menu.dart';
+import 'package:cefops/Src/views/adm/studantDetails/controller/controller_studantDetails.dart';
+import 'package:cefops/Src/views/adm/studantDetails/controller/documents_controller.dart';
+import 'package:cefops/Src/views/adm/studantDetails/pages/page_studant_details-menu.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import 'GestaoEscola/Alunos/widget_dropmenu_for_search.dart';
 
 class GetStudants extends GetView<ListStudantController> {
@@ -19,9 +17,7 @@ class GetStudants extends GetView<ListStudantController> {
 
   @override
   Widget build(BuildContext context) {
-    String fullName = "";
     var controllerViewer = ListStudantController.data;
-    var infos = StudantAllInfoController.data;
     var setinfos = StudantInfoController.data;
     return Scaffold(
       body: Column(

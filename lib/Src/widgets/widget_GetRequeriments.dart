@@ -5,11 +5,13 @@ import 'package:cefops/Src/controller/home_emplooyes_controller.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/model/adm/requeriment_model.dart';
 import 'package:cefops/Src/repository/adm/RequerimentsRepository.dart';
+import 'package:cefops/Src/services/requeriment_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 var controller = HomeEmployesController.c;
+final RequerimentService _service=RequerimentService();
 
 class GetRequeriments extends StatefulWidget {
   const GetRequeriments({Key? key}) : super(key: key);
@@ -22,7 +24,7 @@ class _GetRequerimentsState extends State<GetRequeriments> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: GetAllRequeriment(),
+        future: _service.GetALlRequeriments(),
         builder: (BuildContext context,
             AsyncSnapshot<List<RequerimentModel>> snapshot) {
           if (snapshot.hasData) {
@@ -47,7 +49,7 @@ class _GetRequerimentsState extends State<GetRequeriments> {
                 itemBuilder: (BuildContext context, int Index) {
                   DateTime now = filter[Index].abertoem.toLocal();
                   var createDate =
-                      DateFormat(" dd/MM/yyyy 'as' HH:mm").format(now);
+                      DateFormat(" dd/MM/yyyy 'às' HH:mm").format(now);
                   String previsaoFormater = DateFormat(
                           "'Previsão de Entrega:' dd/MM/yyyy")
                       .format(now.add(
@@ -86,7 +88,7 @@ class _GetRequerimentsState extends State<GetRequeriments> {
                                         )
                                       : IconButton(
                                           onPressed: () async {
-                                            await updateReq(
+                                            await _service.UpdateRequeriment(
                                                 filter[Index].id,
                                                 UserController
                                                     .user.Fullname.value,
@@ -101,6 +103,18 @@ class _GetRequerimentsState extends State<GetRequeriments> {
                                           icon: Icon(Icons.add))
                                 ],
                               ),
+                            ),
+                          ),
+                          SelectableText.rich(
+                            TextSpan(
+                              text: 'Protocolo:',
+                              style: TextStyle(color: AppColors.blue), // default text style
+                              children: <TextSpan>[
+                                TextSpan(
+                                    text: ' ${filter[Index].protocolo}',
+                                    style: TextStyle(
+                                        fontStyle: FontStyle.normal, color: AppColors.orange)),
+                              ],
                             ),
                           ),
                           Text(previsaoFormater),
@@ -132,7 +146,7 @@ class _GetRequerimentsState extends State<GetRequeriments> {
 
 GetRequerimentsAndando() {
   return FutureBuilder(
-      future: GetAllRequeriment(),
+      future: _service.GetALlRequeriments(),
       builder: (BuildContext context,
           AsyncSnapshot<List<RequerimentModel>> snapshot) {
         if (snapshot.hasData) {
@@ -156,7 +170,7 @@ GetRequerimentsAndando() {
               itemBuilder: (BuildContext context, int Index) {
                 var now = filter[Index].abertoem.toLocal();
                 var createDate =
-                    DateFormat(" dd/MM/yyyy 'as' HH:mm").format(now);
+                    DateFormat(" dd/MM/yyyy 'às' HH:mm").format(now);
 
                 var previsaoFormater =
                     DateFormat("'Previsão de Entrega:' dd/MM/yyyy").format(
@@ -193,7 +207,7 @@ GetRequerimentsAndando() {
                                   onPressed: () async {
                                     HomeEmployesController.c.concluidoEm.value =
                                         DateTime.now().toString();
-                                    await updateReq(
+                                    await _service.UpdateRequeriment(
                                         filter[Index].id,
                                         UserController.user.Fullname.value,
                                         "Concluído",
@@ -204,6 +218,18 @@ GetRequerimentsAndando() {
                                     HomeEmployesController.c.updateScreenFun();
                                   },
                                   icon: Icon(Icons.add))
+                            ],
+                          ),
+                        ),
+                        SelectableText.rich(
+                          TextSpan(
+                            text: 'Protocolo:',
+                            style: TextStyle(color: AppColors.blue), // default text style
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: ' ${filter[Index].protocolo}',
+                                  style: TextStyle(
+                                      fontStyle: FontStyle.normal, color: AppColors.orange)),
                             ],
                           ),
                         ),
@@ -235,7 +261,7 @@ GetRequerimentsAndando() {
 
 GetRequerimentsConcluido() {
   return FutureBuilder(
-      future: GetAllRequeriment(),
+      future: _service.GetALlRequeriments(),
       builder: (BuildContext context,
           AsyncSnapshot<List<RequerimentModel>> snapshot) {
         if (snapshot.hasData) {
@@ -259,7 +285,7 @@ GetRequerimentsConcluido() {
               itemBuilder: (BuildContext context, int Index) {
                 DateTime OpenDate = filter[Index].abertoem.toLocal();
                 DateTime CloseDate = filter[Index].entregue.toLocal();
-                DateFormat formatedDate = DateFormat(" dd/MM/yyyy 'as' HH:mm");
+                DateFormat formatedDate = DateFormat(" dd/MM/yyyy 'às' HH:mm");
                 DateFormat formatedDateForDone = DateFormat(" dd/MM/yyyy");
 
                 String formatted = formatedDate.format(OpenDate);
@@ -287,6 +313,18 @@ GetRequerimentsConcluido() {
                         Container(
                           height: 16,
                           child: Text("Aberto Em:$formatted"),
+                        ),
+                        SelectableText.rich(
+                          TextSpan(
+                            text: 'Protocolo:',
+                            style: TextStyle(color: AppColors.blue), // default text style
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: ' ${filter[Index].protocolo}',
+                                  style: TextStyle(
+                                      fontStyle: FontStyle.normal, color: AppColors.orange)),
+                            ],
+                          ),
                         ),
                         Text("Concluído  Em:$formattedClose"),
                         Center(

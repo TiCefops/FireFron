@@ -6,7 +6,6 @@ import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/urls.dart';
 import 'package:cefops/Src/controller/home_emplooyes_controller.dart';
 import 'package:cefops/Src/controller/requeriment_controller.dart';
-import 'package:cefops/Src/controller/requerimentTypeController.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/model/adm/requeriment_model.dart';
 import 'package:get/get.dart';
@@ -27,7 +26,6 @@ Future<List<RequerimentModel>> GetAllRequeriment()async{
 
   final data = utf8.decode(response.bodyBytes);
   var decodeData = jsonDecode(data);
-
   if (response.statusCode == 200) {
     ErroController.error.ok.value=true;
     List jsonResponse = decodeData;
@@ -78,6 +76,7 @@ Future CreateRequeriment(int requerimentID,String alunoID,String nomeAluno,
       "nomeAluno": "$nomeAluno",
       "idaluno": "${alunoID}",
       "statusPagameto": "Aguardando",
+      "pdfLink": "www.cefops.net",
       "observacao": "$observacao",
       "status": "Solicitado",
       "responsavel": "ND",
@@ -153,7 +152,7 @@ Future <void> updateReq(int id,String resp,String status,bool isUpdate) async {
 }
 
 Future<List<RequerimentModel>> GetRequerimentById( {required String id})async{
-  print(id);
+
   final response=await http.get(
     Uri.parse("${urls.app}/requerimetos/aluno/${id}"),
     headers: <String, String>{

@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 List<RequerimentModel> requerimentModelFromJson(String str) => List<RequerimentModel>.from(json.decode(str).map((x) => RequerimentModel.fromJson(x)));
@@ -12,11 +11,15 @@ class RequerimentModel {
    required this.nomeAluno,
    required this.idaluno,
    required this.dataatualizacao,
+   required this.statusPagameto,
+   required this.observacao,
+   required this.protocolo,
+   required this.pdfLink,
    required this.responsavel,
-   required this.entregue,
-   required this.concluido,
-   required this.abertoem,
    required this.status,
+   required this.entregue,
+   required this.abertoem,
+   required this.concluido,
   });
 
   int id;
@@ -24,11 +27,15 @@ class RequerimentModel {
   String nomeAluno;
   String idaluno;
   DateTime dataatualizacao;
+  String statusPagameto;
+  String observacao;
+  String protocolo;
+  String pdfLink;
   String responsavel;
-  DateTime entregue;
-  bool concluido;
-  DateTime abertoem;
   String status;
+  DateTime entregue;
+  DateTime abertoem;
+  bool concluido;
 
   factory RequerimentModel.fromJson(Map<String, dynamic> json) => RequerimentModel(
     id: json["id"],
@@ -36,11 +43,15 @@ class RequerimentModel {
     nomeAluno: json["nomeAluno"],
     idaluno: json["idaluno"],
     dataatualizacao: DateTime.parse(json["dataatualizacao"]),
+    statusPagameto: json["statusPagameto"],
+    observacao: json["observacao"],
+    protocolo: json["protocolo"],
+    pdfLink: json["pdfLink"],
     responsavel: json["responsavel"],
-    entregue: DateTime.parse(json["entregue"]),
-    concluido: json["concluido"],
-    abertoem: DateTime.parse(json["abertoem"]),
     status: json["status"],
+    entregue: DateTime.parse(json["entregue"]),
+    abertoem: DateTime.parse(json["abertoem"]),
+    concluido: json["concluido"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -49,11 +60,15 @@ class RequerimentModel {
     "nomeAluno": nomeAluno,
     "idaluno": idaluno,
     "dataatualizacao": dataatualizacao.toIso8601String(),
+    "statusPagameto": statusPagameto,
+    "observacao": observacao,
+    "protocolo": protocolo,
+    "pdfLink": pdfLink,
     "responsavel": responsavel,
-    "entregue": entregue.toIso8601String(),
-    "concluido": concluido,
-    "abertoem": abertoem.toIso8601String(),
     "status": status,
+    "entregue": entregue.toIso8601String(),
+    "abertoem": abertoem.toIso8601String(),
+    "concluido": concluido,
   };
 }
 
