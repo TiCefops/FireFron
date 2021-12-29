@@ -1,9 +1,5 @@
-
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/studants/studant_anddress_controller.dart';
-import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
-import 'package:cefops/Src/views/studantDetails/pages/page_studant_anddress.dart';
-import 'package:cefops/Src/widgets/widget_FormsForAll.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,7 +16,7 @@ var setErros=StudantAnddressController.anddres;
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
+      children:<Widget> [
         Container(
           height: Get.height*0.08,
           width: Get.width*0.2,

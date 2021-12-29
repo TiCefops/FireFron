@@ -1,10 +1,11 @@
 
-import 'package:cefops/Src/views/studantDetails/controller/controller_studantDetails.dart';
+import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
+import 'package:cefops/Src/views/adm/studantDetails/controller/controller_studantDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class DropDownStatus extends StatelessWidget {
-  const DropDownStatus({Key? key}) : super(key: key);
+class DropDownCivilState extends StatelessWidget {
+  const DropDownCivilState({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class DropDownStatus extends StatelessWidget {
     return Obx(
             () {
           return DropdownButton<String>(
-            value: controller.status.value,
+            value: controller.civilState.value,
             icon: const Icon(Icons.arrow_downward),
             iconSize: 24,
             elevation: 16,
@@ -25,10 +26,11 @@ class DropDownStatus extends StatelessWidget {
             ),
             onChanged: (String? newValue) {
 
-              controller.status.value = newValue!;
+              controller.civilState.value = newValue!;
+              StudantInfoController.data.stsCivil.value=newValue;
 
             },
-            items: <String>['Ativo', 'Inativo',]
+            items: <String>['Estado Civil','Solteiro', 'Casado','Viúvo','Divorciado','Separado',]
                 .map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,

@@ -1,10 +1,8 @@
 import 'package:cefops/Shared/themes/app_textstayle.dart';
-import 'package:cefops/Src/controller/controller_cep.dart';
-import 'package:cefops/Src/model/aluno/documentos/document_model.dart';
 import 'package:cefops/Src/repository/aluno/documentos/documents_repository.dart';
-import 'package:cefops/Src/views/studantDetails/controller/controller_studantDetails.dart';
-import 'package:cefops/Src/views/studantDetails/controller/documents_controller.dart';
-import 'package:cefops/Src/views/studantDetails/widget/widget_form_studantDetails.dart';
+import 'package:cefops/Src/views/adm/studantDetails/controller/controller_studantDetails.dart';
+import 'package:cefops/Src/views/adm/studantDetails/controller/documents_controller.dart';
+import 'package:cefops/Src/views/adm/studantDetails/widget/widget_form_studantdetails.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

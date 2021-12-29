@@ -1,7 +1,6 @@
-import 'package:cefops/Src/controller/status.dart';
-import 'package:cefops/Src/views/studantDetails/controller/controller_studantDetails.dart';
-import 'package:cefops/Src/views/studantDetails/widget/widget_setstudant_details_routes.dart';
-import 'package:cefops/Src/views/studantDetails/widget/widget_studant_infos_routes.dart';
+
+import 'package:cefops/Src/views/adm/studantDetails/controller/controller_studantDetails.dart';
+import 'package:cefops/Src/views/adm/studantDetails/widget/widget_setstudant_details_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

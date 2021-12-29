@@ -1,6 +1,7 @@
 import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
-import 'package:cefops/Src/views/studantDetails/controller/user_controller.dart';
-import 'package:cefops/Src/views/studantDetails/widget/widget_dropdown_permission.dart';
+import 'package:cefops/Src/views/adm/studantDetails/controller/user_controller.dart';
+import 'package:cefops/Src/views/adm/studantDetails/widget/widget_dropdown_permission.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 ///

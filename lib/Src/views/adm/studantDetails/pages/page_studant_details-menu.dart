@@ -1,8 +1,9 @@
 
 import 'package:cefops/Src/controller/studants/studant_anddress_controller.dart';
 import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
-import 'package:cefops/Src/views/studantDetails/controller/documents_controller.dart';
-import 'package:cefops/Src/views/studantDetails/widget/widget_studant_infos_routes.dart';
+import 'package:cefops/Src/views/adm/studantDetails/controller/documents_controller.dart';
+import 'package:cefops/Src/views/adm/studantDetails/widget/widget_studant_infos_routes.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,7 +11,6 @@ import 'package:cefops/Src/controller/status.dart';
 
 
 AlunoDetails(BuildContext context,bool usuer) {
-  StudantAnddressController endereco=Get.put(StudantAnddressController());
 
   Widget cancelButton = TextButton(
     child: Text("Cancelar"),
@@ -163,7 +163,7 @@ AlunoDetails(BuildContext context,bool usuer) {
           height: Get.height*0.64,
           child: Obx(
               () => SetStudantPage(statusApp.status.navegar.value,
-              context: context),
+              id:StudantInfoController.data.id.value ),
   ),
         ),
       )
