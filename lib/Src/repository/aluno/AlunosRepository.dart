@@ -10,11 +10,9 @@ import 'package:cefops/Src/controller/requeriment_controller.dart';
 import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
 import 'package:cefops/Src/model/aluno/aluno_model.dart';
 import 'package:cefops/Src/model/aluno/one_studant_model.dart';
-import 'package:cefops/Src/views/studantDetails/controller/controller_studantDetails.dart';
+import 'package:cefops/Src/views/adm/studantDetails/controller/controller_studantDetails.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/status/http_status.dart';
 import 'package:http/http.dart' as http;
-import 'package:dio/dio.dart';
 
 import "dart:developer" as developer;
 
