@@ -67,7 +67,7 @@ class NewRequerimentFromStudant extends GetView<HomeEmployesController> {
                        data.id,
                        controller1.id.value,
                        controller1.Fullname.value,
-                       "aberto pelo app");
+                       "aberto pelo app",data.valor);
                    if(data.name=="Comprovante De Matrícula"){
                      await ComprovMatricula();
 

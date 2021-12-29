@@ -48,12 +48,14 @@ Future<List<RequerimentModel>> GetAllRequeriment()async{
 }
 
 Future CreateRequeriment(int requerimentID,String alunoID,String nomeAluno,
-    String observacao,
+    String observacao,double valor,
 
     ) async {
   Get.find<HomeEmployesController>().updating.value=true;
   isAluno();
   final  data = new DateTime.now().toLocal() ;
+  final String status;
+
 
   var dataFormat = new DateFormat("yMMddhhmms");
   var protocolo=dataFormat.format(data);

@@ -6,8 +6,8 @@ import 'package:cefops/Src/repository/adm/RequerimentsRepository.dart';
 class RequerimentService{
 
   Future<dynamic> CreateRequerime(int requerimentID,String alunoID,String nomeAluno,
-      String observacao)async{
-    return await CreateRequeriment(requerimentID, alunoID, nomeAluno, observacao);
+      String observacao,double valor)async{
+    return await CreateRequeriment(requerimentID, alunoID, nomeAluno, observacao,valor);
 
   }
   Future<List<RequerimentModel>> GetRequerimentsById(String id)async{
