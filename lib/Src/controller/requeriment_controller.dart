@@ -11,6 +11,7 @@ class RequerimentController extends GetxController{
   var observertion="".obs;
   var statusCeate="".obs;
   var protocolo="".obs;
+  RxDouble valor=0.0.obs;
 
 
 

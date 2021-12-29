@@ -10,6 +10,7 @@ class RequerimentTypeController extends GetxController{
   var selectedType="".obs;
   var selectedGroupe="Secretaria".obs;
   var groupsFiltered=[].obs;
+  RxDouble valor=0.0.obs;
   
   List<String> groups=[];
   List<dynamic> type=[];
