@@ -121,7 +121,8 @@ class EmployeesPage extends GetView<HomeEmployesController> {
                             context: context,
                             locale: Locale('pt'),
                             child: SfCalendar(
-                              view: CalendarView.month,
+                              view: CalendarView.week,
+                              dataSource:MeetingDataSource(_getAppointments()) ,
                             ),
                           ),
                         ],
@@ -147,4 +148,26 @@ class EmployeesPage extends GetView<HomeEmployesController> {
       ),
     );
   }
+}
+List<Appointment> _getAppointments(){
+  List<Appointment> meetings=<Appointment>[];
+  final DateTime today=DateTime.now();
+  final DateTime  startTime=DateTime(today.year,today.month,today.day,8,0,0);
+  final endTime=startTime.add(const Duration(hours: 12));
+
+  meetings.add(Appointment(startTime: startTime, endTime: endTime,
+    subject: "Teste",
+    color: AppColors.orange
+  ));
+  return meetings;
+  
+
+
+}
+
+class MeetingDataSource extends CalendarDataSource{
+  MeetingDataSource(List<Appointment> source){
+    appointments=source;
+  }
+
 }
