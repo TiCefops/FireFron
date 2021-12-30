@@ -1,6 +1,7 @@
 
-import 'package:cefops/Src/views/adm/financeiro/interno/controller/new_finance_controller.dart';
-import 'package:cefops/Src/views/adm/financeiro/interno/widgets/widget_routes_pages.dart';
+
+import 'package:cefops/Src/views/adm/finances/interno/controller/new_finance_controller.dart';
+import 'package:cefops/Src/views/adm/finances/interno/widgets/widget_routes_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

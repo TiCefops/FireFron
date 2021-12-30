@@ -1,4 +1,4 @@
-import 'package:cefops/Src/views/adm/financeiro/interno/widgets/widget_dropdown_entity.dart';
+import 'package:cefops/Src/views/adm/finances/interno/widgets/widget_dropdown_entity.dart';
 import 'package:cefops/Src/widgets/widget_FormsForAll.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,7 +17,7 @@ class NewFinance extends StatelessWidget {
         children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
+            children: <Widget> [
               Container(
                   width: Get.width / 6,
                   child: FormsForAll(
