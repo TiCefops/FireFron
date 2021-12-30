@@ -1,8 +1,8 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/model/adm/requeriment_model.dart';
-import 'package:cefops/Src/repository/adm/RequerimentsRepository.dart';
-import 'package:cefops/Src/services/requeriment_service.dart';
+import 'package:cefops/Src/repository/adm/requeriment_repository.dart';
+import 'package:cefops/Src/services/adm/requeriment/requeriment_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
@@ -38,7 +38,7 @@ class MyRequeriments extends StatelessWidget {
             height: GetPlatform.isMobile ? Get.height * 0.8 : Get.height * 0.82,
             width: GetPlatform.isMobile ? Get.width * 0.9 : Get.width * 0.60,
             child: FutureBuilder(
-                future: _service.GetRequerimentsById(id),
+                future: _service.getRequerimentsById(id),
                 builder: (BuildContext context,
                     AsyncSnapshot<List<RequerimentModel>> snapshot) {
                   if (snapshot.hasData) {

@@ -4,21 +4,22 @@ import 'package:cefops/Src/controller/list_studant_controller.dart';
 import 'package:cefops/Src/controller/studants/studant_all_info_controller.dart';
 import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
 import 'package:cefops/Src/model/aluno/aluno_model.dart';
-import 'package:cefops/Src/repository/aluno/AlunosRepository.dart';
+import 'package:cefops/Src/services/adm/studant_service.dart';
 import 'package:cefops/Src/views/adm/studantDetails/controller/controller_studantDetails.dart';
 import 'package:cefops/Src/views/adm/studantDetails/controller/documents_controller.dart';
 import 'package:cefops/Src/views/adm/studantDetails/pages/page_studant_details-menu.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'GestaoEscola/Alunos/widget_dropmenu_for_search.dart';
-
+///
 class GetStudants extends GetView<ListStudantController> {
   const GetStudants({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var controllerViewer = ListStudantController.data;
-    var setinfos = StudantInfoController.data;
+    ListStudantController controllerViewer = ListStudantController.data;
+    StudantInfoController setinfos = StudantInfoController.data;
+    StudantService _service=StudantService();
     return Scaffold(
       body: Column(
         children: <Widget>[
@@ -51,7 +52,7 @@ class GetStudants extends GetView<ListStudantController> {
                       child: Container(
                         width: Get.width * 0.3,
                         child: TextFormField(
-                          onChanged: (newVal) {
+                          onChanged: (String newVal) {
                             controllerViewer.searchData.value = newVal;
 
                             ;
@@ -311,7 +312,7 @@ class GetStudants extends GetView<ListStudantController> {
                     width: Get.width,
                     height: Get.height * 0.80,
                     child: FutureBuilder(
-                        future: GetAllAlunos(),
+                        future: _service.getAllStudats(),
                         builder: (BuildContext context,
                             AsyncSnapshot<StudantModel> snapshot) {
                           if (snapshot.hasData) {
@@ -366,7 +367,7 @@ class GetStudants extends GetView<ListStudantController> {
                                                     ),
                                                     onPressed: () {
                                                       // infos.setInfos(data[Index],Index);
-
+                                                      StudantInfoController.data.isFromPage.value=true;
                                                       String genero;
 
                                                       if (data[Index].genero !=
@@ -410,7 +411,7 @@ class GetStudants extends GetView<ListStudantController> {
                                                           .getAndress();
 
                                                       AlunoDetails(
-                                                          context, true);
+                                                          context);
                                                     })),
                                             TextButton(
                                                 child: Text("Suspender",
@@ -451,7 +452,8 @@ class GetStudants extends GetView<ListStudantController> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          AlunoDetails(context, false);
+          AlunoDetails(context);
+          StudantInfoController.data.isFromPage.value=false;
         },
       ),
     );

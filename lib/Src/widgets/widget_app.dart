@@ -1,10 +1,8 @@
 import 'package:cefops/Src/views/Security/page_login.dart';
-import 'package:cefops/Src/views/adm/financeiro/interno/page_internal_finance.dart';
-import 'package:cefops/Src/views/adm/page_home_employes.dart';
-import 'package:cefops/Src/views/adm/secretaria/page_list_studants.dart';
 import 'package:cefops/Src/views/adm/secretaria/page_update_news.dart';
 import 'package:cefops/Src/views/Security/page_login_android.dart';
-import 'package:cefops/Src/views/adm/studantDetails/pages/page_studant_requeriment_detail.dart';
+import 'package:cefops/Src/views/adm/shared/page_home_employes.dart';
+import 'package:cefops/Src/views/adm/shared/page_list_studants.dart';
 import 'package:cefops/Src/views/studants/page_socre.dart';
 import 'package:cefops/Src/views/adm/secretaria/page_sigin_studant.dart';
 
@@ -73,9 +71,6 @@ class AppWidget extends StatelessWidget {
         GetPage(
             name: "/ListAlunos",
             page: ()=> ListUSers()),
-        GetPage(
-            name: "/home",
-            page: ()=> EmployeesPage()),
 
 
 
