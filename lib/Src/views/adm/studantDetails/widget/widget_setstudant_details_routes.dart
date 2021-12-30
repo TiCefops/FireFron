@@ -5,10 +5,10 @@ import 'package:cefops/Src/views/adm/studantDetails/pages/page_user_infos.dart';
 import 'package:cefops/Src/views/studants/requeriment/page_my_requeriment.dart';
 import '../pages/page_forms_studants.dart';
 
-SetStudantDetails(int pos,{required bool fromList1}) {
+SetStudantDetails(int pos) {
   switch (pos) {
     case 0:
-      return FormsStudants(formList: fromList1,) ;
+      return FormsStudants() ;
     case 1:
       return StudantAnddress();
     case 2:
