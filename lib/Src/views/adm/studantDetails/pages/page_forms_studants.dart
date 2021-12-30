@@ -1,4 +1,6 @@
 import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
+import 'package:cefops/Src/services/adm/studant_service.dart';
+import 'package:cefops/Src/views/adm/studantDetails/widget/widget_custom_form.dart';
 import 'package:cefops/Src/views/adm/studantDetails/widget/widget_dropdown_civilState.dart';
 import 'package:cefops/Src/views/adm/studantDetails/widget/widget_dropdown_gender.dart';
 import 'package:cefops/Src/views/adm/studantDetails/widget/widget_dropdown_state.dart';
@@ -11,25 +13,26 @@ class FormsStudants extends StatelessWidget {
   ///
   const FormsStudants({
     Key? key,
-    required bool formList,
   }) : super(key: key);
+
+
 
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
-    final nameController = TextEditingController();
-    final lastNameController = TextEditingController();
-    final telCellController = TextEditingController();
-    final telResController = TextEditingController();
-    final burnDataController = TextEditingController();
-    final emailController = TextEditingController();
-    final nationController = TextEditingController();
-    final cpfController = TextEditingController();
-    var infos = StudantInfoController.data;
+    List<GlobalKey<FormState>> _formKeys = [GlobalKey<FormState>(),
+      GlobalKey<FormState>(), GlobalKey<FormState>(), GlobalKey<FormState>()];
+    final  TextEditingController nameController = TextEditingController();
+    final  lastNameController = TextEditingController();
+    final  TextEditingController telCellController = TextEditingController();
+    final  TextEditingController telResController = TextEditingController();
+    final  TextEditingController burnDataController = TextEditingController();
+    final  TextEditingController emailController = TextEditingController();
+    final  TextEditingController nationController = TextEditingController();
+    final  TextEditingController cpfController = TextEditingController();
+    StudantInfoController infos = StudantInfoController.data;
+    StudantService _service=StudantService();
 
-    return Form(
-      key: _formKey,
-      child: Stack(
+    return Stack(
         children: <Widget>[
           Positioned(
             left: Get.width / 2,
@@ -61,9 +64,10 @@ class FormsStudants extends StatelessWidget {
             ),
           ),
           Column(
-            children: [
+            children: <Widget>[
               Row(
-                children: [
+                children: <Widget>[
+
                   FormStudntDetails(nameController..text = '${infos.name}',
                       "Nome", "Nome do Aluno", "preencha o nome do aluno"),
                   SizedBox(
@@ -105,7 +109,7 @@ class FormsStudants extends StatelessWidget {
                 width: Get.width * 0.01,
               ),
               Row(
-                children: [
+                children: <Widget>[
                   FormStudntDetails(
                       emailController..text = '${infos.email.toString()}',
                       "Email",
@@ -115,26 +119,42 @@ class FormsStudants extends StatelessWidget {
                     width: Get.width * 0.01,
                   ),
                   Container(
-                    width: Get.width * 0.09,
-                    child: FormStudntDetails(
-                        telCellController..text = '${infos.phoneCell}',
-                        "Telefone Celular",
-                        "Telefone do Aluno",
-                        "preencha o Telefone do aluno"),
+                    width: Get.width*0.09,
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(height: Get.height*0.037),
+                        Container(
+                          child: CustomForm(_formKeys[0], 11,
+                              telCellController..text = '${infos.phoneCell}',
+                              "Telefone Celular", "Telefone do Aluno",
+                              "O Telefone não pode ser vazio",
+                              "Telefone Invalido", "O Telefone deve conter 11 digitos", TextInputType.number),
+                        ),
+                      ],
+                    ),
                   ),
                   SizedBox(
                     width: Get.width * 0.01,
                   ),
+
                   Container(
                     width: Get.width * 0.09,
-                    child: FormStudntDetails(
-                        telResController..text = '${infos.phoneHome}',
-                        "Tel Residencial",
-                        "Telefone rescidencial Aluno",
-                        "preencha  a Telefone Residencial"),
+                    child:Column(
+                      children: <Widget>[
+                        SizedBox(height: Get.height*0.037),
+                        Container(
+                          child: CustomForm(_formKeys[1], 10,
+                              telResController..text = '${infos.phoneHome}',
+                              "Tel Residencial", "Telefone rescidencial Aluno",
+                              "O Telefone não pode ser vazio",
+                              "Telefone Invalido", "O Telefone deve conter 10 digitos", TextInputType.number),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
+
               Row(
                 children: <Widget>[
                   Container(
@@ -148,18 +168,23 @@ class FormsStudants extends StatelessWidget {
                   SizedBox(
                     width: Get.width * 0.01,
                   ),
-                  Container(
-                    width: Get.width * 0.09,
-                    child: FormStudntDetails(
-                        cpfController..text = '${infos.cpf.toString()}',
-                        "Cpf",
-                        "Cpf do Aluno",
-                        "preencha  o Cpf"),
+                  Column(
+                    children: <Widget>[
+                      Container(
+                        width: Get.width*0.14,
+                        margin: EdgeInsets.only(top: Get.height*0.03),
+
+                        child: CustomForm(_formKeys[2], 11, cpfController..text="${infos.cpf}", "CPF", "CPF",
+                            "CPF não pode ser vazio", "CPF inválido",
+                            "O CPF deve ter 11 digitos", TextInputType.number),
+                      ),
+                    ],
                   ),
+
                 ],
               ),
               SizedBox(
-                height: Get.height * 0.10,
+                height: Get.height * 0.03,
               ),
               Obx(
                 () {
@@ -175,16 +200,14 @@ class FormsStudants extends StatelessWidget {
                             infos.phoneHome.value = telResController.text;
                             infos.nation.value = nationController.text;
                             infos.cpf.value = cpfController.text;
-                            // print(fromList);
-                            // if(fromList==true){
-                            //
-                            //   infos.loading.value = true;
-                            //
-                            // }else {
-                            //   print("oii");
-                            //   await  infos.singInStudant();
-                            // }
-                            // infos.loading.value = false;
+                            if(infos.isFromPage.value==true){
+                              await _service.updateStudant();
+
+                            }else {
+
+                               await _service.createStudant();
+                             }
+                            infos.loading.value = false;
                           },
                           child: Text("Continuar"));
                 },
@@ -197,7 +220,6 @@ class FormsStudants extends StatelessWidget {
             ],
           )
         ],
-      ),
-    );
+      );
   }
 }
