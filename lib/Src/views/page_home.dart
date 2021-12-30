@@ -1,8 +1,8 @@
 import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
-import 'package:cefops/Src/controller/navigatorController.dart';
-import 'package:cefops/Src/controller/status.dart';
+import 'package:cefops/Src/controller/navigator_controller.dart';
+import 'package:cefops/Src/controller/status_app_controller.dart';
 import 'package:cefops/Src/model/model_publication.dart';
 import 'package:cefops/Src/repository/PostRepository.dart';
 import 'package:cefops/Src/widgets/widget_new_requeriment.dart';

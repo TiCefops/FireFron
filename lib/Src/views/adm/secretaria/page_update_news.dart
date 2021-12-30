@@ -1,7 +1,7 @@
 
 import 'package:cefops/Src/model/model_publication.dart';
 import 'package:cefops/Src/repository/post/putNoticeHomePage.dart';
-import 'package:cefops/Src/widgets/widget_FormsForAll.dart';
+import 'package:cefops/Src/widgets/widget_forms_for_all.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 

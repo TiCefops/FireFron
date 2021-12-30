@@ -5,7 +5,7 @@ import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/urls.dart';
 import 'package:cefops/Src/controller/home_emplooyes_controller.dart';
 import 'package:cefops/Src/controller/requeriment_controller.dart';
-import 'package:cefops/Src/controller/status.dart';
+import 'package:cefops/Src/controller/status_app_controller.dart';
 import 'package:cefops/Src/model/adm/requeriment_model.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;

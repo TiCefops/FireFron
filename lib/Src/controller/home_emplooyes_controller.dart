@@ -1,5 +1,5 @@
 
-import 'package:cefops/Src/controller/status.dart';
+import 'package:cefops/Src/controller/status_app_controller.dart';
 import 'package:cefops/Src/widgets/widget_get_requeriments.dart';
 import 'package:get/get.dart';
 ///controlador da pagina inicial dos funcionarios

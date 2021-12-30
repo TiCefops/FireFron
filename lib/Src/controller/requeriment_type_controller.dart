@@ -1,15 +1,15 @@
 import 'package:get/get.dart';
 import 'dart:developer' as developer;
-
+///controla a tela de requerimentos para mudar status
 class RequerimentTypeController extends GetxController{
   static RequerimentTypeController reqType=RequerimentTypeController();
-  var loading=false.obs;
+  RxBool loading=false.obs;
   var loadingTypes=false.obs;
-  var nome="".obs;
-  var id=0.obs;
-  var selectedType="".obs;
-  var selectedGroupe="Secretaria".obs;
-  var groupsFiltered=[].obs;
+  RxString nome="".obs;
+  RxInt id=0.obs;
+  RxString selectedType="".obs;
+  RxString selectedGroupe="Secretaria".obs;
+  RxList groupsFiltered=[].obs;
   RxDouble valor=0.0.obs;
   
   List<String> groups=[];

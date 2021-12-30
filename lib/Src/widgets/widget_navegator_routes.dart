@@ -10,7 +10,7 @@ import 'package:cefops/Src/views/adm/secretaria/page_update_news.dart';
 import 'package:cefops/Src/views/adm/shared/page_home_employes.dart';
 import 'package:cefops/Src/views/adm/shared/page_list_studants.dart';
 import 'package:cefops/Src/views/adm/shared/page_requeriment_status.dart';
-import 'package:cefops/Src/views/page_Home.dart';
+import 'package:cefops/Src/views/page_home.dart';
 import 'package:cefops/Src/views/studants/page_course.dart';
 import 'package:cefops/Src/views/studants/requeriment/page_requeriment_menu_types.dart';
 import 'package:cefops/Src/views/studants/page_socre.dart';

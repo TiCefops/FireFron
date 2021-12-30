@@ -5,9 +5,9 @@ import 'package:cefops/Src/controller/studants/studant_all_info_controller.dart'
 import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
 import 'package:cefops/Src/model/aluno/aluno_model.dart';
 import 'package:cefops/Src/services/adm/studant_service.dart';
-import 'package:cefops/Src/views/adm/studantDetails/controller/controller_studantDetails.dart';
+import 'package:cefops/Src/views/adm/studantDetails/controller/studant_details_controller.dart';
 import 'package:cefops/Src/views/adm/studantDetails/controller/documents_controller.dart';
-import 'package:cefops/Src/views/adm/studantDetails/pages/page_studant_details-menu.dart';
+import 'package:cefops/Src/views/adm/studantDetails/pages/page_studant_details_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'GestaoEscola/Alunos/widget_dropmenu_for_search.dart';

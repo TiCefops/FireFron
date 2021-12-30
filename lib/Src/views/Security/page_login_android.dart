@@ -1,15 +1,15 @@
 import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
 import 'package:cefops/Shared/Security/Repository/AuthRepository.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
-import 'package:cefops/Src/controller/status.dart';
+import 'package:cefops/Src/controller/status_app_controller.dart';
 import 'package:cefops/Src/views/Security/page_login.dart';
-import 'package:cefops/Src/widgets/widget_FormsForLoginPage.dart';
-import 'package:cefops/Src/widgets/widget_Navegation.dart';
+import 'package:cefops/Src/widgets/widget_forms_for_login_page.dart';
+import 'package:cefops/Src/widgets/widget_navegation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../res.dart';
-import 'Singup.dart';
+import 'page_singup.dart';
 
 final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 final TextEditingController UserController = TextEditingController();

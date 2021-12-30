@@ -2,21 +2,21 @@
 
 import 'package:cefops/Src/model/cep_model.dart';
 import 'package:get/get.dart';
-
+///controlador do cep para adicionar automatico no cadastro
 class cepControll extends GetxController{
   static cepControll endereco= cepControll();
 
-  var cep="".obs;
-  var logradouro="".obs;
-  var complemento="".obs;
-  var bairro="".obs;
-  var localidade="".obs;
-  var uf="".obs;
-  var ibge="".obs;
-  var gia="".obs;
-  var ddd="".obs;
-  var siafi="".obs;
-  var estado="".obs;
+  RxString cep="".obs;
+  RxString logradouro="".obs;
+  RxString complemento="".obs;
+  RxString bairro="".obs;
+  RxString localidade="".obs;
+  RxString uf="".obs;
+  RxString ibge="".obs;
+  RxString gia="".obs;
+  RxString ddd="".obs;
+  RxString siafi="".obs;
+  RxString estado="".obs;
 
 
 

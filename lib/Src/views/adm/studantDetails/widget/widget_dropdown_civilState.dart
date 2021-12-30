@@ -1,6 +1,6 @@
 
 import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
-import 'package:cefops/Src/views/adm/studantDetails/controller/controller_studantDetails.dart';
+import 'package:cefops/Src/views/adm/studantDetails/controller/studant_details_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

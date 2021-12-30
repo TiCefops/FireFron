@@ -1,6 +1,6 @@
 
-import 'package:cefops/Src/controller/status.dart';
-import 'package:cefops/Src/widgets/widget_Navegation.dart';
+import 'package:cefops/Src/controller/status_app_controller.dart';
+import 'package:cefops/Src/widgets/widget_navegation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

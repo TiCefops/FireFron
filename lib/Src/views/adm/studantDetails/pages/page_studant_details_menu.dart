@@ -6,7 +6,7 @@ import 'package:cefops/Src/views/adm/studantDetails/widget/widget_studant_infos_
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:cefops/Src/controller/status.dart';
+import 'package:cefops/Src/controller/status_app_controller.dart';
 
 ///
 AlunoDetails(BuildContext context) {

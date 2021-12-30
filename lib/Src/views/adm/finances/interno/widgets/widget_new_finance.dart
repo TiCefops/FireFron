@@ -1,5 +1,5 @@
 import 'package:cefops/Src/views/adm/finances/interno/widgets/widget_dropdown_entity.dart';
-import 'package:cefops/Src/widgets/widget_FormsForAll.dart';
+import 'package:cefops/Src/widgets/widget_forms_for_all.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

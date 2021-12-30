@@ -7,7 +7,7 @@ import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/Security/Model/SignUpModel.dart';
 import 'package:cefops/Shared/Security/Model/login_model.dart';
 import 'package:cefops/Shared/urls.dart';
-import 'package:cefops/Src/controller/status.dart';
+import 'package:cefops/Src/controller/status_app_controller.dart';
 import 'package:cefops/Shared/Security/Model/error_model.dart';
 import 'package:http/http.dart' as http;
 import "dart:developer" as developer;

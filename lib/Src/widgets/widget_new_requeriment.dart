@@ -1,7 +1,7 @@
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/home_emplooyes_controller.dart';
 import 'package:cefops/Src/controller/requeriment_controller.dart';
-import 'package:cefops/Src/controller/requerimentTypeController.dart';
+import 'package:cefops/Src/controller/requeriment_type_controller.dart';
 import 'package:cefops/Src/services/adm/requeriment/requeriment_service.dart';
 import 'package:cefops/Src/services/adm/requeriment/requeriment_types_service.dart';
 import 'package:cefops/Src/services/adm/studant_service.dart';

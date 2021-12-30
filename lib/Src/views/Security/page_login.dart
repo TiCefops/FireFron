@@ -1,10 +1,10 @@
 import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
 import 'package:cefops/Shared/Security/Services/auth_service.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
-import 'package:cefops/Src/controller/status.dart';
-import 'package:cefops/Src/views/Security/Singup.dart';
-import 'package:cefops/Src/widgets/widget_FormsForLoginPage.dart';
-import 'package:cefops/Src/widgets/widget_Navegation.dart';
+import 'package:cefops/Src/controller/status_app_controller.dart';
+import 'package:cefops/Src/views/Security/page_singup.dart';
+import 'package:cefops/Src/widgets/widget_forms_for_login_page.dart';
+import 'package:cefops/Src/widgets/widget_navegation.dart';
 import 'package:cefops/res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

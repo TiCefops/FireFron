@@ -1,7 +1,7 @@
 
 import 'package:cefops/Shared/themes/app_colors.dart';
-import 'package:cefops/Src/controller/navigatorController.dart';
-import 'package:cefops/Src/controller/status.dart';
+import 'package:cefops/Src/controller/navigator_controller.dart';
+import 'package:cefops/Src/controller/status_app_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:universal_html/js.dart';
 

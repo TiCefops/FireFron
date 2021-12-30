@@ -1,7 +1,6 @@
-import 'package:cefops/Shared/Security/Controller/userController.dart';
-import 'package:cefops/Src/controller/status.dart';
+import 'package:cefops/Src/controller/status_app_controller.dart';
 import 'package:flutter/material.dart';
-
+///detecta o menu
 onSelectItem(context) {
   statusApp.status.selectedIndex.value;
   Navigator.of(context).pop();

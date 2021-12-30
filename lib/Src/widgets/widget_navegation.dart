@@ -1,10 +1,10 @@
 import 'dart:io';
 import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
-import 'package:cefops/Src/controller/status.dart';
+import 'package:cefops/Src/controller/status_app_controller.dart';
 import 'package:cefops/Src/model/model_publication.dart';
 
-import 'package:cefops/Src/widgets/widget_NavegatorRoutes.dart';
+import 'package:cefops/Src/widgets/widget_navegator_routes.dart';
 
 import 'package:cefops/res.dart';
 import 'package:flutter/material.dart';

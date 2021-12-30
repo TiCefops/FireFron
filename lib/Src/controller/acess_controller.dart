@@ -2,7 +2,7 @@
 
 
 import 'package:get/get.dart';
-
+///controla os dados do login para servir a aplição
 class AcessControll extends GetxController{
 
   var role=[].obs;

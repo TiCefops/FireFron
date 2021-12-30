@@ -1,6 +1,6 @@
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/repository/aluno/documentos/documents_repository.dart';
-import 'package:cefops/Src/views/adm/studantDetails/controller/controller_studantDetails.dart';
+import 'package:cefops/Src/views/adm/studantDetails/controller/studant_details_controller.dart';
 import 'package:cefops/Src/views/adm/studantDetails/controller/documents_controller.dart';
 import 'package:cefops/Src/views/adm/studantDetails/widget/widget_custom_form.dart';
 import 'package:cefops/Src/views/adm/studantDetails/widget/widget_form_studantdetails.dart';

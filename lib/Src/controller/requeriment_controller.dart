@@ -1,14 +1,15 @@
 import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:get/get.dart';
+///controla os dados da tela de cadastro de requerimentos do colaborador
 class RequerimentController extends GetxController{
   static RequerimentController req=RequerimentController();
-  var idStudant="".obs;
-  var tipoRequeriment=0.obs;
-  var StudantFullName="".obs;
-  var linkPhoto="https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/64/000000/external-photo-appliances-flatart-icons-lineal-color-flatarticons.png".obs;
-  var observertion="".obs;
-  var statusCeate="".obs;
-  var protocolo="".obs;
+  RxString idStudant="".obs;
+  RxInt tipoRequeriment=0.obs;
+  RxString StudantFullName="".obs;
+  RxString linkPhoto="https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/64/000000/external-photo-appliances-flatart-icons-lineal-color-flatarticons.png".obs;
+  RxString observertion="".obs;
+  RxString statusCeate="".obs;
+  RxString protocolo="".obs;
   RxDouble valor=0.0.obs;
 
 

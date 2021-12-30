@@ -5,7 +5,7 @@ import 'package:cefops/Shared/urls.dart';
 import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
 import 'dart:convert';
 import 'package:cefops/Src/model/aluno/documentos/document_model.dart';
-import 'package:cefops/Src/views/adm/studantDetails/controller/controller_studantDetails.dart';
+import 'package:cefops/Src/views/adm/studantDetails/controller/studant_details_controller.dart';
 import 'package:cefops/Src/views/adm/studantDetails/controller/documents_controller.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';

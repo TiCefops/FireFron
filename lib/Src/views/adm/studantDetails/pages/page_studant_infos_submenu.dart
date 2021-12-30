@@ -1,5 +1,5 @@
 
-import 'package:cefops/Src/views/adm/studantDetails/controller/controller_studantDetails.dart';
+import 'package:cefops/Src/views/adm/studantDetails/controller/studant_details_controller.dart';
 import 'package:cefops/Src/views/adm/studantDetails/widget/widget_setstudant_details_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
 import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/urls.dart';
-import 'package:cefops/Src/controller/requerimentTypeController.dart';
+import 'package:cefops/Src/controller/requeriment_type_controller.dart';
 import 'package:cefops/Src/model/adm/requeriment_type_model.dart';
 import 'package:http/http.dart' as http;
 

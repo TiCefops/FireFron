@@ -1,5 +1,5 @@
 
-import 'package:cefops/Src/controller/requerimentTypeController.dart';
+import 'package:cefops/Src/controller/requeriment_type_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

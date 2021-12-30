@@ -1,5 +1,5 @@
 import 'package:cefops/Src/module/financeiro/interno/controller/new_finance_controller.dart';
-import 'package:cefops/Src/widgets/widget_FormsForAll.dart';
+import 'package:cefops/Src/widgets/widget_forms_for_all.dart';
 import 'package:get/get.dart';
 
 NewFinanceWidget(String nome, String descri, String dataPagamento,

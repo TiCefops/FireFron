@@ -2,7 +2,7 @@ import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/home_emplooyes_controller.dart';
 import 'package:cefops/Src/controller/requeriment_controller.dart';
-import 'package:cefops/Src/controller/status.dart';
+import 'package:cefops/Src/controller/status_app_controller.dart';
 import 'package:cefops/Src/widgets/widget_new_requeriment.dart';
 import 'package:cefops/Src/widgets/widget_get_requeriments.dart';
 import 'package:flutter/cupertino.dart';
