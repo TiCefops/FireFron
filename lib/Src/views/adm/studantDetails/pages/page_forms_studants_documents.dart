@@ -2,6 +2,7 @@ import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/repository/aluno/documentos/documents_repository.dart';
 import 'package:cefops/Src/views/adm/studantDetails/controller/controller_studantDetails.dart';
 import 'package:cefops/Src/views/adm/studantDetails/controller/documents_controller.dart';
+import 'package:cefops/Src/views/adm/studantDetails/widget/widget_custom_form.dart';
 import 'package:cefops/Src/views/adm/studantDetails/widget/widget_form_studantdetails.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -45,7 +46,7 @@ class FormsStudantsDocuments extends StatelessWidget {
                   "CPF",
                   "Insira o CPF",
                   "O  CPF não pode ser vazio",
-                  "CPF Invalido","O CPF deve Conter 11 Digitos",
+                  "CPF inválido","O CPF deve Conter 11 Digitos",
                   TextInputType.number
               ),
               SizedBox(
@@ -60,7 +61,7 @@ class FormsStudantsDocuments extends StatelessWidget {
                       "Titulo",
                       "Insira o Titulo",
                       "O Titulo não pode ser vazio",
-                      "Titulo Invalido","O Titulo deve Conter 12 Digitos",
+                      "Titulo inválido","O Titulo deve Conter 12 Digitos",
                       TextInputType.number),
                 );
               }),
@@ -73,7 +74,7 @@ class FormsStudantsDocuments extends StatelessWidget {
                     child: CustomForm(_formKeys[2], 10,
                       rgController..text = '${docController.rg}',
                       "RG", "Insira o RG", "O RG não pode Ser vazio",
-                      "RG Invalido", "O RG deve conter 10 Digitos",
+                      "RG inválido", "O RG deve conter 10 Digitos",
                         TextInputType.number)
                   );
                 }),
@@ -203,59 +204,3 @@ class FormsStudantsDocuments extends StatelessWidget {
   }
 }
 
-/// formulario usado
-Widget CustomForm(
-    GlobalKey<FormState> _formKey, int max, TextEditingController controller,
-    String text, String hintText, String vazio,
-    String error,String errorMenor,TextInputType input) {
-  return Container(
-    height: Get.height * 0.1,
-    width: Get.width * 0.2,
-    alignment: Alignment.centerLeft,
-    child: Form(
-      key: _formKey,
-      child: TextFormField(
-        keyboardType: input,
-        maxLength: max,
-        onChanged: (String value) {
-            if(value.length <=max){
-              _formKey.currentState!.validate();
-          }
-        },
-        controller: controller,
-        style: TextStyle(
-          color: Colors.black,
-        ),
-        decoration: InputDecoration(
-            fillColor: Colors.black,
-            labelText: text,
-            labelStyle: TextStyles.titleRegular,
-            hintText: hintText,
-            hintStyle: TextStyles.input,
-            focusedBorder: OutlineInputBorder()),
-        validator: (String? value) {
-          if (value == null || value.isEmpty) {
-            return vazio;
-          }
-          if(value.length < max){
-            return errorMenor;
-          }else{
-            if (text == "CPF") {
-             if(value.isNumericOnly){
-               if (value.isCpf == false) {
-                 return error;
-               }
-             }else{
-               return "O CPF deve Conter apenas Números";
-             }
-            }
-          }
-
-
-          return null;
-        },
-        maxLines: 1,
-      ),
-    ),
-  );
-}
