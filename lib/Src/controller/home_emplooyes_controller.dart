@@ -1,6 +1,6 @@
 
 import 'package:cefops/Src/controller/status.dart';
-import 'package:cefops/Src/widgets/widget_GetRequeriments.dart';
+import 'package:cefops/Src/widgets/widget_get_requeriments.dart';
 import 'package:get/get.dart';
 ///controlador da pagina inicial dos funcionarios
 class HomeEmployesController extends GetxController{
