@@ -2,8 +2,7 @@ import 'dart:convert';
 import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
 import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/Security/Model/error_model.dart';
-import 'package:cefops/Shared/Security/Repository/AuthRepository.dart';
-import 'package:cefops/Shared/Security/Services/Logar.dart';
+
 import 'package:cefops/Shared/urls.dart';
 import 'package:cefops/Src/controller/list_studant_controller.dart';
 import 'package:cefops/Src/controller/requeriment_controller.dart';
@@ -13,26 +12,26 @@ import 'package:cefops/Src/model/aluno/one_studant_model.dart';
 import 'package:cefops/Src/views/adm/studantDetails/controller/controller_studantDetails.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+///
+class StudantRepository {
+///
+  Future<StudantModel> getAllStudants() async {
+    ListStudantController controller = ListStudantController.data;
+    String urlPadrao = "${urls.app}/alunos/?page=${controller
+        .newPage}&limit=${controller.newTotalElement}&direction=${controller
+        .newDirection}";
+    String urlSearch = "${urls.app}/alunos/buscarnome/${controller
+        .searchData}/?page=${controller.newPage}&limit=${controller
+        .newTotalElement}&direction=${controller.newDirection}";
+    String urlCpf = "${urls.app}/alunos/${controller.searchData}";
 
-import "dart:developer" as developer;
-
-
-
-  Future<StudantModel> GetAllAlunos() async {
-
-    ListStudantController controller=ListStudantController.data;
-    String urlPadrao="${urls.app}/alunos/?page=${controller.newPage}&limit=${controller.newTotalElement}&direction=${controller.newDirection}";
-    String urlSearch="${urls.app}/alunos/buscarnome/${controller.searchData}/?page=${controller.newPage}&limit=${controller.newTotalElement}&direction=${controller.newDirection}";
-    String urlCpf="${urls.app}/alunos/${controller.searchData}";
-
-    String urlReturn(){
-      if(controller.searchData.value.isNotEmpty){
+    String urlReturn() {
+      if (controller.searchData.value.isNotEmpty) {
         return urlSearch;
       }
       else {
         return urlPadrao;
       }
-
     }
 
 
@@ -48,17 +47,14 @@ import "dart:developer" as developer;
     var decodeData = jsonDecode(data);
 
 
-
     if (response.statusCode == 200) {
       ErroController.error.ok.value = true;
-      Map<String,dynamic> jsonResponse = decodeData;
-      var model=StudantModel.fromJson(jsonResponse);
-      controller.number.value=model.number;
-      controller.pageSize.value=model.size;
-      controller.totalPages.value=model.totalPages;
-      ListStudantController.data.totalElements.value=model.totalElements;
-
-
+      Map<String, dynamic> jsonResponse = decodeData;
+      var model = StudantModel.fromJson(jsonResponse);
+      controller.number.value = model.number;
+      controller.pageSize.value = model.size;
+      controller.totalPages.value = model.totalPages;
+      ListStudantController.data.totalElements.value = model.totalElements;
 
 
       return model;
@@ -66,8 +62,9 @@ import "dart:developer" as developer;
 
     if (response.statusCode == 500) {
       ErroController.error.ok.value = false;
+      throw Exception("");
 
-      return Logar();
+
     }
     else {
       // If the server did not return a 200 OK response,
@@ -78,58 +75,61 @@ import "dart:developer" as developer;
     }
   }
 
-  Future<OneStudantModel> GetStudantById(id) async {
-  final response = await http.get(
-    Uri.parse("${urls.app}/alunos/$id"),
-    headers: <String, String>{
-      'Content-Type': 'application/json; charset=UTF-8',
-      'Authorization': 'Bearer ${UserController.user.token}',
+  Future<OneStudantModel> getStudantById(id) async {
+    final response = await http.get(
+      Uri.parse("${urls.app}/alunos/$id"),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': 'Bearer ${UserController.user.token}',
 
-    },
-  );
-  final data = utf8.decode(response.bodyBytes);
-  var decodeData = jsonDecode(data);
+      },
+    );
+    final data = utf8.decode(response.bodyBytes);
+    var decodeData = jsonDecode(data);
 
-  if (response.statusCode == 200) {
-    ErroController.error.ok.value = true;
+    if (response.statusCode == 200) {
+      ErroController.error.ok.value = true;
 
-    var jsonResponse = decodeData;
-    var data = OneStudantModel.fromJson(jsonResponse);
-    String Fullname=data.name! + " " + data.lastName!;
-    RequerimentController.req.StudantFullName.value =Fullname;
+      var jsonResponse = decodeData;
+      var data = OneStudantModel.fromJson(jsonResponse);
+      String Fullname = data.name! + " " + data.lastName!;
+      RequerimentController.req.StudantFullName.value = Fullname;
 
-    RequerimentController.req.linkPhoto.value = data.photo.toString();
+      RequerimentController.req.linkPhoto.value = data.photo.toString();
 
-    return data;
+      return data;
+    }
+
+
+    if (response.statusCode == 500) {
+      ErroController.error.ok.value = false;
+    throw Exception("Error");
+
+
+    }
+    else {
+      final data1 = utf8.decode(response.bodyBytes);
+
+      var error = errorModelFromJson(data1);
+      ErroController.error.tipoError.value = error.message;
+      print(ErroController.error.tipoError.value);
+
+      Get.showSnackbar(GetBar(message: ErroController.error.tipoError.value,
+        duration: Duration(seconds: 3),
+      ));
+      ErroController.error.ok.value = false;
+      throw Exception('error');
+    }
   }
 
+  Future<String> createStudant(String name, String lastName, String Cpf,
+      String email, String dataNaciento, String telefone,
+      String telefoneCelular,
+      String genero, String estadoCivil, String nacionalidade,
+      bool ativo) async {
+    StudantInfoController.data.loading.value = true;
 
-  if (response.statusCode == 500) {
-    ErroController.error.ok.value = false;
-
-    return Logar();
-  }
-  else {
-    final data1 = utf8.decode(response.bodyBytes);
-
-    var error= errorModelFromJson(data1);
-    ErroController.error.tipoError.value=error.message;
-    print(ErroController.error.tipoError.value);
-
-    Get.showSnackbar(GetBar(message:ErroController.error.tipoError.value,
-      duration: Duration(seconds: 3),
-    ));
-    ErroController.error.ok.value = false;
-    throw Exception('error');
-  }
-}
-
-  Future<String> CreateStudant(String name, String lastName,String Cpf,
-      String email, String dataNaciento,String telefone, String telefoneCelular,
-      String genero,String estadoCivil,String nacionalidade,bool ativo) async {
-      StudantInfoController.data.loading.value=true;
-
-      final response = await http.post(
+    final response = await http.post(
       Uri.parse('${urls.app}/alunos'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
@@ -137,7 +137,7 @@ import "dart:developer" as developer;
       },
       body: jsonEncode(<String, dynamic>{
         "id": "$Cpf",
-        "cpf":"$Cpf",
+        "cpf": "$Cpf",
         "name": "${name.toUpperCase()}",
         "lastName": "${lastName.toUpperCase()}",
         "dataNanscimento": "$dataNaciento",
@@ -149,74 +149,70 @@ import "dart:developer" as developer;
         "genero": "$genero",
         "estadoCivil": "$estadoCivil",
         "nacionalidade": "${nacionalidade.toUpperCase()}"
-
       }),
     );
-      final data;
-      var decodeData;
-      if(response.body.isNotEmpty){
-        data = utf8.decode(response.bodyBytes);
-        decodeData= jsonDecode(data);
-      }
+    final data;
+    var decodeData;
+    if (response.body.isNotEmpty) {
+      data = utf8.decode(response.bodyBytes);
+      decodeData = jsonDecode(data);
+    }
 
 
-
-
-    try{
+    try {
       if (response.statusCode == 201) {
-        StudantInfoController.data.loading.value=false;
+        StudantInfoController.data.loading.value = false;
 
-        await SingUpNewUser(email: email, password: "Cefops123",
-            fristName: name,
-            lastName: lastName, alunoId: Cpf,
-            cpf: Cpf);
-        StudantInfoController.data.status.value="Cadastrado Com Sucesso";
-        Future.delayed(Duration(seconds: 3),(){
-          StudandDetailsController.details.navegar.value=1;      });
+        StudantInfoController.data.status.value = "Cadastrado Com Sucesso";
+        Future.delayed(Duration(seconds: 3), () {
+          StudandDetailsController.details.navegar.value = 1;
+          StudantInfoController.data.status.value = "";
+        });
 
 
-        return "Criado" ;
+        return "Criado";
       } else if (response.statusCode == 409) {
-        StudantInfoController.data.loading.value=false;
-        StudantInfoController.data.status.value="Usuário já Cadastrado";
-
-
+        StudantInfoController.data.loading.value = false;
+        StudantInfoController.data.status.value = "Usuário já Cadastrado";
+        Future.delayed(const Duration(seconds: 3),(){
+          StudantInfoController.data.status.value = "";
+        });
         throw Exception('conflito de usuario');
+
       }
       else if (response.statusCode == 400) {
-        StudantInfoController.data.loading.value=false;
-        StudantInfoController.data.status.value="Erro desconhecido";
+        StudantInfoController.data.loading.value = false;
+        StudantInfoController.data.status.value = "Erro desconhecido";
 
         throw Exception('falha na requisição');
-      } else if(response.statusCode==500){
-        var error=decodeData;
-        var erroMapper=ErrorModel.fromJson(error);
-        if(erroMapper.message=="Aluno já cadastrado"){
-          StudantInfoController.data.loading.value=false;
-          StudantInfoController.data.status.value="Usuário já Cadastrado";
+      } else if (response.statusCode == 500) {
+        var error = decodeData;
+        var erroMapper = ErrorModel.fromJson(error);
+        if (erroMapper.message == "Aluno já cadastrado") {
+          StudantInfoController.data.loading.value = false;
+          StudantInfoController.data.status.value = "Usuário já Cadastrado";
           return "Usuário já Cadastrado";
-        }else if(erroMapper.message.contains("SQL")){
-          StudantInfoController.data.loading.value=false;
-          StudantInfoController.data.status.value="Error verifique os dados";
-          return"Error verifique os dados";
-
+        } else if (erroMapper.message.contains("SQL")) {
+          StudantInfoController.data.loading.value = false;
+          StudantInfoController.data.status.value = "Error verifique os dados";
+          return "Error verifique os dados";
         }
-        StudantInfoController.data.loading.value=false;
-        StudantInfoController.data.status.value="Error Desconhecido";
+        StudantInfoController.data.loading.value = false;
+        StudantInfoController.data.status.value = "Error Desconhecido";
         return "Error";
       }
 
       else {
-
-        StudantInfoController.data.loading.value=false;
-        StudantInfoController.data.status.value="Erro desconhecido";
+        StudantInfoController.data.loading.value = false;
+        StudantInfoController.data.status.value = "Erro desconhecido";
 
         throw Exception("erro ao criar usuario");
       }
-    }catch(e,s){
-      StudantInfoController.data.loading.value=false;
-      StudantInfoController.data.status.value="Erro desconhecido";
+    } catch (e) {
+      StudantInfoController.data.loading.value = false;
+      StudantInfoController.data.status.value = "Erro desconhecido";
 
       return "Error";
     }
   }
+}
