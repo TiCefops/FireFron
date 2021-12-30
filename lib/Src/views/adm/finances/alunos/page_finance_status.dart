@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-///pagina responsável pelo  financeiro
+///pagina responsável pelo  finances
 class FinancePage extends StatefulWidget {
 
   ///inicio

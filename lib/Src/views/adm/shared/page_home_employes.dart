@@ -10,23 +10,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
+///
 class EmployeesPage extends GetView<HomeEmployesController> {
   const EmployeesPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    HomeEmployesController.c.calcProgress();
-    var size = MediaQuery.of(context).size;
+
+
     return Scaffold(
       body: Container(
         child: Container(
-          height: size.height,
-          width: size.width,
+          height: Get.height,
+          width: Get.width,
           child: Column(
             children: <Widget>[
               Container(
-                width: size.width / 2,
-                height: size.height * 0.01,
+                width: Get.width / 2,
+                height: Get.height * 0.01,
                 margin: EdgeInsets.only(left: 60),
                 child: LinearProgressIndicator(
                   value: HomeEmployesController.c.calcProgress(),
@@ -35,16 +35,16 @@ class EmployeesPage extends GetView<HomeEmployesController> {
                 ),
               ),
               SizedBox(
-                height: size.height * 0.02,
+                height: Get.height * 0.02,
               ),
               Container(
-                width: size.width,
+                width: Get.width,
                 child: Row(
                   children: <Widget>[
                     Container(
-                      width: size.width * 0.24,
+                      width: Get.width * 0.24,
                       color: Colors.white70,
-                      height: size.height * 0.85,
+                      height: Get.height * 0.85,
                       child: Column(
                         children: <Widget>[
                           Center(
@@ -56,7 +56,7 @@ class EmployeesPage extends GetView<HomeEmployesController> {
                           ),
                           Obx(() {
                             return Container(
-                              height: size.height * 0.80,
+                              height: Get.height * 0.80,
                               child: controller.updateScreen.value
                                   ? CircularProgressIndicator()
                                   : GetRequeriments(),
@@ -66,9 +66,9 @@ class EmployeesPage extends GetView<HomeEmployesController> {
                       ),
                     ),
                     Container(
-                      width: size.width * 0.24,
+                      width: Get.width * 0.24,
                       color: Colors.white70,
-                      height: size.height * 0.85,
+                      height: Get.height * 0.85,
                       child: Column(
                         children: <Widget>[
                           Center(
@@ -79,7 +79,7 @@ class EmployeesPage extends GetView<HomeEmployesController> {
                           ),
                           Obx(() {
                             return Container(
-                              height: size.height * 0.80,
+                              height: Get.height * 0.80,
                               child: controller.updateScreen.value
                                   ? CircularProgressIndicator()
                                   : GetRequerimentsAndando(),
@@ -89,9 +89,9 @@ class EmployeesPage extends GetView<HomeEmployesController> {
                       ),
                     ),
                     Container(
-                      width: size.width * 0.24,
+                      width: Get.width * 0.24,
                       color: Colors.white70,
-                      height: size.height * 0.85,
+                      height: Get.height * 0.85,
                       child: Column(
                         children: <Widget>[
                           Center(
@@ -102,7 +102,7 @@ class EmployeesPage extends GetView<HomeEmployesController> {
                           ),
                           Obx(() {
                             return Container(
-                              height: size.height * 0.8,
+                              height: Get.height * 0.8,
                               child: controller.updateScreen.value
                                   ? CircularProgressIndicator()
                                   : GetRequerimentsConcluido(),
@@ -112,9 +112,9 @@ class EmployeesPage extends GetView<HomeEmployesController> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: size.width * 0.02),
-                      height: size.height * 0.8,
-                      width: size.width / 5,
+                      margin: EdgeInsets.only(left: Get.width * 0.02),
+                      height: Get.height * 0.8,
+                      width: Get.width / 5,
                       child: Column(
                         children: <Widget>[
                           Localizations.override(

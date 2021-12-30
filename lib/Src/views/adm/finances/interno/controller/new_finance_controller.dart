@@ -1,5 +1,5 @@
 
-import 'package:cefops/Src/views/adm/financeiro/interno/model/finance_internal_model.dart';
+import 'package:cefops/Src/views/adm/finances/interno/model/finance_internal_model.dart';
 import 'package:get/get.dart';
 ///controlador da views
 class NewFinanceInternalController extends GetxController{
