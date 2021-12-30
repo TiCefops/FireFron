@@ -2,22 +2,26 @@ import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/home_emplooyes_controller.dart';
 import 'package:cefops/Src/controller/requeriment_controller.dart';
 import 'package:cefops/Src/controller/requerimentTypeController.dart';
-import 'package:cefops/Src/repository/aluno/AlunosRepository.dart';
-import 'package:cefops/Src/services/requeriment_service.dart';
+import 'package:cefops/Src/services/adm/requeriment/requeriment_service.dart';
+import 'package:cefops/Src/services/adm/requeriment/requeriment_types_service.dart';
+import 'package:cefops/Src/services/adm/studant_service.dart';
 import 'package:cefops/Src/widgets/widget_dropmenu_grup.dart';
-import 'package:cefops/Src/widgets/widget_Navegation.dart';
 import 'package:cefops/Src/widgets/widget_dropmenu_items.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 ///
 showAlertDialog(BuildContext context) {
-  final cpfController = TextEditingController();
-  final obsController = TextEditingController();
+  final TextEditingController cpfController = TextEditingController();
+  final TextEditingController obsController = TextEditingController();
   Get.lazyPut(()=>HomeEmployesController());
-  var controller=RequerimentTypeController.reqType;
+  RequerimentTypeController controller=RequerimentTypeController.reqType;
+  RequerimentTypeService _requerimentType=RequerimentTypeService();
+  _requerimentType.getAllRequerimentsTypes();
+
   ///Instancia de servico
   final RequerimentService _service=RequerimentService();
+  final StudantService _studantService=StudantService();
 
   Widget cancelButton = TextButton(
     child: const Text('Canceler'),
@@ -28,13 +32,15 @@ showAlertDialog(BuildContext context) {
   Widget continueButton = TextButton(
     child: HomeEmployesController.c.updating.value ?CircularProgressIndicator():Text('Salvar'),
     onPressed: () async {
+      HomeEmployesController.c.updateScreen.value=true;
       var requerimentoid=int.parse(controller.selectedType.value);
-     await _service.CreateRequerime(requerimentoid, RequerimentController.req.idStudant.value,
+     await _service.createRequerimet(requerimentoid, RequerimentController.req.idStudant.value,
           RequerimentController.req.StudantFullName.value,
           RequerimentController.req.observertion.value,RequerimentController.req.valor.value);
-      HomeEmployesController.c.updateScreen.value=true;
       HomeEmployesController.c.updateScreenFun();
-          Get.to(MyApp());
+      HomeEmployesController.c.updateScreen.value=false;
+      Get.back();
+
 
 
     },
@@ -96,7 +102,7 @@ showAlertDialog(BuildContext context) {
 
                 IconButton(
                     onPressed: () {
-                      GetStudantById(cpfController.value.text);
+                      _studantService.getStudantById(cpfController.value.text);
                       RequerimentController.req.idStudant.value=
                           cpfController.value.text;
                     },

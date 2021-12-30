@@ -5,7 +5,8 @@ import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/home_emplooyes_controller.dart';
 import 'package:cefops/Src/model/adm/requeriment_type_model.dart';
 import 'package:cefops/Src/module/pdf/ComprovanteMatriculaPDFModel.dart';
-import 'package:cefops/Src/repository/adm/RequerimentsRepository.dart';
+import 'package:cefops/Src/repository/adm/requeriment_repository.dart';
+import 'package:cefops/Src/services/adm/requeriment/requeriment_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,6 +21,7 @@ class NewRequerimentFromStudant extends GetView<HomeEmployesController> {
   Widget build(BuildContext context) {
     var controller1 =UserController.user;
     Get.lazyPut(() => HomeEmployesController());
+    RequerimentService _service=RequerimentService();
 
     return Scaffold(
       appBar: AppBar(backgroundColor: AppColors.blue,),
@@ -63,7 +65,7 @@ class NewRequerimentFromStudant extends GetView<HomeEmployesController> {
                  {
 
                  }else{
-                   await  CreateRequeriment(
+                   await  _service.createRequerimet(
                        data.id,
                        controller1.id.value,
                        controller1.Fullname.value,

@@ -1,9 +1,8 @@
 import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
-import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
 import 'package:cefops/Src/model/adm/requeriment_type_model.dart';
-import 'package:cefops/Src/repository/adm/requerimentTypesRepository.dart';
+import 'package:cefops/Src/services/adm/requeriment/requeriment_types_service.dart';
 import 'package:cefops/Src/views/studants/requeriment/page_my_requeriment.dart';
 import 'package:cefops/Src/views/studants/requeriment/widget_new_requeriment.dart';
 import 'package:flutter/material.dart';
@@ -29,9 +28,10 @@ class RequerimentViewer extends StatelessWidget {
 
 Widget GetRequerimentTypeByName(String filter) {
   String filterData = filter;
+  RequerimentTypeService _service=RequerimentTypeService();
   if (filter != "Meus Requerimentos") {
     return FutureBuilder(
-        future: GetRequeRequerimentType(),
+        future: _service.getAllRequerimentsTypes(),
         builder: (BuildContext context,
             AsyncSnapshot<List<RequerimentTypeModel>> snapshot) {
           if (snapshot.hasData) {
