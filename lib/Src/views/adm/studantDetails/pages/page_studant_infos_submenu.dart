@@ -18,7 +18,7 @@ class ViewInfoFromStudant extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             mainAxisSize: MainAxisSize.min,
-            children: [
+            children:<Widget> [
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     primary: const Color(0xff062761),
@@ -142,7 +142,7 @@ class ViewInfoFromStudant extends StatelessWidget {
               width: Get.width,
               height: Get.height * 0.54,
               child: Obx(
-                () => SetStudantDetails(controller.navegar.value,fromList1: true),
+                () => SetStudantDetails(controller.navegar.value,),
               ),
             ),
           ),

@@ -1,7 +1,7 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/model/adm/requeriment_model.dart';
-import 'package:cefops/Src/services/requeriment_service.dart';
+import 'package:cefops/Src/services/adm/requeriment/requeriment_service.dart';
 import 'package:cefops/Src/views/adm/studantDetails/pages/page_studant_requeriment_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,7 +24,7 @@ class StuddantRequeriment extends StatelessWidget {
         width: Get.width * 0.35,
         margin: EdgeInsets.fromLTRB(Get.width * 0.15, 0, 0, 0),
         child: FutureBuilder(
-          future: _service.GetRequerimentsById(id),
+          future: _service.getRequerimentsById(id),
           builder: (BuildContext context,
               AsyncSnapshot<List<RequerimentModel>> snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
