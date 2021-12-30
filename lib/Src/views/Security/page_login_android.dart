@@ -7,19 +7,14 @@ import 'package:cefops/Src/widgets/widget_FormsForLoginPage.dart';
 import 'package:cefops/Src/widgets/widget_Navegation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'dart:io' show Platform;
 
 import '../../../res.dart';
 import 'Singup.dart';
 
-final _formKey = GlobalKey<FormState>();
-final UserController = TextEditingController();
-final passwController = TextEditingController();
-String os = Platform.operatingSystem;
-bool android=false;
-int widet=1;
-int height=1;
-int colorIcons=0xff15355C;
+final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+final TextEditingController UserController = TextEditingController();
+final TextEditingController passwController = TextEditingController();
+
 
 class loginPage_Mobile extends StatefulWidget {
   @override
@@ -46,8 +41,7 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
+AuthRepository _service=AuthRepository();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
@@ -57,8 +51,8 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
         body: Builder(builder: (BuildContext context) {
           return Container(
 
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
+            width: Get.width,
+            height: Get.height,
             child: Container(
               color: Colors.white,
               child: Center(
@@ -79,7 +73,7 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
 
 
                       Container(
-                        width: MediaQuery.of(context).size.width *0.9,
+                        width: Get.width *0.9,
 
                         child: LoginForms(
                             userController,
@@ -92,10 +86,10 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
                             context),
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
+                        height: Get.height * 0.02,
                       ),
                       Container(
-                          width: MediaQuery.of(context).size.width *0.9,
+                          width: Get.width *0.9,
                           child: Obx(
                                 () => LoginForms(
                                 passwordController,
@@ -110,7 +104,7 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
                       Row(
                         children: [
                           SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.25,
+                            width: Get.width * 0.25,
                           ),
                           Expanded(
                             child: TextButton(
@@ -134,7 +128,7 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: MediaQuery.of(context).size.height *
+                                  fontSize: Get.height *
                                       0.019,
                                 ),
                               ),
@@ -143,7 +137,7 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
                         ],
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.01,
+                        height: Get.height * 0.01,
                       ),
                       Center(
                           child: Obx(() => Text(
@@ -153,7 +147,7 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
                             ),
                           ))),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.03,
+                        height: Get.height * 0.03,
                       ),
                       Container(
                           child: Obx(() => statusApp.status.loading.value
@@ -166,13 +160,13 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
                             ),
                           )
                               : FlatButton(
-                            height: size.height * 0.07,
+                            height: Get.height * 0.07,
                             child: Column(
                               children: [
                                 Text(
                                   'Login',
                                   style: TextStyle(
-                                      fontSize: size.height * 0.03,
+                                      fontSize: Get.height * 0.03,
                                       fontWeight: FontWeight.w500),
                                 ),
                               ],
@@ -189,7 +183,7 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
 
                               if (_formKey.currentState!.validate()) {
                                 statusApp.status.loading.value = true;
-                                await Login(userController.value.text,
+                                await _service.login(userController.value.text,
                                     passwordController.value.text);
                                 if (ErroController.error.ok == true) {
                                   statusApp.status.loading.value = false;

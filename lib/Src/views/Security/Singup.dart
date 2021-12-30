@@ -1,5 +1,4 @@
 
-import 'package:cefops/Shared/Security/Repository/AuthRepository.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/widgets/widget_Navegation.dart';
 import 'package:flutter/cupertino.dart';
@@ -29,14 +28,13 @@ class _SingupState extends State<Singup> {
   @override
   Widget build(BuildContext context) {
     final size=MediaQuery.of(context).size;
-    final GlobalKey<ScaffoldState> scaffoldKey;
     return Scaffold(
 
       body: SingleChildScrollView(
         child: Form(
           key: formKey,
           child: Column(
-            children: [
+            children: <Widget>[
 
               Center(
                 child: Image.asset("assets/images/logo2.png")),
@@ -49,13 +47,13 @@ class _SingupState extends State<Singup> {
                 width: size.width,
 
                   child: Row(
-                    children: [
+                    children:<Widget> [
                       Container(
                         width: size.width/4,
                         child: TextFormField(
                           decoration: InputDecoration(hintText: 'Geremias', labelText: 'Nome'),
                           keyboardType: TextInputType.emailAddress,
-                          onSaved: (value) {
+                          onSaved: (String? value) {
                             fristName = value!.toString();
                           },
                         ),
@@ -66,7 +64,7 @@ class _SingupState extends State<Singup> {
                   child: TextFormField(
                     decoration: InputDecoration(hintText: 'Dias', labelText: 'Sobrenome'),
                     keyboardType: TextInputType.emailAddress,
-                    onSaved: (value) {
+                    onSaved: (String? value) {
                       lastName = value!.toString();
                     },
                   ),
@@ -155,13 +153,12 @@ class _SingupState extends State<Singup> {
               Obx(()=> statusApp.status.loading.value ?CircularProgressIndicator():ElevatedButton(onPressed: ()async{
                 formKey.currentState!.save();
                 validatePassword();
-                print(password1);
+
 
 
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) =>  MyApp()),);
-                await Login(email, password);
               }, child: Text("Teste")))
             ],
           ),

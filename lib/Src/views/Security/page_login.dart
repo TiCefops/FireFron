@@ -1,5 +1,5 @@
 import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
-import 'package:cefops/Shared/Security/Repository/AuthRepository.dart';
+import 'package:cefops/Shared/Security/Services/auth_service.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/views/Security/Singup.dart';
@@ -7,18 +7,12 @@ import 'package:cefops/Src/widgets/widget_FormsForLoginPage.dart';
 import 'package:cefops/Src/widgets/widget_Navegation.dart';
 import 'package:cefops/res.dart';
 import 'package:flutter/material.dart';
-import 'dart:io' show Platform;
 import 'package:get/get.dart';
 
-
-
-final _formKey = GlobalKey<FormState>();
-final userController = TextEditingController();
-final passwordController = TextEditingController();
-String os = Platform.operatingSystem;
-bool android = false;
-int colorIcons = 0xff15355C;
-
+final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+final TextEditingController userController = TextEditingController();
+final TextEditingController passwordController = TextEditingController();
+///
 class loginPage extends StatefulWidget {
   @override
   _loginPageState createState() => _loginPageState();
@@ -26,14 +20,10 @@ class loginPage extends StatefulWidget {
 
 class _loginPageState extends State<loginPage>
     with SingleTickerProviderStateMixin {
-
-
-
-
-
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+
+AuthService _service=AuthService();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme:
@@ -41,30 +31,22 @@ class _loginPageState extends State<loginPage>
       home: Scaffold(
         body: Builder(builder: (BuildContext context) {
           return Container(
-
-              color: AppColors.blue,
-
-
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
+            color: AppColors.blue,
+            width: Get.width,
+            height: Get.height,
             child: Stack(
-              children: [
+              children:<Widget> [
                 Container(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children:<Widget> [
                       Container(
-                        width: Get.width/6,
+                        width: Get.width / 6,
                       ),
                       Expanded(
                         child: Container(
-
-                          child:Image.asset(
-                            Res.fundo,
-
-                              colorBlendMode: BlendMode.modulate
-                          )
-                        ),
+                            child: Image.asset(Res.fundo,
+                                colorBlendMode: BlendMode.modulate)),
                       )
                     ],
                   ),
@@ -72,31 +54,28 @@ class _loginPageState extends State<loginPage>
                 Container(
                   child: Center(
                       child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12)
-                        ),
-
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12)),
                     width: Get.width * 0.4,
                     height: Get.height * 0.7,
                     child: Form(
                       key: _formKey,
                       child: Column(
-                        children:<Widget> [
+                        children: <Widget>[
                           SizedBox(
-                            height: Get.height*0.015,
+                            height: Get.height * 0.015,
                           ),
                           Container(
                             height: Get.height / 4,
                             width: Get.width / 5,
                             child: Image.asset(
-                              Res.logoV4,filterQuality: FilterQuality.high,
-
+                              Res.logoV4,
+                              filterQuality: FilterQuality.high,
                             ),
                           ),
-
                           SizedBox(
-                            height: Get.height*0.02,
+                            height: Get.height * 0.02,
                           ),
                           Container(
                             width: Get.width / 3,
@@ -129,7 +108,7 @@ class _loginPageState extends State<loginPage>
                           Row(
                             children: <Widget>[
                               SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.25,
+                                width: Get.width * 0.25,
                               ),
                               Expanded(
                                 child: TextButton(
@@ -139,13 +118,11 @@ class _loginPageState extends State<loginPage>
                                     textStyle: const TextStyle(fontSize: 20),
                                   ),
                                   onPressed: () async {
-
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Singup()),
-                                      );
-
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Singup()),
+                                    );
                                   },
                                   child: Text(
                                     'Esqueci a Senha',
@@ -153,8 +130,9 @@ class _loginPageState extends State<loginPage>
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                       color: Colors.black,
-                                      fontSize: MediaQuery.of(context).size.height *
-                                          0.019,
+                                      fontSize:
+                                          Get.height *
+                                              0.019,
                                     ),
                                   ),
                                 ),
@@ -162,7 +140,7 @@ class _loginPageState extends State<loginPage>
                             ],
                           ),
                           SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.01,
+                            height: Get.height * 0.01,
                           ),
                           Center(
                               child: Obx(() => Text(
@@ -172,26 +150,24 @@ class _loginPageState extends State<loginPage>
                                     ),
                                   ))),
                           SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.03,
+                            height: Get.height * 0.03,
                           ),
                           Container(
                               child: Obx(() => statusApp.status.loading.value
                                   ? CircularProgressIndicator(
                                       backgroundColor: AppColors.blue,
-                                      valueColor:AlwaysStoppedAnimation<Color>(
-                                          AppColors.orange,
-
-
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                        AppColors.orange,
                                       ),
                                     )
                                   : FlatButton(
-                                      height: size.height * 0.07,
+                                      height: Get.height * 0.07,
                                       child: Column(
-                                        children: [
+                                        children:<Widget> [
                                           Text(
                                             'Login',
                                             style: TextStyle(
-                                                fontSize: size.height * 0.03,
+                                                fontSize: Get.height * 0.03,
                                                 fontWeight: FontWeight.w500),
                                           ),
                                         ],
@@ -203,21 +179,23 @@ class _loginPageState extends State<loginPage>
                                               color: AppColors.blue,
                                               width: 1,
                                               style: BorderStyle.solid),
-                                          borderRadius: BorderRadius.circular(7)),
+                                          borderRadius:
+                                              BorderRadius.circular(7)),
                                       onPressed: () async {
-
                                         if (_formKey.currentState!.validate()) {
                                           statusApp.status.loading.value = true;
-                                          await Login(userController.value.text,
-                                              passwordController.value.text);
+                                          await _service.login(email: userController.text,
+                                              password: passwordController.value.text);
                                           if (ErroController.error.ok == true) {
-                                            statusApp.status.loading.value = false;
+                                            statusApp.status.loading.value =
+                                                false;
 
                                             Navigator.pushReplacement(
                                               context,
                                               MaterialPageRoute(
-                                                  builder:(BuildContext context)
-                                                  => MyApp()),
+                                                  builder:
+                                                      (BuildContext context) =>
+                                                          MyApp()),
                                             );
                                           }
                                         } else {}
@@ -228,7 +206,6 @@ class _loginPageState extends State<loginPage>
                     ),
                   )),
                 ),
-
               ],
             ),
           );
