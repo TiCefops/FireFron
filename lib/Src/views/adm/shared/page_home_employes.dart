@@ -4,7 +4,7 @@ import 'package:cefops/Src/controller/home_emplooyes_controller.dart';
 import 'package:cefops/Src/controller/requeriment_controller.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/widgets/widget_new_requeriment.dart';
-import 'package:cefops/Src/widgets/widget_GetRequeriments.dart';
+import 'package:cefops/Src/widgets/widget_get_requeriments.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
