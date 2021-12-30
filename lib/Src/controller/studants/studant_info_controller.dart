@@ -23,6 +23,7 @@ class StudantInfoController extends GetxController{
   RxString nation="".obs;
   RxBool loading=false.obs;
   RxString status="".obs;
+  RxBool isFromPage=false.obs;
 
 
 
@@ -68,20 +69,7 @@ class StudantInfoController extends GetxController{
   }
 
 
-    singInStudant(){
-      StudantInfoController.data.loading.value=false;
-      var dateTime1 = DateFormat('dd/M/yyyy').parse(birthDate.value);
-      var day1=dateTime1.day;
-      var moth=dateTime1.month;
-      var yeer=dateTime1.year;
-      String dayBri="$yeer"+"-"+"$moth"+"-"+"$day1";
 
-      CreateStudant(
-          name.value, lastName.value, cpf.value,
-          email.value, dateTime1.toIso8601String(),phoneHome.value,
-          phoneCell.value, gender.value, stsCivil.value,
-          nation.value, activi);
-    }
 
 }
 
