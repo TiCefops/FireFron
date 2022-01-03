@@ -4,11 +4,10 @@ import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/navigator_controller.dart';
 import 'package:cefops/Src/controller/status_app_controller.dart';
 import 'package:cefops/Src/model/model_publication.dart';
-import 'package:cefops/Src/repository/PostRepository.dart';
 import 'package:cefops/Src/widgets/school_management/requeriments/widget_new_requeriment.dart';
+import 'package:cefops/src/services/post_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/platform/platform.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 
 bool obscure=true;
@@ -25,12 +24,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late Future<PostModel> futurePost;
-
+  PostService service=PostService();
 
   @override
   void initState() {
 
-    futurePost = FetchPosts(context);
+    futurePost = service.getPost() as Future<PostModel>;
     MenuDescicion(UserController.user.role.first);
 
 if (statusApp.status.closeDialog==1) {
@@ -72,7 +71,7 @@ if (statusApp.status.closeDialog==1) {
               SizedBox(height:size.height*0.04,),
               FutureBuilder<PostModel>(
                 future: futurePost,
-                builder: (context, snapshot) {
+                builder: (BuildContext context, AsyncSnapshot<PostModel> snapshot) {
 
                   if (snapshot.hasData) {
                     if(snapshot.data!.title.length >=2){

@@ -2,16 +2,15 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:cefops/Src/controller/controller_cep.dart';
 import 'package:cefops/Src/controller/studants/studant_all_info_controller.dart';
 import 'package:http/http.dart' as http;
 import 'package:cefops/Src/model/cep_model.dart';
 
-Future <CepModel> GetCep(cpf) async{
+Future <CepModel> GetCep(cp) async{
   var endereco=StudantAllInfoController.data.anddress;
 
   http.Response response = await http.get(
-    Uri.parse('https://viacep.com.br/ws/${cpf}/json'),
+    Uri.parse('https://viacep.com.br/ws/${cp}/json'),
 
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
