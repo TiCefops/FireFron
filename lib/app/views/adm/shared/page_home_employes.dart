@@ -5,6 +5,8 @@ import 'package:cefops/app/controller/requeriment_controller.dart';
 import 'package:cefops/app/controller/status_app_controller.dart';
 import 'package:cefops/app/widgets/school_management/requeriments/widget_get_requeriments.dart';
 import 'package:cefops/app/widgets/school_management/requeriments/widget_new_requeriment.dart';
+import 'package:cefops/app/widgets/school_management/requeriments/widget_new_requeriment.dart';
+import 'package:cefops/shared/error/page_error_info.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
@@ -18,128 +20,128 @@ class EmployeesPage extends GetView<HomeEmployesController> {
 
     return Scaffold(
       body: Container(
-        child: Container(
-          height: Get.height,
-          width: Get.width,
-          child: Column(
-            children: <Widget>[
-              Container(
-                width: Get.width / 2,
-                height: Get.height * 0.01,
-                margin: EdgeInsets.only(left: 60),
-                child: LinearProgressIndicator(
-                  value: HomeEmployesController.c.calcProgress(),
-                  backgroundColor: AppColors.secondary,
-                  color: AppColors.primary,
-                ),
-              ),
-              SizedBox(
-                height: Get.height * 0.02,
-              ),
-              Container(
-                width: Get.width,
-                child: Row(
-                  children: <Widget>[
-                    Container(
-                      width: Get.width * 0.24,
-                      color: Colors.white70,
-                      height: Get.height * 0.85,
-                      child: Column(
-                        children: <Widget>[
-                          Center(
-                            child: Text(
-                              "Requerimentos Aberto"
-                              " ${statusApp.status.requerimentosAberto}",
-                              style: TextStyles.titleListTile,
-                            ),
-                          ),
-                          Obx(() {
-                            return Container(
-                              height: Get.height * 0.80,
-                              child: controller.updateScreen.value
-                                  ? CircularProgressIndicator()
-                                  : GetRequeriments(),
-                            );
-                          }),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: Get.width * 0.24,
-                      color: Colors.white70,
-                      height: Get.height * 0.85,
-                      child: Column(
-                        children: <Widget>[
-                          Center(
-                            child: Text(
-                              "Requerimentos Em andamento",
-                              style: TextStyles.titleListTile,
-                            ),
-                          ),
-                          Obx(() {
-                            return Container(
-                              height: Get.height * 0.80,
-                              child: controller.updateScreen.value
-                                  ? CircularProgressIndicator()
-                                  : GetRequerimentsAndando(),
-                            );
-                          }),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: Get.width * 0.24,
-                      color: Colors.white70,
-                      height: Get.height * 0.85,
-                      child: Column(
-                        children: <Widget>[
-                          Center(
-                            child: Text(
-                              "Requerimentos Concluídos",
-                              style: TextStyles.titleListTile,
-                            ),
-                          ),
-                          Obx(() {
-                            return Container(
-                              height: Get.height * 0.8,
-                              child: controller.updateScreen.value
-                                  ? CircularProgressIndicator()
-                                  : GetRequerimentsConcluido(),
-                            );
-                          })
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: Get.width * 0.02),
-                      height: Get.height * 0.8,
-                      width: Get.width / 5,
-                      child: Column(
-                        children: <Widget>[
-                          Localizations.override(
-                            context: context,
-                            locale: Locale('pt'),
-                            child: SfCalendar(
-                              view: CalendarView.week,
-                              dataSource:MeetingDataSource(_getAppointments()) ,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
+        height: Get.height,
+        width: Get.width,
+        child:ErrorInfo()
+
+        // Column(
+        //   children: <Widget>[
+        //     Container(
+        //       width: Get.width / 2,
+        //       height: Get.height * 0.01,
+        //       margin: EdgeInsets.only(left: 60),
+        //       child: LinearProgressIndicator(
+        //         value: HomeEmployesController.c.calcProgress(),
+        //         backgroundColor: AppColors.secondary,
+        //         color: AppColors.primary,
+        //       ),
+        //     ),
+        //     SizedBox(
+        //       height: Get.height * 0.02,
+        //     ),
+        //     SizedBox(
+        //       width: Get.width,
+        //       child: Row(
+        //         children: <Widget>[
+        //           Container(
+        //             width: Get.width * 0.24,
+        //             color: Colors.white70,
+        //             height: Get.height * 0.85,
+        //             child: Column(
+        //               children: <Widget>[
+        //                 Center(
+        //                   child: Text(
+        //                     "Requerimentos Aberto"
+        //                     " ${statusApp.status.requerimentosAberto}",
+        //                     style: TextStyles.titleListTile,
+        //                   ),
+        //                 ),
+        //                 Obx(() {
+        //                   return Container(
+        //                     height: Get.height * 0.80,
+        //                     child: controller.updateScreen.value
+        //                         ? CircularProgressIndicator()
+        //                         : GetRequeriments(),
+        //                   );
+        //                 }),
+        //               ],
+        //             ),
+        //           ),
+        //           Container(
+        //             width: Get.width * 0.24,
+        //             color: Colors.white70,
+        //             height: Get.height * 0.85,
+        //             child: Column(
+        //               children: <Widget>[
+        //                 Center(
+        //                   child: Text(
+        //                     "Requerimentos Em andamento",
+        //                     style: TextStyles.titleListTile,
+        //                   ),
+        //                 ),
+        //                 Obx(() {
+        //                   return Container(
+        //                     height: Get.height * 0.80,
+        //                     child: controller.updateScreen.value
+        //                         ? CircularProgressIndicator()
+        //                         : GetRequerimentsAndando(),
+        //                   );
+        //                 }),
+        //               ],
+        //             ),
+        //           ),
+        //           Container(
+        //             width: Get.width * 0.24,
+        //             color: Colors.white70,
+        //             height: Get.height * 0.85,
+        //             child: Column(
+        //               children: <Widget>[
+        //                 Center(
+        //                   child: Text(
+        //                     "Requerimentos Concluídos",
+        //                     style: TextStyles.titleListTile,
+        //                   ),
+        //                 ),
+        //                 Obx(() {
+        //                   return Container(
+        //                     height: Get.height * 0.8,
+        //                     child: controller.updateScreen.value
+        //                         ? CircularProgressIndicator()
+        //                         : GetRequerimentsConcluido(),
+        //                   );
+        //                 })
+        //               ],
+        //             ),
+        //           ),
+        //           Container(
+        //             margin: EdgeInsets.only(left: Get.width * 0.02),
+        //             height: Get.height * 0.8,
+        //             width: Get.width / 5,
+        //             child: Column(
+        //               children: <Widget>[
+        //                 Localizations.override(
+        //                   context: context,
+        //                   locale: Locale('pt'),
+        //                   child: SfCalendar(
+        //                     view: CalendarView.week,
+        //                     dataSource:MeetingDataSource(_getAppointments()) ,
+        //                   ),
+        //                 ),
+        //               ],
+        //             ),
+        //           ),
+        //         ],
+        //       ),
+        //     ),
+        //   ],
+        // ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           RequerimentController.req.linkPhoto.value =
               "https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/64/000000/external-photo-appliances-flatart-icons-lineal-color-flatarticons.png";
           RequerimentController.req.StudantFullName.value = "";
-          showAlertDialog(context);
+          NewRequeriment(context);
           // Add your onPressed code here!
         },
         child: const Icon(Icons.add),

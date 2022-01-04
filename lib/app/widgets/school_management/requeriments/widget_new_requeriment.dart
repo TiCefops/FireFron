@@ -5,13 +5,13 @@ import 'package:cefops/app/controller/requeriment_type_controller.dart';
 import 'package:cefops/app/services/adm/requeriment/requeriment_service.dart';
 import 'package:cefops/app/services/adm/requeriment/requeriment_types_service.dart';
 import 'package:cefops/app/services/adm/studant_service.dart';
-import 'package:cefops/app/widgets/school_management/requeriments/widget_dropmenu_grup.dart';
+import 'package:cefops/app/widgets/school_management/requeriments/widget_dropmenu_group.dart';
 import 'package:cefops/app/widgets/school_management/requeriments/widget_dropmenu_items.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 ///
-showAlertDialog(BuildContext context) {
+NewRequeriment(BuildContext context) {
   final TextEditingController cpfController = TextEditingController();
   final TextEditingController obsController = TextEditingController();
   Get.lazyPut(()=>HomeEmployesController());
@@ -107,7 +107,7 @@ showAlertDialog(BuildContext context) {
                           cpfController.value.text;
                     },
                     icon: Icon(Icons.search)),
-                DropMenuGrup(),
+                DropMenuGroup(),
               ])),
           SizedBox(
             height: Get.height * 0.01,

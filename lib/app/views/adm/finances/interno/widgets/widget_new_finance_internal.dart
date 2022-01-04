@@ -1,4 +1,3 @@
-import 'package:cefops/app/views/adm/finances/interno/widgets/widget_dropdown_entity.dart';
 import 'package:cefops/app/widgets/app/widget_forms_for_all.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,7 +25,7 @@ class NewFinance extends StatelessWidget {
                   width: Get.width / 6,
                   child: FormsForAll(valor, "Valor", "Insira o Valor",
                       "preencha o campo Valor")),
-              DropdownmenuFinanceEntity()
+
             ],
           )
         ],

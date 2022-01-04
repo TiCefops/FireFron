@@ -1,65 +1,84 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/app/widgets/app/widget_background.dart';
 import 'package:flutter/material.dart';
-class myCourse extends StatefulWidget {
+///
+class MyCourse extends StatefulWidget {
   @override
-  _myCourseState createState() => _myCourseState();
+  _MyCourseState createState() => _MyCourseState();
 }
 
 // ignore: camel_case_types
-class _myCourseState extends State<myCourse> {
-
+class _MyCourseState extends State<MyCourse> {
   @override
   Widget build(BuildContext context) {
-    final  size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
 
     return Scaffold(
       body: backgroundColor(
-          size.width,
-         size.height,
-          SingleChildScrollView(
-            child: Container(
-              child: Column(
-                children: [
-                  SizedBox(height: MediaQuery.of(context).size.height/9,),
-                  Center(child: Text("Ola Emison ",style: TextStyle(fontSize: 22),),),
-                  SizedBox(height: MediaQuery.of(context).size.height/50,),
-
-                  Center(child: Text("Essa é sua grade Curricular  ",style: TextStyle(fontSize: 22,color: AppColors.textOnPrimary),),),
-                  SizedBox(height: MediaQuery.of(context).size.height/40,),
-
-                  Center(child: Text("CURSO DE AUXILIAR DE ENFERMAGEM  ",style: TextStyle(fontSize: 22,color: AppColors.textOnPrimary),),),
-
-                  SizedBox(height: MediaQuery.of(context).size.height/20,),
-
-                  Container(
-                    child: criaTabela(),
-                  )
-                ],
+        size.width,
+        size.height,
+        SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 9,
               ),
-            ),
-          ))
+              const Center(
+                child: Text(
+                  "Ola Emison ",
+                  style: TextStyle(fontSize: 22),
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 50,
+              ),
+              Center(
+                child: Text(
+                  "Essa é sua grade Curricular  ",
+                  style: TextStyle(
+                    fontSize: 22,
+                    color: AppColors.textOnPrimary,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 40,
+              ),
+              Center(
+                child: Text(
+                  "CURSO DE AUXILIAR DE ENFERMAGEM  ",
+                  style: TextStyle(
+                    fontSize: 22,
+                    color: AppColors.textOnPrimary,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 20,
+              ),
+              Container(
+                child: criaTabela(),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
 
-
-criaTabela() {
+///
+Table criaTabela() {
   return Table(
-    defaultColumnWidth: FixedColumnWidth(200.0),
-    border: TableBorder(
+    defaultColumnWidth: const FixedColumnWidth(200.0),
+    border: const TableBorder(
       horizontalInside: BorderSide(
-        color: Colors.black,
-        style: BorderStyle.solid,
-        width: 1.0,
       ),
       verticalInside: BorderSide(
-        color: Colors.black,
-        style: BorderStyle.solid,
-        width: 1.0,
+
       ),
     ),
-    children: [
+    children: <TableRow>[
       _criarLinhaTable(" Disciplina , CARGA HORARIA  "),
       _criarLinhaTable("GINECOLÓGICA E OBSTETRÍCIA,16 H "),
       _criarLinhaTable("ORTOPEDIA, 5 H"),
@@ -69,26 +88,22 @@ criaTabela() {
       _criarLinhaTable("ENFERMAGEM EM PEDIATRIA  , 40 H"),
       _criarLinhaTable("SAÚDE PÚBLICA I   , 40 H"),
       _criarLinhaTable("ASSISTÊNCIA DOMICILIAR    , 10 H"),
-
-
-
-
-
     ],
   );
 }
-_criarLinhaTable(String listaNomes) {
+
+///cria as tabelas
+TableRow _criarLinhaTable(String listaNomes) {
   return TableRow(
-    children: listaNomes.split(',').map((name) {
+    children: listaNomes.split(',').map((String name) {
       return Container(
         alignment: Alignment.center,
+        padding: const EdgeInsets.all(8.0),
         child: Text(
           name,
-          style: TextStyle(fontSize: 20.0,color: AppColors.textOnPrimary),
+          style: TextStyle(fontSize: 20.0, color: AppColors.textOnPrimary),
         ),
-        padding: EdgeInsets.all(8.0),
       );
     }).toList(),
   );
 }
-

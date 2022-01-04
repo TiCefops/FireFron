@@ -1,24 +1,22 @@
-
-
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-Widget backgroundColor(wideth,height,child){
+///
+Widget backgroundColor(double width, double height, Widget child) {
   return Container(
-    width:wideth ,
-      height:height ,
-      decoration: BoxDecoration(
+    width: width,
+    height: height,
+    decoration: BoxDecoration(
       gradient: LinearGradient(
-      begin: Alignment.topRight,
-      end: Alignment.bottomLeft,
-      colors: [
-      AppColors.primary,
-      AppColors.primaryDark,
-
-      ],
-
-  )
-  ),
-          child: child,
+        begin: Alignment.topRight,
+        end: Alignment.bottomLeft,
+        colors: <Color>[
+          AppColors.primary,
+          AppColors.primaryDark,
+        ],
+      ),
+    ),
+    child: child,
   );
 }
