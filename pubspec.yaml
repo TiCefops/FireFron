@@ -28,6 +28,8 @@ dependencies:
   basic_utils: ^3.9.4
 dev_dependencies:
   flutter_test: {sdk: flutter}
+#  lint: ^1.0.0
+
 flutter:
   uses-material-design: true
   assets: [assets/images/asssinatura.png, assets/images/cefops1_orig.png, assets/images/enfermagem.jpg,
