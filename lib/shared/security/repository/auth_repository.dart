@@ -6,8 +6,9 @@ import 'package:cefops/Shared/Security/Controller/error_controler.dart';
 import 'package:cefops/Shared/Security/Controller/user_controller.dart';
 import 'package:cefops/Shared/Security/Model/login_model.dart';
 import 'package:cefops/Shared/urls.dart';
-import 'package:cefops/Src/controller/status_app_controller.dart';
 import 'package:cefops/Shared/Security/Model/error_model.dart';
+import 'package:cefops/app/controller/status_app_controller.dart';
+
 import 'package:cefops/Shared/Security/Model/signup_model.dart';
 import 'package:http/http.dart' as http;
 import "dart:developer" as developer;
@@ -98,7 +99,7 @@ class AuthRepository {
         "cpf": cpf
       }),
     )
-        .timeout(Duration(seconds: 5), onTimeout: () {
+        .timeout(const Duration(seconds: 5), onTimeout: () {
       statusApp.status.loading.value = false;
       statusApp.status.erros1.value = "Falha na conexão, verifique sua rede";
 
