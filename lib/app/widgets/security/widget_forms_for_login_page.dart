@@ -2,17 +2,22 @@ import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/app/controller/status_app_controller.dart';
 import 'package:flutter/material.dart';
-var text="";
-FormsForLoginPage(controlle, String labels, String hintTExt, String error,
-    IconData icons, bool isobscure,  bool icon2, context,) {
+
+///forms de login
+TextFormField formsForLoginPage(
+  TextEditingController controller,
+  String labels,
+  String hintTExt,
+  String error,
+  IconData icons,
+  BuildContext context,
+    {required bool isobscure,required bool icon2,}
+) {
   return TextFormField(
-
-controller: controlle,
-
-    onChanged: (String) {
+    controller: controller,
+    onChanged: (String value) {
       statusApp.status.erros1.value = "";
     },
-
     style: TextStyle(
       color: AppColors.textOnSecondary,
     ),
@@ -46,9 +51,9 @@ controller: controlle,
                       !statusApp.status.verSenha.value;
                 },
               )
-            : null),
+            : null,),
     obscureText: isobscure,
-    validator: (value) {
+    validator: (String? value) {
       if (value == null || value.isEmpty) {
         return error;
       }

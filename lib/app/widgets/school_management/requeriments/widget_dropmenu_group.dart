@@ -2,23 +2,23 @@
 import 'package:cefops/app/controller/requeriment_type_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-class DropMenuGrup extends StatefulWidget {
-
-   DropMenuGrup( {Key? key}) : super(key: key);
+///
+class DropMenuGroup extends StatefulWidget {
+///
+   const DropMenuGroup( {Key? key}) : super(key: key);
 
   @override
-  State<DropMenuGrup> createState() => _DropMenuGrupState();
+  State<DropMenuGroup> createState() => _DropMenuGroupState();
 }
 
-class _DropMenuGrupState extends State<DropMenuGrup> {
+class _DropMenuGroupState extends State<DropMenuGroup> {
 
-    var controller=RequerimentTypeController.reqType;
+    RequerimentTypeController controller=RequerimentTypeController.reqType;
 
-  List<String> _groupeTypes = [];
+  final List<String> _groupeTypes = <String>[];
     void initState() {
       controller.groupsFiltered.forEach((element) {
-        _groupeTypes.add(element);
+        _groupeTypes.add(element.toString());
       });
 
       super.initState();
@@ -38,7 +38,7 @@ class _DropMenuGrupState extends State<DropMenuGrup> {
               child: DropdownButton(
                 hint: Text('Selecione um tipo'), // Not necessary for Option 1
                 value: _selectedLocation,
-                onChanged: (newValue) {
+                onChanged: (Object? newValue) {
                   controller.filterDataRequerimentType(newValue.toString());
                   setState(() {
                     _selectedLocation = newValue.toString();
@@ -48,9 +48,9 @@ class _DropMenuGrupState extends State<DropMenuGrup> {
                 },
                 items: controller.groupsFiltered.map((location) {
 
-                  return DropdownMenuItem(
-                    child: new Text(location),
+                  return  DropdownMenuItem(
                     value: location,
+                    child:  Text(location.toString()),
                   );
                 }).toList(),
               ),
@@ -60,4 +60,3 @@ class _DropMenuGrupState extends State<DropMenuGrup> {
     );
   }
 }
-

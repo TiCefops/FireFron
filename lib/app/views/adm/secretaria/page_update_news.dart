@@ -2,21 +2,21 @@ import 'package:cefops/app/data/model/model_publication.dart';
 import 'package:cefops/app/widgets/app/widget_forms_for_all.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-
-class EditNews extends StatefulWidget {
-  const EditNews({Key? key}) : super(key: key);
+///
+class UpdateNews extends StatefulWidget {
+  const UpdateNews({Key? key}) : super(key: key);
 
   @override
-  _EditNewsState createState() => _EditNewsState();
+  _UpdateNewsState createState() => _UpdateNewsState();
 }
 final TextEditingController _controller = TextEditingController();
-final titleControler = TextEditingController();
-final postController = TextEditingController();
+final TextEditingController titleControler = TextEditingController();
+final TextEditingController postController = TextEditingController();
   String statusPost="";
 Future<PostModel>? editPost;
 
 
-class _EditNewsState extends State<EditNews> {
+class _UpdateNewsState extends State<UpdateNews> {
   @override
   void initState() {
     super.initState();

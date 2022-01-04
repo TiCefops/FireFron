@@ -3,12 +3,13 @@ import 'package:cefops/app/views/adm/studantDetails/widget/widget_setstudant_det
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+///Info do Aluno
 class ViewInfoFromStudant extends StatelessWidget {
   const ViewInfoFromStudant({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var controller = StudandDetailsController.details;
+    final StudandDetailsController controller = StudandDetailsController.details;
 
     return Container(
       child: Column(

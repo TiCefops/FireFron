@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 ///
- NewFinanceInterna(BuildContext context) {
-   var controller=NewFinanceInternalController.data;
+ NewFinanceInternal(BuildContext context) {
+   NewFinanceInternalController controller=NewFinanceInternalController.data;
 
   Widget cancelButton = TextButton(
-    child: Text("Cancelar"),
+    child: const Text("Cancelar"),
     onPressed: () {
       controller.deleteAll();
       Get.back();    },
   );
   Widget continueButton = TextButton(
-    child: Text("Salvar"),
+    child: const Text("Salvar"),
     onPressed: () {
 
     },
@@ -25,13 +25,13 @@ import 'package:get/get.dart';
     title: Container(
       child: Column(
 
-        children: [
+        children:<Widget> [
           Container(
-            margin: EdgeInsets.only(left: 35),
+            margin: const EdgeInsets.only(left: 35),
             child: Obx(
                     () {
                   return Text("${controller.nome}",
-                    style: TextStyle(fontSize: 15),
+                    style: const TextStyle(fontSize: 15),
                     textAlign: TextAlign.end,);
                 }
             ),
@@ -40,7 +40,7 @@ import 'package:get/get.dart';
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             mainAxisSize: MainAxisSize.min,
-            children: [
+            children: <Widget>[
 
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -51,10 +51,10 @@ import 'package:get/get.dart';
                 child: Container(
                   width: 80,
                   height: 60,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                   ),
-                  child: Center(
-                    child: Text("Abrir Fluxo"),
+                  child: const Center(
+                    child: const Text("Abrir Fluxo"),
                   ),
                 ),
               ),
@@ -70,9 +70,9 @@ import 'package:get/get.dart';
                 child: Container(
                   width: 80,
                   height: 60,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Text("Fechar Fluxo"),
                   ),
                 ),
@@ -99,7 +99,7 @@ import 'package:get/get.dart';
       ),
     ),
 
-    actions: [
+    actions: <Widget>[
       cancelButton,
       continueButton,
     ],

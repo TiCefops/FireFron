@@ -14,7 +14,7 @@ class NewFinanceInternalController extends GetxController{
   RxDouble valorInicialCaixa=0.0.obs;
   RxDouble valorPago=0.0.obs;
   RxBool   pago=false.obs;
-  RxString entidade="Cefops".obs;
+  RxString entidade="CEFOPS".obs;
   RxString status="".obs;
   RxString dataPagamento="".obs;
   RxString dataVencimento="".obs;

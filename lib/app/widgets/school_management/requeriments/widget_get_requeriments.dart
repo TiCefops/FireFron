@@ -59,7 +59,7 @@ class _GetRequerimentsState extends State<GetRequeriments> {
                   String formatted = createDate;
                   return Card(
                     child: Padding(
-                      padding: EdgeInsets.all(10),
+                      padding: EdgeInsets.all(15),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -191,7 +191,7 @@ class GetRequerimentsAndando extends StatelessWidget {
 
                   return Card(
                     child: Padding(
-                      padding: EdgeInsets.all(10),
+                      padding: EdgeInsets.all(15),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -317,7 +317,7 @@ class GetRequerimentsConcluido extends StatelessWidget {
 
                   return Card(
                     child: Padding(
-                      padding: EdgeInsets.all(10),
+                      padding: EdgeInsets.all(15),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
