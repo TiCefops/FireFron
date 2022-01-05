@@ -5,10 +5,11 @@ import 'package:cefops/app/controller/studants/studant_all_info_controller.dart'
 import 'package:cefops/app/controller/studants/studant_info_controller.dart';
 import 'package:cefops/app/data/model/aluno/aluno_model.dart';
 import 'package:cefops/app/services/adm/studant_service.dart';
-import 'package:cefops/app/views/adm/studantDetails/controller/studant_details_controller.dart';
 import 'package:cefops/app/views/adm/studantDetails/controller/documents_controller.dart';
+import 'package:cefops/app/views/adm/studantDetails/controller/studant_details_controller.dart';
 import 'package:cefops/app/views/adm/studantDetails/pages/page_studant_details_menu.dart';
 import 'package:cefops/app/widgets/school_management/studantsListViewer/widget_dropmenu_for_search_studant.dart';
+import 'package:cefops/shared/error/page_error_info.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,13 +19,13 @@ class GetStudants extends GetView<ListStudantController> {
 
   @override
   Widget build(BuildContext context) {
-    ListStudantController controllerViewer = ListStudantController.data;
-    StudantInfoController setinfos = StudantInfoController.data;
-    StudantService _service=StudantService();
+    final ListStudantController controllerViewer = ListStudantController.data;
+    final StudantInfoController setinfos = StudantInfoController.data;
+    final StudantService _service = StudantService();
     return Scaffold(
       body: Column(
         children: <Widget>[
-          Container(
+          SizedBox(
             width: Get.width,
             height: Get.height * 0.08,
             child: Column(
@@ -34,7 +35,7 @@ class GetStudants extends GetView<ListStudantController> {
                     SizedBox(
                       width: Get.width * 0.02,
                     ),
-                    Container(
+                    SizedBox(
                       width: Get.width * 0.07,
                       child: Text(
                         "Buscar Por",
@@ -44,28 +45,26 @@ class GetStudants extends GetView<ListStudantController> {
                     SizedBox(
                       width: Get.width * 0.04,
                     ),
-                    DropMenuForSearchStudant(),
+                    const DropMenuForSearchStudant(),
                     SizedBox(
                       width: Get.width * 0.03,
                     ),
                     Flexible(
                       flex: 1,
-                      child: Container(
+                      child: SizedBox(
                         width: Get.width * 0.3,
                         child: TextFormField(
                           onChanged: (String newVal) {
                             controllerViewer.searchData.value = newVal;
-
-                            ;
                           },
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             fillColor: Colors.brown,
                             hintText: 'Buscar',
                             hintStyle: TextStyle(color: Colors.black),
-                            enabledBorder: const OutlineInputBorder(
+                            enabledBorder: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.grey,
                               ),
                             ),
@@ -104,51 +103,49 @@ class GetStudants extends GetView<ListStudantController> {
                 color: Colors.red,
                 child: Column(
                   children: <Widget>[
-                    Container(
-                      child: Column(
-                        children: <Widget>[
-                          Text(
-                            "Organizar de",
-                            style: TextStyles.titleListTile2,
-                          ),
-                          SizedBox(
-                            height: Get.height * 0.01,
-                          ),
-                          Row(
-                            children: <Widget>[
-                              TextButton(
-                                onPressed: () {
-                                  controllerViewer.newDirection.value = "ASC";
-                                },
-                                child: Text(
-                                  "AZ",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.all(AppColors.blue),
-                                ),
+                    Column(
+                      children: <Widget>[
+                        Text(
+                          "Organizar de",
+                          style: TextStyles.titleListTile2,
+                        ),
+                        SizedBox(
+                          height: Get.height * 0.01,
+                        ),
+                        Row(
+                          children: <Widget>[
+                            TextButton(
+                              onPressed: () {
+                                controllerViewer.newDirection.value = "ASC";
+                              },
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all(AppColors.blue),
                               ),
-                              SizedBox(
-                                width: Get.width * 0.01,
+                              child: const Text(
+                                "AZ",
+                                style: TextStyle(color: Colors.white),
                               ),
-                              TextButton(
-                                onPressed: () {
-                                  controllerViewer.newDirection.value = "DESC";
-                                },
-                                child: Text(
-                                  "ZA",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.all(AppColors.blue),
-                                ),
+                            ),
+                            SizedBox(
+                              width: Get.width * 0.01,
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                controllerViewer.newDirection.value = "DESC";
+                              },
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all(AppColors.blue),
                               ),
-                            ],
-                          )
-                        ],
-                      ),
+                              child: const Text(
+                                "ZA",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
                     ),
                     Container(
                       child: Column(
@@ -166,13 +163,13 @@ class GetStudants extends GetView<ListStudantController> {
                                 onPressed: () {
                                   controllerViewer.newTotalElement.value = 15;
                                 },
-                                child: Text(
-                                  "15",
-                                  style: TextStyle(color: Colors.white),
-                                ),
                                 style: ButtonStyle(
                                   backgroundColor:
                                       MaterialStateProperty.all(AppColors.blue),
+                                ),
+                                child: const Text(
+                                  "15",
+                                  style: TextStyle(color: Colors.white),
                                 ),
                               ),
                               SizedBox(
@@ -182,13 +179,13 @@ class GetStudants extends GetView<ListStudantController> {
                                 onPressed: () {
                                   controllerViewer.newTotalElement.value = 30;
                                 },
-                                child: Text(
-                                  "30",
-                                  style: TextStyle(color: Colors.white),
-                                ),
                                 style: ButtonStyle(
                                   backgroundColor:
                                       MaterialStateProperty.all(AppColors.blue),
+                                ),
+                                child: const Text(
+                                  "30",
+                                  style: TextStyle(color: Colors.white),
                                 ),
                               ),
                               SizedBox(
@@ -198,13 +195,13 @@ class GetStudants extends GetView<ListStudantController> {
                                 onPressed: () {
                                   controllerViewer.newTotalElement.value = 45;
                                 },
-                                child: Text(
-                                  "45",
-                                  style: TextStyle(color: Colors.white),
-                                ),
                                 style: ButtonStyle(
                                   backgroundColor:
                                       MaterialStateProperty.all(AppColors.blue),
+                                ),
+                                child: const Text(
+                                  "45",
+                                  style: TextStyle(color: Colors.white),
                                 ),
                               ),
                               SizedBox(
@@ -214,13 +211,13 @@ class GetStudants extends GetView<ListStudantController> {
                                 onPressed: () {
                                   controllerViewer.newTotalElement.value = 60;
                                 },
-                                child: Text(
-                                  "60",
-                                  style: TextStyle(color: Colors.white),
-                                ),
                                 style: ButtonStyle(
                                   backgroundColor:
                                       MaterialStateProperty.all(AppColors.blue),
+                                ),
+                                child: const Text(
+                                  "60",
+                                  style: TextStyle(color: Colors.white),
                                 ),
                               ),
                             ],
@@ -228,41 +225,41 @@ class GetStudants extends GetView<ListStudantController> {
                         ],
                       ),
                     ),
-                    Container(
-                      child: Column(
-                        children: <Widget>[
-                          Text("Ir para Página",
-                              style: TextStyles.titleListTile2),
-                          SizedBox(
-                            height: Get.height * 0.01,
-                          ),
-                          Container(
-                            width: Get.width,
-                            height: Get.height * 0.04,
-                            child: ListView.builder(
-                              itemBuilder: (BuildContext context, int index) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(1.0),
-                                  child: TextButton(
-                                    onPressed: () {},
-                                    child: Text(
-                                      "1",
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all(
-                                              AppColors.blue),
+                    Column(
+                      children: <Widget>[
+                        Text(
+                          "Ir para Página",
+                          style: TextStyles.titleListTile2,
+                        ),
+                        SizedBox(
+                          height: Get.height * 0.01,
+                        ),
+                        SizedBox(
+                          width: Get.width,
+                          height: Get.height * 0.04,
+                          child: ListView.builder(
+                            itemBuilder: (BuildContext context, int index) {
+                              return Padding(
+                                padding: const EdgeInsets.all(1.0),
+                                child: TextButton(
+                                  onPressed: () {},
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                      AppColors.blue,
                                     ),
                                   ),
-                                );
-                              },
-                              scrollDirection: Axis.horizontal,
-                              itemCount: 5,
-                            ),
+                                  child: const Text(
+                                    "1",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                              );
+                            },
+                            scrollDirection: Axis.horizontal,
+                            itemCount: 5,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                     SizedBox(
                       height: Get.height * 0.5,
@@ -309,140 +306,148 @@ class GetStudants extends GetView<ListStudantController> {
               Flexible(
                 flex: 2,
                 child: Obx(() {
-                  return Container(
+                  return SizedBox(
                     width: Get.width,
                     height: Get.height * 0.80,
                     child: FutureBuilder(
-                        future: _service.getAllStudats(),
-                        builder: (BuildContext context,
-                            AsyncSnapshot<StudantModel> snapshot) {
-                          if (snapshot.hasData) {
-                            var data = snapshot.data!.content;
-                            return ListView.builder(
-                                itemCount: data.length,
-                                itemBuilder: (BuildContext context, int Index) {
-                                  return ExpansionTile(
-                                    title: Container(
-                                      child: Row(
-                                        children: [
-                                          CircleAvatar(
-                                            radius: 22,
-                                            backgroundImage:
-                                                NetworkImage(data[Index].photo),
-                                          ),
-                                          SizedBox(
-                                            width: 22,
-                                          ),
-                                          Text(
-                                            data[Index].name +
-                                                " " +
-                                                data[Index].lastName,
-                                            style: TextStyles.titleListTile,
-                                          ),
-                                          SizedBox(
-                                            width: 22,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                      future: _service.getAllStudats(),
+                      builder: (
+                        BuildContext context,
+                        AsyncSnapshot<StudantModel> snapshot,
+                      ) {
+                        if (snapshot.hasData) {
+                          final data = snapshot.data!.content;
+                          return ListView.builder(
+                            itemCount: data.length,
+                            itemBuilder: (BuildContext context, int Index) {
+                              return ExpansionTile(
+                                title: Container(
+                                  child: Row(
                                     children: [
-                                      ListTile(
-                                        title: Text("CPF: ${data[Index].id}",
-                                            style: TextStyles.titleListTile),
+                                      CircleAvatar(
+                                        radius: 22,
+                                        backgroundImage:
+                                            NetworkImage(data[Index].photo),
                                       ),
-                                      ListTile(
-                                        title: Text(
-                                            "E-mail: ${data[Index].email}",
-                                            style: TextStyles.titleListTile),
+                                      const SizedBox(
+                                        width: 22,
                                       ),
-                                      Container(
-                                        child: Row(
-                                          children: <Widget>[
-                                            Container(
-                                                child: TextButton(
-                                                    child: Text(
-                                                      "Editar",
-                                                      style: TextStyle(
-                                                          color:
-                                                              AppColors.blue),
-                                                    ),
-                                                    onPressed: () {
-                                                      // infos.setInfos(data[Index],Index);
-                                                      StudantInfoController.data.isFromPage.value=true;
-                                                      String genero;
-
-                                                      if (data[Index].genero !=
-                                                              "Masculino" ||
-                                                          data[Index].genero !=
-                                                              "Feminino") {
-                                                        genero = "Gênero";
-                                                      } else {
-                                                        genero = data[Index]
-                                                            .genero
-                                                            .toString();
-                                                      }
-
-                                                      StudandDetailsController
-                                                          .details
-                                                          .setActive(data[Index]
-                                                              .enabled);
-
-                                                      StudandDetailsController
-                                                          .details
-                                                          .gender
-                                                          .value = genero;
-
-                                                      StudandDetailsController
-                                                              .details
-                                                              .civilState
-                                                              .value =
-                                                          data[Index]
-                                                              .estadoCivil;
-                                                      DocumentsController
-                                                              .data.cpf.value =
-                                                          data[Index].id;
-                                                      StudantAllInfoController
-                                                          .data.anddress
-                                                          .clarAndress();
-
-                                                      setinfos.SetAll(
-                                                          data[Index].toJson());
-                                                      StudantAllInfoController
-                                                          .data.anddress
-                                                          .getAndress();
-
-                                                      AlunoDetails(
-                                                          context);
-                                                    })),
-                                            TextButton(
-                                                child: Text("Suspender",
-                                                    style: TextStyle(
-                                                        color:
-                                                            AppColors.orange)),
-                                                onPressed: () {}),
-                                            TextButton(
-                                                child: Text("Deletar",
-                                                    style: TextStyle(
-                                                        color: Colors.red)),
-                                                onPressed: () {}),
-                                          ],
-                                        ),
-                                      )
+                                      Text(
+                                        "${data[Index].name} ${data[Index].lastName}",
+                                        style: TextStyles.titleListTile,
+                                      ),
+                                      const SizedBox(
+                                        width: 22,
+                                      ),
                                     ],
-                                  );
-                                });
-                          } else if (snapshot.hasError) {
-                            return Container(
-                              child: Text("Erro ao buscar dados"),
-                            );
-                          } else {
-                            return Center(
-                              child: CircularProgressIndicator(
-                                  color: AppColors.blue,
-                                  backgroundColor: AppColors.orange),
-                            );
-                          }
-                        }),
+                                  ),
+                                ),
+                                children: <Widget>[
+                                  ListTile(
+                                    title: Text(
+                                      "CPF: ${data[Index].id}",
+                                      style: TextStyles.titleListTile,
+                                    ),
+                                  ),
+                                  ListTile(
+                                    title: Text(
+                                      "E-mail: ${data[Index].email}",
+                                      style: TextStyles.titleListTile,
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Row(
+                                      children: <Widget>[
+                                        Container(
+                                          child: TextButton(
+                                            child: Text(
+                                              "Editar",
+                                              style: TextStyle(
+                                                color: AppColors.blue,
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              // infos.setInfos(data[Index],Index);
+                                              StudantInfoController
+                                                  .data.isFromPage.value = true;
+                                              String genero;
+
+                                              if (data[Index].genero !=
+                                                      "Masculino" ||
+                                                  data[Index].genero !=
+                                                      "Feminino") {
+                                                genero = "Gênero";
+                                              } else {
+                                                genero = data[Index].genero;
+                                              }
+
+                                              StudandDetailsController.details
+                                                  .setActive(
+                                                data[Index].enabled,
+                                              );
+
+                                              StudandDetailsController.details
+                                                  .gender.value = genero;
+
+                                              StudandDetailsController.details
+                                                      .civilState.value =
+                                                  data[Index].estadoCivil;
+                                              DocumentsController.data.cpf
+                                                  .value = data[Index].id;
+                                              StudantAllInfoController
+                                                  .data.anddress
+                                                  .clarAndress();
+
+                                              setinfos.SetAll(
+                                                data[Index].toJson(),
+                                              );
+                                              StudantAllInfoController
+                                                  .data.anddress
+                                                  .getAndress();
+
+                                              AlunoDetails(
+                                                context,
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                        TextButton(
+                                          child: Text(
+                                            "Suspender",
+                                            style: TextStyle(
+                                              color: AppColors.orange,
+                                            ),
+                                          ),
+                                          onPressed: () {},
+                                        ),
+                                        TextButton(
+                                          child: const Text(
+                                            "Deletar",
+                                            style: TextStyle(
+                                              color: Colors.red,
+                                            ),
+                                          ),
+                                          onPressed: () {},
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              );
+                            },
+                          );
+                        } else if (snapshot.hasError) {
+                          return const ErrorInfo();
+                        } else {
+                          return Center(
+                            child: CircularProgressIndicator(
+                              color: AppColors.blue,
+                              backgroundColor: AppColors.orange,
+                            ),
+                          );
+                        }
+                      },
+                    ),
                   );
                 }),
               ),
@@ -451,10 +456,10 @@ class GetStudants extends GetView<ListStudantController> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () {
           AlunoDetails(context);
-          StudantInfoController.data.isFromPage.value=false;
+          StudantInfoController.data.isFromPage.value = false;
         },
       ),
     );

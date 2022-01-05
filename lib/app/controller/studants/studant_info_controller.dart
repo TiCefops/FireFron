@@ -71,7 +71,7 @@ class StudantInfoController extends GetxController{
 }
 
 
-class Content {
+ class Content {
   Content({
     required this.id,
     required this.name,
