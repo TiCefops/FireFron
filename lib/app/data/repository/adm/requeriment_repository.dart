@@ -6,7 +6,7 @@ import 'package:cefops/Shared/urls.dart';
 import 'package:cefops/app/controller/home_emplooyes_controller.dart';
 import 'package:cefops/app/controller/requeriment_controller.dart';
 import 'package:cefops/app/controller/status_app_controller.dart';
-import 'package:cefops/app/data/model/adm/requeriment_model.dart';
+import 'package:cefops/app/data/model/views/adm/secretaria/requerimentos/requeriment_model.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:developer' as developer;

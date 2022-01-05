@@ -3,13 +3,14 @@ import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/app/controller/home_emplooyes_controller.dart';
 import 'package:cefops/app/controller/status_app_controller.dart';
-import 'package:cefops/app/data/model/adm/requeriment_model.dart';
+import 'package:cefops/app/data/model/views/adm/secretaria/requerimentos/requeriment_model.dart';
 import 'package:cefops/app/services/adm/requeriment/requeriment_service.dart';
+import 'package:cefops/shared/error/page_error_info.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-var controller = HomeEmployesController.c;
+HomeEmployesController controller = HomeEmployesController.c;
 final RequerimentService _service = RequerimentService();
 
 class GetRequeriments extends StatefulWidget {
@@ -136,7 +137,7 @@ class _GetRequerimentsState extends State<GetRequeriments> {
                 });
           } else if (snapshot.hasError) {
             return Container(
-              child: Text("Erro ao buscar dados" + snapshot.error.toString()),
+              child: ErrorInfo(),
             );
           } else {
             return Center(
@@ -262,7 +263,7 @@ class GetRequerimentsAndando extends StatelessWidget {
                 });
           } else if (snapshot.hasError) {
             return Container(
-              child: Text("Erro ao buscar dados" + snapshot.error.toString()),
+              child: ErrorInfo(),
             );
           } else {
             return Center(
@@ -366,7 +367,7 @@ class GetRequerimentsConcluido extends StatelessWidget {
                 });
           } else if (snapshot.hasError) {
             return Container(
-              child: Text("Erro ao buscar dados" + snapshot.error.toString()),
+              child:ErrorInfo()
             );
           } else {
             return Center(

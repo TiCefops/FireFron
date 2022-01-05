@@ -1,5 +1,5 @@
 
-import 'package:cefops/app/data/model/adm/requeriment_type_model.dart';
+import 'package:cefops/app/data/model/views/adm/secretaria/requerimentos/requeriment_type_model.dart';
 import 'package:cefops/app/data/repository/adm/requeriment_types_repository.dart';
 
 class RequerimentTypeService{

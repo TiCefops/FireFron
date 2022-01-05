@@ -6,10 +6,10 @@ import 'package:cefops/app/views/adm/secretaria/page_update_news.dart';
 import 'package:cefops/app/views/adm/shared/page_home_employes.dart';
 import 'package:cefops/app/views/adm/shared/page_list_studants.dart';
 import 'package:cefops/app/views/adm/shared/page_requeriment_status.dart';
-import 'package:cefops/app/views/page_home.dart';
+import 'package:cefops/app/views/studants/page_home_studant.dart';
 import 'package:cefops/app/views/studants/page_course.dart';
 import 'package:cefops/app/views/studants/page_socre.dart';
-import 'package:cefops/app/views/studants/requeriment/page_requeriment_menu_types.dart';
+import 'package:cefops/app/views/studants/page_requeriment_menu_types.dart';
 
 import 'package:flutter/material.dart';
 ///Rotas de menus
@@ -43,7 +43,7 @@ Widget getDrawerItem(int pos) {
 ///detecta tipo de usuário
 Widget homeChange(){
   if(UserController.user.role.contains("Aluno")){
-    return const HomePage();
+    return const HomePageStudant();
   }
 
      return const EmployeesPage();

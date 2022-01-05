@@ -1,4 +1,4 @@
-import 'package:cefops/app/views/adm/finances/interno/controller/finance_menu_controller.dart';
+import 'package:cefops/app/controller/views/adm/finances/internal/finance_menu_controller.dart';
 import 'package:cefops/shared/themes/app_textstayle.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

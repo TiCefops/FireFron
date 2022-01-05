@@ -4,7 +4,7 @@ import 'package:cefops/app/views/adm/studantDetails/pages/page_forms_studants.da
 import 'package:cefops/app/views/adm/studantDetails/pages/page_forms_studants_documents.dart';
 import 'package:cefops/app/views/adm/studantDetails/pages/page_studant_anddress.dart';
 import 'package:cefops/app/views/adm/studantDetails/pages/page_user_infos.dart';
-import 'package:cefops/app/views/studants/requeriment/page_my_requeriment.dart';
+import 'package:cefops/app/views/studants/page_my_requeriment.dart';
 import 'package:flutter/material.dart';
 StatelessWidget SetStudantDetails(int pos) {
   switch (pos) {

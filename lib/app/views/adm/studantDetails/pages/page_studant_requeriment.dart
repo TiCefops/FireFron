@@ -1,6 +1,6 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
-import 'package:cefops/app/data/model/adm/requeriment_model.dart';
+import 'package:cefops/app/data/model/views/adm/secretaria/requerimentos/requeriment_model.dart';
 import 'package:cefops/app/services/adm/requeriment/requeriment_service.dart';
 import 'package:cefops/app/views/adm/studantDetails/pages/page_studant_requeriment_detail.dart';
 import 'package:flutter/material.dart';

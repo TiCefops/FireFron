@@ -1,10 +1,10 @@
 import 'package:cefops/Shared/Security/Controller/user_controller.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
-import 'package:cefops/app/data/model/adm/requeriment_type_model.dart';
+import 'package:cefops/app/data/model/views/adm/secretaria/requerimentos/requeriment_type_model.dart';
 import 'package:cefops/app/services/adm/requeriment/requeriment_types_service.dart';
-import 'package:cefops/app/views/studants/requeriment/page_my_requeriment.dart';
-import 'package:cefops/app/views/studants/requeriment/widget_new_requeriment.dart';
+import 'package:cefops/app/views/studants/page_my_requeriment.dart';
+import 'package:cefops/app/widgets/views/studants/widget_new_requeriment.dart';
 import 'package:cefops/shared/error/page_error_info.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

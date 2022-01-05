@@ -19,15 +19,15 @@ final bool ismobile = GetPlatform.isMobile;
 double heightforMobile = 0.9;
 
 ///
-class HomePage extends StatefulWidget {
+class HomePageStudant extends StatefulWidget {
   ///
-  const HomePage({Key? key}) : super(key: key);
+  const HomePageStudant({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomePageStudantState createState() => _HomePageStudantState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageStudantState extends State<HomePageStudant> {
   late Future<PostModel> futurePost;
   PostService service = PostService();
 

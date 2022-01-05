@@ -1,6 +1,6 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
-import 'package:cefops/app/views/adm/finances/interno/widgets/widget_finance_home.dart';
+import 'package:cefops/app/widgets/views/adm/finances/internal/widget_finance_home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';

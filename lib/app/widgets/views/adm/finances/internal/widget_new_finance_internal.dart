@@ -1,15 +1,16 @@
-import 'package:cefops/app/views/adm/finances/interno/controller/new_finance_controller.dart';
-import 'package:cefops/app/views/adm/finances/interno/widgets/widget_dropdown_finance_installments.dart';
-import 'package:cefops/app/views/adm/finances/interno/widgets/widget_dropdown_finance_state.dart';
-import 'package:cefops/app/views/adm/finances/interno/widgets/widget_dropmenu_type_entitity.dart';
+import 'package:cefops/app/controller/views/adm/finances/internal/new_finance_controller.dart';
 import 'package:cefops/app/views/adm/studantDetails/widget/widget_custom_form_with_validate.dart';
 import 'package:cefops/app/widgets/app/widget_forms_for_all.dart';
+import 'package:cefops/app/widgets/views/adm/finances/internal/widget_dropdown_finance_installments.dart';
+import 'package:cefops/app/widgets/views/adm/finances/internal/widget_dropdown_finance_state.dart';
+import 'package:cefops/app/widgets/views/adm/finances/internal/widget_dropmenu_type_entitity.dart';
 import 'package:cefops/shared/themes/app_textstayle.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 ///
 class NewFinance extends StatelessWidget {
+  ///
   const NewFinance({Key? key}) : super(key: key);
 
   @override
@@ -26,9 +27,9 @@ class NewFinance extends StatelessWidget {
       GlobalKey<FormState>()
     ];
 
-
-    NewFinanceInternalController  _controller=Get.put(NewFinanceInternalController());
-
+    ///controle
+    NewFinanceInternalController _controller =
+        Get.put(NewFinanceInternalController());
 
     return Container(
       child: Column(
@@ -94,7 +95,7 @@ class NewFinance extends StatelessWidget {
                             SizedBox(
                               width: Get.width * 0.008,
                             ),
-                            DropdownFinanceInstallments(),
+                            const DropdownFinanceInstallments(),
                             SizedBox(
                               width: Get.width * 0.008,
                             ),
@@ -173,7 +174,9 @@ class NewFinance extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: Get.height*0.09,),
+          SizedBox(
+            height: Get.height * 0.09,
+          ),
           Center(
             child: SizedBox(
               width: Get.width * 0.5,

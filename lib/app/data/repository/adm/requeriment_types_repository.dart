@@ -4,7 +4,7 @@ import 'package:cefops/Shared/Security/Controller/error_controler.dart';
 import 'package:cefops/Shared/Security/Controller/user_controller.dart';
 import 'package:cefops/Shared/urls.dart';
 import 'package:cefops/app/controller/requeriment_type_controller.dart';
-import 'package:cefops/app/data/model/adm/requeriment_type_model.dart';
+import 'package:cefops/app/data/model/views/adm/secretaria/requerimentos/requeriment_type_model.dart';
 import 'package:http/http.dart' as http;
 
 class RequerimentTypesRepository {

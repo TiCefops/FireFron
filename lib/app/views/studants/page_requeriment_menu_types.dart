@@ -1,6 +1,6 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
-import 'package:cefops/app/views/studants/requeriment/widget_requeriment_viewer.dart';
+import 'package:cefops/app/widgets/views/studants/widget_requeriment_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 ///
