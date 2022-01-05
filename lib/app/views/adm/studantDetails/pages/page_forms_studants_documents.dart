@@ -1,8 +1,7 @@
 
 import 'package:cefops/app/data/repository/aluno/documentos/documents_repository.dart';
 import 'package:cefops/app/views/adm/studantDetails/controller/documents_controller.dart';
-import 'package:cefops/app/views/adm/studantDetails/controller/studant_details_controller.dart';
-import 'package:cefops/app/views/adm/studantDetails/widget/widget_custom_form.dart';
+import 'package:cefops/app/views/adm/studantDetails/widget/widget_custom_form_with_validate.dart';
 import 'package:cefops/app/views/adm/studantDetails/widget/widget_form_studantdetails.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -31,7 +30,6 @@ class FormsStudantsDocuments extends StatelessWidget {
     final TextEditingController nomePaiController = TextEditingController();
 
     DocumentsController docController = DocumentsController.data;
-    StudandDetailsController pageController = StudandDetailsController.details;
 
     return Container(
         height: Get.height,
@@ -39,7 +37,7 @@ class FormsStudantsDocuments extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Row(children: <Widget>[
-              CustomForm(
+              CustomFormWithValidate(
                   _formKeys[0],
                   11,
                   cpfController..text = '${docController.cpf}',
@@ -54,7 +52,7 @@ class FormsStudantsDocuments extends StatelessWidget {
               ),
               Obx(() {
                 return Container(
-                  child: CustomForm(
+                  child: CustomFormWithValidate(
                       _formKeys[1],
                       12,
                       tituloController..text = '${docController.titulo}',
@@ -71,7 +69,7 @@ class FormsStudantsDocuments extends StatelessWidget {
                 Obx(() {
                   return Container(
 
-                    child: CustomForm(_formKeys[2], 10,
+                    child: CustomFormWithValidate(_formKeys[2], 10,
                       rgController..text = '${docController.rg}',
                       "RG", "Insira o RG", "O RG não pode Ser vazio",
                       "RG inválido", "O RG deve conter 10 Digitos",

@@ -19,7 +19,7 @@ class FormsForAll extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 320,
+
       child: TextFormField(
         controller: Controller,
         style: TextStyle(
