@@ -6,10 +6,10 @@ class NewFinanceInternalController extends GetxController{
 
   RxInt id=0.obs;
   RxString nome="".obs;
-  RxString formaPagamento="".obs;
+  RxString formaPagamento="Dinheiro".obs;
   RxString condicaoPagamento="".obs;
   RxString parcelaAtual="".obs;
-  RxInt totalparcelas=0.obs;
+  RxInt totalparcelas=1.obs;
   RxDouble valor=0.0.obs;
   RxDouble valorInicialCaixa=0.0.obs;
   RxDouble valorPago=0.0.obs;
@@ -19,6 +19,10 @@ class NewFinanceInternalController extends GetxController{
   RxString dataPagamento="".obs;
   RxString dataVencimento="".obs;
   RxInt page=0.obs;
+  RxBool parcelado=false.obs;
+  RxString statusDeMovimentacao="Entrada".obs;
+  RxBool aluno=false.obs;
+  RxBool updating=false.obs;
 
 
   ///
