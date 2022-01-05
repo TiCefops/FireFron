@@ -36,8 +36,8 @@ class InternalFinance extends StatelessWidget {
                           children: <Widget>[
                             Center(
                               child: Text(
-                                "Todas Entradas e Saida",
-                                style: TextStyles.titleListTile,
+                                "Nova Movimentação",
+                                style: TextStyles.titleWithe,
                               ),
                             ),
                           ],
