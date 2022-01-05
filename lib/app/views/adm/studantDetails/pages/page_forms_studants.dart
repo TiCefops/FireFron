@@ -1,6 +1,6 @@
 import 'package:cefops/app/controller/studants/studant_info_controller.dart';
 import 'package:cefops/app/services/adm/studant_service.dart';
-import 'package:cefops/app/views/adm/studantDetails/widget/widget_custom_form.dart';
+import 'package:cefops/app/views/adm/studantDetails/widget/widget_custom_form_with_validate.dart';
 import 'package:cefops/app/views/adm/studantDetails/widget/widget_dropdown_civilState.dart';
 import 'package:cefops/app/views/adm/studantDetails/widget/widget_dropdown_gender.dart';
 import 'package:cefops/app/views/adm/studantDetails/widget/widget_dropdown_state.dart';
@@ -124,7 +124,7 @@ class FormsStudants extends StatelessWidget {
                       children: <Widget>[
                         SizedBox(height: Get.height*0.037),
                         Container(
-                          child: CustomForm(_formKeys[0], 11,
+                          child: CustomFormWithValidate(_formKeys[0], 11,
                               telCellController..text = '${infos.phoneCell}',
                               "Telefone Celular", "Telefone do Aluno",
                               "O Telefone não pode ser vazio",
@@ -143,7 +143,7 @@ class FormsStudants extends StatelessWidget {
                       children: <Widget>[
                         SizedBox(height: Get.height*0.037),
                         Container(
-                          child: CustomForm(_formKeys[1], 10,
+                          child: CustomFormWithValidate(_formKeys[1], 10,
                               telResController..text = '${infos.phoneHome}',
                               "Tel Residencial", "Telefone rescidencial Aluno",
                               "O Telefone não pode ser vazio",
@@ -174,7 +174,7 @@ class FormsStudants extends StatelessWidget {
                         width: Get.width*0.14,
                         margin: EdgeInsets.only(top: Get.height*0.03),
 
-                        child: CustomForm(_formKeys[2], 11, cpfController..text="${infos.cpf}", "CPF", "CPF",
+                        child: CustomFormWithValidate(_formKeys[2], 11, cpfController..text="${infos.cpf}", "CPF", "CPF",
                             "CPF não pode ser vazio", "CPF inválido",
                             "O CPF deve ter 11 digitos", TextInputType.number),
                       ),
