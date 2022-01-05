@@ -1,11 +1,10 @@
 
 import 'package:cefops/Shared/themes/app_textstayle.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 /// formulario usado
-Widget CustomForm(
+Widget CustomFormWithValidate(
     GlobalKey<FormState> _formKey, int max, TextEditingController controller,
     String text, String hintText, String vazio,
     String error,String errorMenor,TextInputType input) {
