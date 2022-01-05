@@ -170,28 +170,12 @@ class _MyHomePageState extends State<MyHomePage> {
               //Fim da area aluno
 
               //Inicio area secretaria
+
               if (UserController.user.role.contains("Secretaria") ||
                   UserController.user.role.contains("ADM"))
                 ListTile(
                   title: const Text(
-                    'Cadastrar Aluno',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  leading: Icon(
-                    Icons.person_add,
-                    color: AppColors.iconColor,
-                  ),
-                  onTap: () {
-                    statusApp.status.selectedIndex.value = 3;
-                    statusApp.status.title.value = "Cadastrar Aluno";
-                    Navigator.pop(context);
-                  },
-                ),
-              if (UserController.user.role.contains("Secretaria") ||
-                  UserController.user.role.contains("ADM"))
-                ListTile(
-                  title: const Text(
-                    'Listar studantsListViewer',
+                    'Listar Alunos',
                     style: TextStyle(color: Colors.white),
                   ),
                   leading: Icon(

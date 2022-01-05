@@ -2,6 +2,7 @@ import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/app/data/model/adm/requeriment_model.dart';
 import 'package:cefops/app/services/adm/requeriment/requeriment_service.dart';
+import 'package:cefops/shared/error/page_error_info.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -311,9 +312,7 @@ class MyRequeriments extends StatelessWidget {
                           ),
                         );
                 } else if (snapshot.hasError) {
-                  return Text(
-                    "Erro ao buscar dados${snapshot.error}",
-                  );
+                  return ErrorInfo();
                 } else {
                   return Center(
                     child: CircularProgressIndicator(
