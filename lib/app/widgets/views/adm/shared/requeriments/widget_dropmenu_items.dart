@@ -1,4 +1,4 @@
-import 'package:cefops/app/controller/requeriment_type_controller.dart';
+import 'package:cefops/app/controller/views/adm/shared/requeriment_type_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +14,6 @@ class _DropMenuItemsState extends State<DropMenuItems> {
 
   @override
   Widget build(BuildContext context) {
-    String _selectedLocation=controller.selectedType.value;
 
 
     return Flexible(

@@ -2,7 +2,7 @@
 import 'package:cefops/Shared/Security/Controller/user_controller.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
-import 'package:cefops/app/controller/home_emplooyes_controller.dart';
+import 'package:cefops/app/controller/views/adm/shared/home_emplooyes_controller.dart';
 import 'package:cefops/app/data/model/views/adm/secretaria/requerimentos/requeriment_type_model.dart';
 import 'package:cefops/app/module/pdf/ComprovanteMatriculaPDFModel.dart';
 import 'package:cefops/app/services/adm/requeriment/requeriment_service.dart';

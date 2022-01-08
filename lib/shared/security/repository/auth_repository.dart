@@ -9,7 +9,7 @@ import 'package:cefops/Shared/Security/Model/error_model.dart';
 import 'package:cefops/Shared/Security/Model/login_model.dart';
 import 'package:cefops/Shared/Security/Model/signup_model.dart';
 import 'package:cefops/Shared/urls.dart';
-import 'package:cefops/app/controller/status_app_controller.dart';
+import 'package:cefops/app/controller/app/status_app_controller.dart';
 import 'package:http/http.dart' as http;
 
 ///

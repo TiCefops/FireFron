@@ -1,5 +1,4 @@
 
-import 'package:cefops/Shared/Security/Repository/auth_repository.dart';
 import 'package:get/get.dart';
 ///controla menu lateral da listagem de alunos
 class ListStudantController extends GetxController{
@@ -15,10 +14,6 @@ class ListStudantController extends GetxController{
   RxString newDirection="asc".obs;
   RxString searchData="".obs;
   RxString defaultConfigSearch="Nome".obs;
-
-
-
-
 
 
 

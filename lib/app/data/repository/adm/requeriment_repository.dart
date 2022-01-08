@@ -3,19 +3,19 @@ import 'dart:convert';
 import 'package:cefops/Shared/Security/Controller/error_controler.dart';
 import 'package:cefops/Shared/Security/Controller/user_controller.dart';
 import 'package:cefops/Shared/urls.dart';
-import 'package:cefops/app/controller/home_emplooyes_controller.dart';
-import 'package:cefops/app/controller/requeriment_controller.dart';
-import 'package:cefops/app/controller/status_app_controller.dart';
+import 'package:cefops/app/controller/views/adm/shared/home_emplooyes_controller.dart';
+import 'package:cefops/app/controller/views/adm/shared/requeriment_controller.dart';
+import 'package:cefops/app/controller/app/status_app_controller.dart';
 import 'package:cefops/app/data/model/views/adm/secretaria/requerimentos/requeriment_model.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'dart:developer' as developer;
+
 
 import 'package:intl/intl.dart';
 ///
 class RequerimentRepository {
   Future<List<RequerimentModel>> getAllRequeriment() async {
-    final response = await http.get(
+    final http.Response response = await http.get(
       Uri.parse("${urls.app}/requerimetos"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
@@ -23,13 +23,13 @@ class RequerimentRepository {
       },
     );
 
-    final data = utf8.decode(response.bodyBytes);
+    final String data = utf8.decode(response.bodyBytes);
     var decodeData = jsonDecode(data);
     if (response.statusCode == 200) {
       ErroController.error.ok.value = true;
       List jsonResponse = decodeData;
 
-      var requeriments =
+      List<RequerimentModel> requeriments =
           jsonResponse.map((req) => RequerimentModel.fromJson(req)).toList();
 
       return requeriments;
@@ -47,13 +47,12 @@ class RequerimentRepository {
     double valor,
   ) async {
     isAluno();
-    final data = new DateTime.now().toLocal();
-    final String status;
+    final DateTime data = new DateTime.now().toLocal();
 
-    var dataFormat = new DateFormat("yMMddhhmms");
-    var protocolo = dataFormat.format(data);
+    DateFormat dataFormat = new DateFormat("yMMddhhmms");
+    String protocolo = dataFormat.format(data);
     RequerimentController.req.protocolo.value = protocolo;
-    final response = await http.post(
+    final http.Response response = await http.post(
       Uri.parse('${urls.app}/requerimetos'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
@@ -111,7 +110,7 @@ class RequerimentRepository {
     }
 
     ;
-    final response = await http.patch(
+    final http.Response response = await http.patch(
       Uri.parse(URL()),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
@@ -134,14 +133,14 @@ class RequerimentRepository {
 
   Future<List<RequerimentModel>> getRequerimentById(
       {required String id}) async {
-    final response = await http.get(
+    final http.Response response = await http.get(
       Uri.parse("${urls.app}/requerimetos/aluno/${id}"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': 'Bearer ${UserController.user.token}',
       },
     );
-    final data = utf8.decode(response.bodyBytes);
+    final String data = utf8.decode(response.bodyBytes);
     var decodeData = jsonDecode(data);
 
     if (response.statusCode == 200) {

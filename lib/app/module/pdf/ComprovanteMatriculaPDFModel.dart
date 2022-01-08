@@ -1,8 +1,8 @@
 import 'dart:typed_data';
 import 'package:cefops/Shared/Security/Controller/user_controller.dart';
-import 'package:cefops/app/controller/home_emplooyes_controller.dart';
-import 'package:cefops/app/controller/requeriment_controller.dart';
-import 'package:cefops/app/controller/status_app_controller.dart';
+import 'package:cefops/app/controller/views/adm/shared/home_emplooyes_controller.dart';
+import 'package:cefops/app/controller/views/adm/shared/requeriment_controller.dart';
+import 'package:cefops/app/controller/app/status_app_controller.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 import 'package:flutter/material.dart';
@@ -16,7 +16,6 @@ Future<void> ComprovMatricula() async{
 
   final  data = new DateTime.now() ;
 
-  var timeformat = DateFormat(" dd/MM/yyyy  hh:mm").format(data);
   var timeformat2 = DateFormat(" d 'de' MMMM 'de' y", "pt_BR").format(data);
   double marginEsquerda=40.0;
 

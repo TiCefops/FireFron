@@ -1,5 +1,5 @@
 
-import 'package:cefops/app/controller/status_app_controller.dart';
+import 'package:cefops/app/controller/app/status_app_controller.dart';
 import 'package:get/get.dart';
 ///controlador da pagina inicial dos funcionarios
 class HomeEmployesController extends GetxController{

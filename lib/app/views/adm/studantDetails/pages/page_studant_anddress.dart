@@ -1,6 +1,7 @@
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/app/controller/controller_cep.dart';
 import 'package:cefops/app/controller/studants/studant_all_info_controller.dart';
+import 'package:cefops/app/controller/studants/studant_anddress_controller.dart';
 import 'package:cefops/app/data/repository/cepAuto/cep_repository.dart';
 import 'package:cefops/app/views/adm/studantDetails/widget/widget_form_studantdetails.dart';
 import 'package:flutter/material.dart';
@@ -13,17 +14,17 @@ class StudantAnddress extends GetView<StudantAllInfoController> {
   Widget build(BuildContext context) {
     StudantAllInfoController.data.anddress.refresh();
 
-    int page=1;
-    final cepControllerText = TextEditingController();
-    final ruaController = TextEditingController();
-    final complementoController = TextEditingController();
-    final cidadeController = TextEditingController();
-    final estadoController = TextEditingController();
-    final ufController = TextEditingController();
-    final numeroController = TextEditingController();
-    final bairroController = TextEditingController();
-    var endereco=StudantAllInfoController.data.anddress;
-    var cepOnline=cepControll.endereco;
+    final TextEditingController cepControllerText = TextEditingController();
+    final TextEditingController ruaController = TextEditingController();
+    final TextEditingController complementoController = TextEditingController();
+    final TextEditingController cidadeController = TextEditingController();
+    final TextEditingController estadoController = TextEditingController();
+    final TextEditingController ufController = TextEditingController();
+    final TextEditingController numeroController = TextEditingController();
+    final TextEditingController bairroController = TextEditingController();
+
+    StudantAnddressController endereco=StudantAllInfoController.data.anddress;
+    cepControll cepOnline=cepControll.endereco;
 
 
     if(cepOnline.cep.isEmpty){
@@ -42,15 +43,15 @@ class StudantAnddress extends GetView<StudantAllInfoController> {
       width: Get.width,
       child:
       Column(
-        children: [
-          Row(children: [
+        children:<Widget> [
+          Row(children: <Widget>[
           Container(
             height: Get.height*0.1,
             width: Get.width*0.2,
             alignment: Alignment.centerLeft,
             child:  TextFormField(
               maxLength: 8,
-              onChanged: (value){
+              onChanged: (String value){
                 if(value.length==8){
                   Future.delayed(const Duration(seconds: 2),(){
                     GetCep(cepControllerText.value.text);
@@ -69,7 +70,7 @@ class StudantAnddress extends GetView<StudantAllInfoController> {
                   )
               ),
 
-              validator: (value) {
+              validator: (String? value) {
                 if (value == null || value.isEmpty) {
                   return "o campo cep esta vazio";
                 }

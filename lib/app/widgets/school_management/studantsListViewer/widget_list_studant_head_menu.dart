@@ -1,6 +1,6 @@
 
 import 'package:cefops/Shared/themes/app_textstayle.dart';
-import 'package:cefops/app/controller/list_studant_controller.dart';
+import 'package:cefops/app/controller/views/adm/shared/list_studant_controller.dart';
 import 'package:cefops/app/widgets/school_management/studantsListViewer/widget_dropmenu_for_search_studant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

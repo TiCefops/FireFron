@@ -1,8 +1,8 @@
 import 'package:cefops/Shared/Security/Controller/user_controller.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
-import 'package:cefops/app/controller/home_emplooyes_controller.dart';
-import 'package:cefops/app/controller/status_app_controller.dart';
+import 'package:cefops/app/controller/views/adm/shared/home_emplooyes_controller.dart';
+import 'package:cefops/app/controller/app/status_app_controller.dart';
 import 'package:cefops/app/data/model/views/adm/secretaria/requerimentos/requeriment_model.dart';
 import 'package:cefops/app/services/adm/requeriment/requeriment_service.dart';
 import 'package:cefops/shared/error/page_error_info.dart';
@@ -51,7 +51,7 @@ class _GetRequerimentsState extends State<GetRequeriments> {
                 itemCount: filter.length,
                 itemBuilder: (BuildContext context, int Index) {
                   DateTime now = filter[Index].abertoem.toLocal();
-                  var createDate =
+                  String createDate =
                       DateFormat(" dd/MM/yyyy 'às' HH:mm").format(now);
                   String previsaoFormater = DateFormat(
                           "'Previsão de Entrega:' dd/MM/yyyy")
@@ -307,7 +307,7 @@ class GetRequerimentsConcluido extends StatelessWidget {
                 itemCount: filter.length,
                 itemBuilder: (BuildContext context, int Index) {
                   DateTime OpenDate = filter[Index].abertoem.toLocal();
-                  DateTime CloseDate = filter[Index].entregue.toLocal();
+                  DateTime CloseDate = filter[Index].entregue;
                   DateFormat formatedDate =
                       DateFormat(" dd/MM/yyyy 'às' HH:mm");
                   DateFormat formatedDateForDone = DateFormat(" dd/MM/yyyy");

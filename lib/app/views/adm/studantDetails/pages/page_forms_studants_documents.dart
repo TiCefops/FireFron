@@ -1,5 +1,5 @@
 
-import 'package:cefops/app/data/repository/aluno/documentos/documents_repository.dart';
+import 'package:cefops/app/controller/studants/studant_info_controller.dart';
 import 'package:cefops/app/views/adm/studantDetails/controller/documents_controller.dart';
 import 'package:cefops/app/views/adm/studantDetails/widget/widget_custom_form_with_validate.dart';
 import 'package:cefops/app/views/adm/studantDetails/widget/widget_form_studantdetails.dart';
@@ -29,8 +29,9 @@ class FormsStudantsDocuments extends StatelessWidget {
     final TextEditingController nomeMaeController = TextEditingController();
     final TextEditingController nomePaiController = TextEditingController();
 
-    DocumentsController docController = DocumentsController.data;
 
+    DocumentsController docController = DocumentsController.data;
+    docController.getByid(docController.cpf.value);
     return Container(
         height: Get.height,
         width: Get.width,
@@ -175,12 +176,37 @@ class FormsStudantsDocuments extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
-              height: Get.height * 0.05,
+            Container(
+              alignment: Alignment.topLeft,
+              child: FormStudntDetails(
+                  orgaoEmissorController
+                    ..text = '${'${docController.orgaoEmissorRg}'}',
+                  "Orgão Emissor  RG",
+                  "Insira a  Data de Emissão do RG",
+                  "preencha a Data de Emissão "),
             ),
-            ElevatedButton(
+            SizedBox(
+              height: Get.height * 0.03,
+            ),
+          Obx((){
+            return  docController.loading.value? CircularProgressIndicator():ElevatedButton(
                 onPressed: () async {
-                  await CreateDocuments(
+                  StudantInfoController.data.isFromPage.value?
+                 docController.updateDocuments(
+                     cpfController.text,
+                     rgController.text,
+                     dataRgController.text,
+                     orgaoEmissorController.text,
+                     estadoRgController.text,
+                     tituloController.text,
+                     zonaTituloController.text,
+                     secaoTituloController.text,
+                     dataEmisoaTituloController.text,
+                     estadoTituloController.text,
+                     nomeMaeController.text,
+                     nomePaiController.text,
+                     docController.cpf.value):
+                 await docController.createDocuments(
                       cpfController.text,
                       rgController.text,
                       dataRgController.text,
@@ -196,7 +222,8 @@ class FormsStudantsDocuments extends StatelessWidget {
                       docController.cpf.value);
                   // pageController.navegar.value = 1;
                 },
-                child: Text("Continuar")),
+                child: Text("Continuar"));
+          }),
           ],
         ));
   }

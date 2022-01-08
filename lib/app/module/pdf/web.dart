@@ -1,4 +1,4 @@
-import 'package:cefops/app/controller/home_emplooyes_controller.dart';
+import 'package:cefops/app/controller/views/adm/shared/home_emplooyes_controller.dart';
 import 'package:universal_html/html.dart';
 import 'dart:convert';
 

@@ -1,7 +1,7 @@
 import 'package:cefops/Shared/Security/Controller/error_controler.dart';
 import 'package:cefops/Shared/Security/Services/auth_service.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
-import 'package:cefops/app/controller/status_app_controller.dart';
+import 'package:cefops/app/controller/app/status_app_controller.dart';
 import 'package:cefops/app/views/Security/page_singup.dart';
 import 'package:cefops/app/widgets/app/widget_navegation.dart';
 import 'package:cefops/app/widgets/security/widget_forms_for_login_page.dart';

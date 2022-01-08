@@ -16,7 +16,6 @@ class StudantAnddressController extends GetxController{
   var rua="".obs;
   var erro="".obs;
   var carregando=false.obs;
-  var click=false.obs;
   var status="nd".obs;
 
  setEndereco(AndressModel data){

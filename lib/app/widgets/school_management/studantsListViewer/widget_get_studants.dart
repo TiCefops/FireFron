@@ -1,6 +1,6 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
-import 'package:cefops/app/controller/list_studant_controller.dart';
+import 'package:cefops/app/controller/views/adm/shared/list_studant_controller.dart';
 import 'package:cefops/app/controller/studants/studant_all_info_controller.dart';
 import 'package:cefops/app/controller/studants/studant_info_controller.dart';
 import 'package:cefops/app/data/model/aluno/aluno_model.dart';

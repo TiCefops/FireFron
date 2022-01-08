@@ -81,7 +81,7 @@ class FormsStudants extends StatelessWidget {
                 ],
               ),
               Row(
-                children: [
+                children:<Widget> [
                   Container(width: Get.width * 0.09, child: DropDownGender()),
                   SizedBox(
                     width: Get.width * 0.01,

@@ -3,7 +3,7 @@ import 'package:cefops/app/views/adm/studantDetails/controller/documents_control
 import 'package:cefops/app/views/adm/studantDetails/widget/widget_studant_infos_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:cefops/app/controller/status_app_controller.dart';
+import 'package:cefops/app/controller/app/status_app_controller.dart';
 
 ///
 AlunoDetails(BuildContext context) {

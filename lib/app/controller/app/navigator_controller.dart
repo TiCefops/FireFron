@@ -1,5 +1,4 @@
-import 'package:cefops/app/controller/status_app_controller.dart';
-import 'package:flutter/material.dart';
+import 'package:cefops/app/controller/app/status_app_controller.dart';
 import 'package:get/get.dart';
 ///detecta o menu
 onSelectItem() {

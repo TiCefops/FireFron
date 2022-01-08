@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:cefops/Shared/Security/Controller/user_controller.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
-import 'package:cefops/app/controller/status_app_controller.dart';
+import 'package:cefops/app/controller/app/status_app_controller.dart';
 import 'package:cefops/app/data/model/model_publication.dart';
 import 'package:cefops/app/widgets/app/widget_navegator_routes.dart';
 import 'package:cefops/res.dart';

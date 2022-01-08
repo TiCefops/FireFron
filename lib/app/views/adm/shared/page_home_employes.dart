@@ -1,8 +1,8 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
-import 'package:cefops/app/controller/home_emplooyes_controller.dart';
-import 'package:cefops/app/controller/requeriment_controller.dart';
-import 'package:cefops/app/controller/status_app_controller.dart';
+import 'package:cefops/app/controller/views/adm/shared/home_emplooyes_controller.dart';
+import 'package:cefops/app/controller/views/adm/shared/requeriment_controller.dart';
+import 'package:cefops/app/controller/app/status_app_controller.dart';
 import 'package:cefops/app/widgets/views/adm/shared/requeriments/widget_get_requeriments.dart';
 import 'package:cefops/app/widgets/views/adm/shared/requeriments/widget_new_requeriment.dart';
 import 'package:flutter/material.dart';

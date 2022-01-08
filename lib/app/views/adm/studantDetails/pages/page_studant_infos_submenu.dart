@@ -84,29 +84,8 @@ class ViewInfoFromStudant extends StatelessWidget {
               SizedBox(
                 width: Get.width * 0.01,
               ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    primary: const Color(0xff062761),
-                    textStyle:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.w400)),
-                onPressed: () {
-                  controller.navegar.value = 0;
-                },
-                child: Container(
-                  width: 80,
-                  height: 30,
-                  decoration: BoxDecoration(),
-                  child: Center(
-                    child: const Text(
-                      "Responsáveis",
-                      style: TextStyle(fontSize: 12),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: Get.width * 0.01,
-              ),
+
+
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     primary: const Color(0xff062761),

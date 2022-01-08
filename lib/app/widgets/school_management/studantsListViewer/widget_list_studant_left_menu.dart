@@ -1,6 +1,6 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
-import 'package:cefops/app/controller/list_studant_controller.dart';
+import 'package:cefops/app/controller/views/adm/shared/list_studant_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 class ListStudantLeftMenu extends StatelessWidget {

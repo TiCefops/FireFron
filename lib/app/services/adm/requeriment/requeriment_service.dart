@@ -1,4 +1,4 @@
-import 'package:cefops/app/controller/home_emplooyes_controller.dart';
+import 'package:cefops/app/controller/views/adm/shared/home_emplooyes_controller.dart';
 import 'package:cefops/app/data/model/views/adm/secretaria/requerimentos/requeriment_model.dart';
 import 'package:cefops/app/data/repository/adm/requeriment_repository.dart';
 import 'package:get/get.dart';
