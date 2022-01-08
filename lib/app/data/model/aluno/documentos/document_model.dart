@@ -1,118 +1,73 @@
+// To parse this JSON data, do
+//
+//     final documentModel = documentModelFromMap(jsonString);
 
 import 'dart:convert';
 
-DocumentModel documentModelFromJson(String str) => DocumentModel.fromJson(json.decode(str));
+DocumentModel documentModelFromMap(String str) => DocumentModel.fromMap(json.decode(str));
 
-String documentModelToJson(DocumentModel data) => json.encode(data.toJson());
+String documentModelToMap(DocumentModel data) => json.encode(data.toMap());
 
 class DocumentModel {
   DocumentModel({
-    required this.id,
-    required this.cpf,
-    required this.rg,
-    required this.dataemissao,
-    required this.orgaoemissor,
-    required this.estadoemissor,
-    required this.tituloeleitor,
-    required this.zona,
-    required this.secao,
-    required this.dataemissaotitulo,
-    required this.estemissortitulo,
-    required this.reservista,
-    required this.categoriamilitar,
-    required this.circoinscricaomitlitar,
-    required this.regiaomilitar,
-    required this.dataemissaoreservista,
-    required this.orgaoemissorreservista,
-    required this.situacaomilitar,
-    required this.nomedamae,
-    required this.nomedopai,
-    required this.alunosId,
+   required this.id,
+   required this.cpf,
+   required this.rg,
+   required this.dataemissaorg,
+   required this.orgaoemissorrg,
+   required this.estadoemissorrg,
+   required this.tituloeleitor,
+   required this.zona,
+   required this.secao,
+   required this.dataemissaotitulo,
+   required this.estadoemissortitulo,
+   required this.nomedamae,
+   required this.nomedopai,
   });
 
   int id;
   String cpf;
   String rg;
-  DateTime dataemissao;
-  String orgaoemissor;
-  String estadoemissor;
+  DateTime dataemissaorg;
+  String orgaoemissorrg;
+  String estadoemissorrg;
   String tituloeleitor;
   String zona;
   String secao;
   DateTime dataemissaotitulo;
-  String estemissortitulo;
-  String reservista;
-  String categoriamilitar;
-  String circoinscricaomitlitar;
-  String regiaomilitar;
-  DateTime dataemissaoreservista;
-  String orgaoemissorreservista;
-  String situacaomilitar;
+  String estadoemissortitulo;
   String nomedamae;
   String nomedopai;
-  AlunosId alunosId;
 
-  factory DocumentModel.fromJson(Map<String, dynamic> json) => DocumentModel(
+  factory DocumentModel.fromMap(Map<String, dynamic> json) => DocumentModel(
     id: json["id"],
     cpf: json["cpf"],
     rg: json["rg"],
-    dataemissao: DateTime.parse(json["dataemissao"]),
-    orgaoemissor: json["orgaoemissor"],
-    estadoemissor: json["estadoemissor"],
+    dataemissaorg: DateTime.parse(json["dataemissaorg"]),
+    orgaoemissorrg: json["orgaoemissorrg"],
+    estadoemissorrg: json["estadoemissorrg"],
     tituloeleitor: json["tituloeleitor"],
     zona: json["zona"],
     secao: json["secao"],
     dataemissaotitulo: DateTime.parse(json["dataemissaotitulo"]),
-    estemissortitulo: json["estemissortitulo"],
-    reservista: json["reservista"],
-    categoriamilitar: json["categoriamilitar"],
-    circoinscricaomitlitar: json["circoinscricaomitlitar"],
-    regiaomilitar: json["regiaomilitar"],
-    dataemissaoreservista: DateTime.parse(json["dataemissaoreservista"]),
-    orgaoemissorreservista: json["orgaoemissorreservista"],
-    situacaomilitar: json["situacaomilitar"],
+    estadoemissortitulo: json["estadoemissortitulo"],
     nomedamae: json["nomedamae"],
     nomedopai: json["nomedopai"],
-    alunosId: AlunosId.fromJson(json["alunosId"]),
   );
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toMap() => {
     "id": id,
     "cpf": cpf,
     "rg": rg,
-    "dataemissao": dataemissao.toIso8601String(),
-    "orgaoemissor": orgaoemissor,
-    "estadoemissor": estadoemissor,
+    "dataemissaorg": dataemissaorg.toIso8601String(),
+    "orgaoemissorrg": orgaoemissorrg,
+    "estadoemissorrg": estadoemissorrg,
     "tituloeleitor": tituloeleitor,
     "zona": zona,
     "secao": secao,
     "dataemissaotitulo": dataemissaotitulo.toIso8601String(),
-    "estemissortitulo": estemissortitulo,
-    "reservista": reservista,
-    "categoriamilitar": categoriamilitar,
-    "circoinscricaomitlitar": circoinscricaomitlitar,
-    "regiaomilitar": regiaomilitar,
-    "dataemissaoreservista": dataemissaoreservista.toIso8601String(),
-    "orgaoemissorreservista": orgaoemissorreservista,
-    "situacaomilitar": situacaomilitar,
+    "estadoemissortitulo": estadoemissortitulo,
     "nomedamae": nomedamae,
     "nomedopai": nomedopai,
-    "alunosId": alunosId.toJson(),
-  };
-}
-
-class AlunosId {
-  AlunosId({
-    required this.id,
-  });
-
-  String id;
-
-  factory AlunosId.fromJson(Map<String, dynamic> json) => AlunosId(
-    id: json["id"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "id": id,
   };
 }
