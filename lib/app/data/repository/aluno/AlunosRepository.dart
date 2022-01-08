@@ -4,8 +4,8 @@ import 'package:cefops/Shared/Security/Controller/user_controller.dart';
 import 'package:cefops/Shared/Security/Model/error_model.dart';
 
 import 'package:cefops/Shared/urls.dart';
-import 'package:cefops/app/controller/list_studant_controller.dart';
-import 'package:cefops/app/controller/requeriment_controller.dart';
+import 'package:cefops/app/controller/views/adm/shared/list_studant_controller.dart';
+import 'package:cefops/app/controller/views/adm/shared/requeriment_controller.dart';
 import 'package:cefops/app/controller/studants/studant_info_controller.dart';
 import 'package:cefops/app/data/model/aluno/aluno_model.dart';
 import 'package:cefops/app/data/model/aluno/one_studant_model.dart';
@@ -114,7 +114,7 @@ class StudantRepository {
       ErroController.error.tipoError.value = error.message;
       print(ErroController.error.tipoError.value);
 
-      Get.showSnackbar(GetBar(message: ErroController.error.tipoError.value,
+      Get.showSnackbar(GetSnackBar(message: ErroController.error.tipoError.value,
         duration: Duration(seconds: 3),
       ));
       ErroController.error.ok.value = false;
