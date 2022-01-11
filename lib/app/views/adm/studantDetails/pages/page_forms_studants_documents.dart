@@ -31,7 +31,11 @@ class FormsStudantsDocuments extends StatelessWidget {
 
 
     DocumentsController docController = DocumentsController.data;
-    docController.getByid(docController.cpf.value);
+    StudantInfoController.data.isFromPage.value?
+    docController.getByid(docController.cpf.value):
+   " docController.deleteAllData()"
+    ;
+
     return Container(
         height: Get.height,
         width: Get.width,

@@ -151,7 +151,7 @@ class GetStudants extends GetView<ListStudantController> {
                       child: Column(
                         children: <Widget>[
                           Text(
-                            "Quantos studantsListViewer por Página",
+                            "Quantos alunos por Página",
                             style: TextStyles.titleListTile2,
                           ),
                           SizedBox(
@@ -239,18 +239,20 @@ class GetStudants extends GetView<ListStudantController> {
                           height: Get.height * 0.04,
                           child: ListView.builder(
                             itemBuilder: (BuildContext context, int index) {
-                              return Padding(
-                                padding: const EdgeInsets.all(1.0),
-                                child: TextButton(
-                                  onPressed: () {},
-                                  style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(
-                                      AppColors.blue,
+                              return Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(1.0),
+                                  child: TextButton(
+                                    onPressed: () {},
+                                    style: ButtonStyle(
+                                      backgroundColor: MaterialStateProperty.all(
+                                        AppColors.blue,
+                                      ),
                                     ),
-                                  ),
-                                  child: const Text(
-                                    "1",
-                                    style: TextStyle(color: Colors.white),
+                                    child:  Text(
+                                      "1",
+                                      style: TextStyle(color: Colors.white),
+                                    ),
                                   ),
                                 ),
                               );
@@ -460,6 +462,7 @@ class GetStudants extends GetView<ListStudantController> {
         onPressed: () {
           AlunoDetails(context);
           StudantInfoController.data.isFromPage.value = false;
+          DocumentsController.data.deleteAllData();
         },
       ),
     );

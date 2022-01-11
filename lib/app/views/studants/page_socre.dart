@@ -1,158 +1,62 @@
-import 'package:cefops/Shared/themes/app_textstayle.dart';
-import 'package:cefops/app/widgets/app/widget_background.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 
-class NotesPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final  size = MediaQuery.of(context).size;
-    return Scaffold(
-      body:backgroundColor(size.width, size.height,
-
-          ListView.builder(
-        itemBuilder: (BuildContext context, int index) =>
-            EntryItem(data[index]),
-        itemCount: data.length,
-      ))
-    );
-  }
-}
-
-
-class Entry {
-  Entry(this.title, [this.children = const <Entry>[]]);
-
-  final String title;
-  final List<Entry> children;
-}
-
-final List<Entry> data = <Entry>[
-  Entry(
-    'Ginecologia E OBSTETRÍCIA',
-    <Entry>[
-      Entry(
-        'Notas',
-        <Entry>[
-          Entry('Atividade 1'),
-          Entry('Atividade 2'),
-          Entry('Atividade 3'),
-          Entry('Trabalho 1'),
-          Entry('Trabalho 2'),
-          Entry('Prova 1'),
-          Entry('Prova 2'),
-
-
-
-        ],
-      ),
-
-    ],
-  ),
-  Entry(
-    'ORTOPEDIA',
-    <Entry>[
-      Entry(
-        'Notas',
-        <Entry>[
-          Entry('Atividade 1'),
-          Entry('Atividade 2'),
-          Entry('Atividade 3'),
-          Entry('Trabalho 1'),
-          Entry('Trabalho 2'),
-          Entry('Prova 1'),
-          Entry('Prova 2'),
-
-
-
-        ],
-      ),
-
-    ],
-  ),
-  Entry(
-    'PRONTO SOCORRO',
-    <Entry>[
-      Entry(
-        'Notas',
-        <Entry>[
-          Entry('Atividade 1'),
-          Entry('Atividade 2'),
-          Entry('Atividade 3'),
-          Entry('Trabalho 1'),
-          Entry('Trabalho 2'),
-          Entry('Prova 1'),
-          Entry('Prova 2'),
-
-
-
-        ],
-      ),
-
-    ],
-  ),
-  Entry(
-    'ENFERMAGEM EM NEONATOLOGIA',
-    <Entry>[
-      Entry(
-        'Notas',
-        <Entry>[
-          Entry('Atividade 1'),
-          Entry('Atividade 2'),
-          Entry('Atividade 3'),
-          Entry('Trabalho 1'),
-          Entry('Trabalho 2'),
-          Entry('Prova 1'),
-          Entry('Prova 2'),
-
-
-
-        ],
-      ),
-
-    ],
-  ),
-  Entry(
-    'ENFERMAGEM EM PEDIATRIA',
-    <Entry>[
-      Entry(
-        'Notas',
-        <Entry>[
-          Entry('Atividade 1'),
-          Entry('Atividade 2'),
-          Entry('Atividade 3'),
-          Entry('Trabalho 1'),
-          Entry('Trabalho 2'),
-          Entry('Prova 1'),
-          Entry('Prova 2'),
-
-
-
-        ],
-      ),
-
-    ],
-  ),
-];
-class EntryItem extends StatelessWidget {
-  const EntryItem(this.entry);
-
-  final Entry entry;
-
-  Widget _buildTiles(Entry root) {
-    if (root.children.isEmpty) return ListTile(
-        title: Text(root.title,style: TextStyles.titleListTile2,));
-    return ExpansionTile(
-      key: PageStorageKey<Entry>(root),
-      title: Text(root.title,style: TextStyles.titleListTile2),
-      children: root.children.map(_buildTiles).toList(),
-    );
-  }
+class ScoreStudantPage extends StatelessWidget {
+  const ScoreStudantPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return _buildTiles(entry);
+    return Center(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(("modulo1")),
+          Container(
+            width: Get.width * 0.7,
+            height: Get.height * 0.5,
+            color: Colors.amber,
+            child: Column(
+              children: [
+                Container(
+                  decoration:BoxDecoration(
+                    border: Border.all()
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text("Disciplina |"),
+                      Text("Atividade 1  |"),
+                      Text("Atividade 2 |"),
+                      Text("Trabalho 1 |"),
+                      Text("Trabalho 2 |"),
+                      Text("Prova 1 |"),
+                      Text("Prova 2 |"),
+                      Text("Recuperação |"),
+                      Text("Aulas de Laboratório |"),
+                      Text("Média "),
+                    ],
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text("Genicologia e obstetirica"),
+                    Text("0"),
+                    Text("9"),
+                    Text("0"),
+                    Text("5 "),
+                    Text("1"),
+                    Text("2"),
+                    Text("nd"),
+                    Text("nd"),
+                    Text("5 "),
+                  ],
+                )
+              ],
+            ),
+          )
+        ],
+      ),
+    );
   }
-
 }
-
-

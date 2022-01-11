@@ -3,6 +3,7 @@ import 'package:cefops/Shared/Security/Controller/user_controller.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/app/controller/app/status_app_controller.dart';
 import 'package:cefops/app/data/model/model_publication.dart';
+import 'package:cefops/app/widgets/app/menuFilter/widget_menu_studant.dart';
 import 'package:cefops/app/widgets/app/widget_navegator_routes.dart';
 import 'package:cefops/res.dart';
 import 'package:flutter/material.dart';
@@ -105,53 +106,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
               if (UserController.user.role.contains("Aluno") ||
                   UserController.user.role.contains("ADM"))
-                ListTile(
-                  leading: Icon(
-                    Icons.book,
-                    color: AppColors.background,
-                  ),
-                  title: const Text(
-                    'Meu Curso',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  onTap: () {
-                    statusApp.status.selectedIndex.value = 1;
-                    statusApp.status.title.value = "Meu Curso";
-                    Navigator.pop(context);
-                  },
-                ),
-              if (UserController.user.role.contains("Aluno") ||
-                  UserController.user.role.contains("ADM"))
-                ListTile(
-                  title: const Text(
-                    'Minhas Notas',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  leading: Icon(
-                    Icons.calendar_view_month,
-                    color: AppColors.iconColor,
-                  ),
-                  onTap: () {
-                    statusApp.status.selectedIndex.value = 2;
-                    statusApp.status.title.value = "Minhas Notas";
-                    Navigator.pop(context);
-                  },
-                ),
-              if (UserController.user.role.contains("Aluno") ||
-                  UserController.user.role.contains("ADM"))
-                ListTile(
-                  title: const Text(
-                    'Requerimentos',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  leading: Icon(Icons.note_add, color: AppColors.iconColor),
-                  onTap: () {
-                    statusApp.status.selectedIndex.value = 5;
-                    statusApp.status.title.value = "Requerimentos";
-                    Navigator.pop(context);
-                  },
-                ),
-              if (UserController.user.role.contains("Aluno") ||
+               MenuStudant(context),
+
+
+              if (
                   UserController.user.role.contains("ADM") ||
                   UserController.user.role.contains("Financeiro"))
                 ListTile(
@@ -163,6 +121,21 @@ class _MyHomePageState extends State<MyHomePage> {
                   onTap: () {
                     statusApp.status.selectedIndex.value = 10;
                     statusApp.status.title.value = "Financeiro";
+                    Navigator.pop(context);
+                  },
+                ),
+              if (
+              UserController.user.role.contains("ADM") ||
+                  UserController.user.role.contains("FinanceiroAdm"))
+                ListTile(
+                  title: const Text(
+                    'DashBoard Financeiro',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  leading: Icon(Icons.description, color: AppColors.iconColor),
+                  onTap: () {
+                    statusApp.status.selectedIndex.value = 11;
+                    statusApp.status.title.value = "DashBoard Financeiro";
                     Navigator.pop(context);
                   },
                 ),
@@ -184,7 +157,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   onTap: () {
                     statusApp.status.selectedIndex.value = 4;
-                    statusApp.status.title.value = "Listar studantsListViewer";
+                    statusApp.status.title.value = "Listar Alunos";
                     Navigator.pop(context);
                   },
                 ),

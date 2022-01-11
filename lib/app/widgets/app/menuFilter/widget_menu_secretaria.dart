@@ -7,23 +7,10 @@ MenuSec() {
       color: AppColors.primary,
       child: ListView(
           children: <Widget>[
+
             ListTile(
               title: Text(
-                'Cadastrar Aluno',
-                style: TextStyle(color: Colors.white),
-              ),
-              leading: Icon(
-                Icons.person_add,
-                color: AppColors.iconColor,
-              ),
-              onTap: () {
-                statusApp.status.selectedIndex.value = 4;
-                statusApp.status.title.value = "Financeiro";
-              },
-            ),
-            ListTile(
-              title: Text(
-                'Listar studantsListViewer',
+                'Listar Alunos',
                 style: TextStyle(color: Colors.white),
               ),
               leading: Icon(

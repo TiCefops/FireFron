@@ -42,6 +42,11 @@ class TextStyles {
     fontWeight: FontWeight.w400,
     color: AppColors.textOnPrimary,
   );
+  static final TextStyle titleListTile3Blackf = GoogleFonts.lexendDeca(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: Colors.black,
+  );
   static final TextStyle titleListTile3Black = GoogleFonts.lexendDeca(
     fontSize: 20,
     fontWeight: FontWeight.w400,

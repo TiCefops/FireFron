@@ -43,10 +43,7 @@ class AppWidget extends StatelessWidget {
           name: "/",
           page: () => _viewDetect(),
         ),
-        GetPage(
-          name: "/notes",
-          page: () => NotesPage(),
-        ),
+
         GetPage(
           name: "/navegation",
           page: () => MyApp(),

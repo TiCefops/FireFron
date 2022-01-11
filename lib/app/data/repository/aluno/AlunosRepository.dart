@@ -35,7 +35,7 @@ class StudantRepository {
     }
 
 
-    final response = await http.get(
+    final http.Response response = await http.get(
       Uri.parse(urlReturn()),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
@@ -43,14 +43,14 @@ class StudantRepository {
 
       },
     );
-    final data = utf8.decode(response.bodyBytes);
+    final String data = utf8.decode(response.bodyBytes);
     var decodeData = jsonDecode(data);
 
 
     if (response.statusCode == 200) {
       ErroController.error.ok.value = true;
       Map<String, dynamic> jsonResponse = decodeData;
-      var model = StudantModel.fromJson(jsonResponse);
+      StudantModel model = StudantModel.fromJson(jsonResponse);
       controller.number.value = model.number;
       controller.pageSize.value = model.size;
       controller.totalPages.value = model.totalPages;
@@ -76,7 +76,7 @@ class StudantRepository {
   }
 
   Future<OneStudantModel> getStudantById(id) async {
-    final response = await http.get(
+    final http.Response response = await http.get(
       Uri.parse("${urls.app}/alunos/$id"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
@@ -84,14 +84,14 @@ class StudantRepository {
 
       },
     );
-    final data = utf8.decode(response.bodyBytes);
+    final String data = utf8.decode(response.bodyBytes);
     var decodeData = jsonDecode(data);
 
     if (response.statusCode == 200) {
       ErroController.error.ok.value = true;
 
       var jsonResponse = decodeData;
-      var data = OneStudantModel.fromJson(jsonResponse);
+      OneStudantModel data = OneStudantModel.fromJson(jsonResponse);
       String Fullname = data.name! + " " + data.lastName!;
       RequerimentController.req.StudantFullName.value = Fullname;
 
@@ -108,9 +108,9 @@ class StudantRepository {
 
     }
     else {
-      final data1 = utf8.decode(response.bodyBytes);
+      final String data1 = utf8.decode(response.bodyBytes);
 
-      var error = errorModelFromJson(data1);
+      ErrorModel error = errorModelFromJson(data1);
       ErroController.error.tipoError.value = error.message;
       print(ErroController.error.tipoError.value);
 
@@ -129,7 +129,7 @@ class StudantRepository {
       bool ativo) async {
     StudantInfoController.data.loading.value = true;
 
-    final response = await http.post(
+    final http.Response response = await http.post(
       Uri.parse('${urls.app}/alunos'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
@@ -151,7 +151,7 @@ class StudantRepository {
         "nacionalidade": "${nacionalidade.toUpperCase()}"
       }),
     );
-    final data;
+    final String data;
     var decodeData;
     if (response.body.isNotEmpty) {
       data = utf8.decode(response.bodyBytes);
@@ -187,7 +187,7 @@ class StudantRepository {
         throw Exception('falha na requisição');
       } else if (response.statusCode == 500) {
         var error = decodeData;
-        var erroMapper = ErrorModel.fromJson(error);
+        ErrorModel erroMapper = ErrorModel.fromJson(error);
         if (erroMapper.message == "Aluno já cadastrado") {
           StudantInfoController.data.loading.value = false;
           StudantInfoController.data.status.value = "Usuário já Cadastrado";

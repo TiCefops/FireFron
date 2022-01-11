@@ -3,10 +3,11 @@ import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/app/controller/app/navigator_controller.dart';
 import 'package:cefops/app/controller/app/status_app_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-MenuStudant(){
+MenuStudant(context){
 
-  return  <Widget>[
+  return  Column( children:<Widget>[
         ListTile(
           leading: Icon(
             Icons.book,
@@ -18,9 +19,8 @@ MenuStudant(){
           ),
           onTap: () {
             statusApp.status.selectedIndex.value = 1;
-
-            onSelectItem();
             statusApp.status.title.value = "Meu Curso";
+            Navigator.pop(context);
           },
         ),
         ListTile(
@@ -36,6 +36,7 @@ MenuStudant(){
           onTap: () {
             statusApp.status.selectedIndex.value = 2;
             statusApp.status.title.value = "Minhas Notas";
+            Navigator.pop(context);
           },
         ),
         ListTile(
@@ -46,9 +47,9 @@ MenuStudant(){
           leading: Icon(Icons.note_add, color: AppColors.iconColor),
 
           onTap: () {
-            statusApp.status.selectedIndex.value = 3;
-
+            statusApp.status.selectedIndex.value = 5;
             statusApp.status.title.value = "Requerimentos";
+            Navigator.pop(context);
           },
         ),
         ListTile(
@@ -59,11 +60,12 @@ MenuStudant(){
           leading: Icon(Icons.description, color: AppColors.iconColor),
 
           onTap: () {
-            statusApp.status.selectedIndex.value = 4;
+            statusApp.status.selectedIndex.value = 8;
             statusApp.status.title.value = "Financeiro";
+            Navigator.pop(context);
           },
         ),
-      ];
+      ]);
 
 
 

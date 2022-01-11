@@ -7,9 +7,9 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 
 ///Pagina para visualizar As financias internas
-class InternalFinance extends StatelessWidget {
+class NewInternalFinance extends StatelessWidget {
   ///inicio
-  const InternalFinance({Key? key}) : super(key: key);
+  const NewInternalFinance({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

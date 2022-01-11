@@ -53,7 +53,7 @@ class MyRequeriments extends StatelessWidget {
                       case "Solicitado":
                         return color = 0xFF991E0B;
                       case "Em Andamento":
-                        return color = 0xFFDA9100;
+                        return color = 0xFFA9100;
 
                       case "Concluído":
                         return color = 0xFF498A85;
@@ -313,7 +313,10 @@ class MyRequeriments extends StatelessWidget {
                         );
                 } else if (snapshot.hasError) {
                   return ErrorInfo();
-                } else {
+                } else if(snapshot.data==[]){
+                  return CircularProgressIndicator();
+
+                }else {
                   return Center(
                     child: CircularProgressIndicator(
                       color: AppColors.blue,

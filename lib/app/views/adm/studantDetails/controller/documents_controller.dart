@@ -31,7 +31,11 @@ class DocumentsController extends GetxController {
     estadoEmissortitulo.value = "";
     zona.value = "";
     secao.value = "";
+    nomeMae.value="";
+    nomePai.value="";
+    orgaoEmissorRg.value="";
     dataEmissorTitulo.value = "";
+    update();
   }
 
   setDocuments(
